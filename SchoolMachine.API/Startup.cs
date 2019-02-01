@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -41,7 +42,17 @@ namespace SchoolMachine.API
 
             services.ConfigureRepositoryWrapper();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(mvcOptions =>
+            {
+                mvcOptions.RespectBrowserAcceptHeader = true;
+
+                // Return a 406 (Not Acceptable status code) if invalid media type negotiation is attempted
+                mvcOptions.ReturnHttpNotAcceptable = true;
+
+                mvcOptions.InputFormatters.Add(new XmlSerializerInputFormatter(mvcOptions));
+                mvcOptions.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+            }
+            ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

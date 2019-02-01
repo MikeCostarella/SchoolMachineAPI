@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.DataAccess.En
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.Repository", "SchoolMachine.Repository\SchoolMachine.Repository.csproj", "{9E504B2E-F78C-4E7A-AA81-1649665B116A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.Testing.API", "SchoolMachine.Testing.API\SchoolMachine.Testing.API.csproj", "{D5B5EFD1-4A51-4676-AF85-0FA3FB61F566}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{9E504B2E-F78C-4E7A-AA81-1649665B116A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E504B2E-F78C-4E7A-AA81-1649665B116A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E504B2E-F78C-4E7A-AA81-1649665B116A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5B5EFD1-4A51-4676-AF85-0FA3FB61F566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5B5EFD1-4A51-4676-AF85-0FA3FB61F566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5B5EFD1-4A51-4676-AF85-0FA3FB61F566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5B5EFD1-4A51-4676-AF85-0FA3FB61F566}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,7 @@ Global
 		{E2C41F0E-B809-457F-9CD3-947B3EE8BA0F} = {EC58D6C3-5A69-4D0B-A141-AA08A334CAED}
 		{17A4B6EF-CE8B-43BD-A2FA-7403413C0F41} = {7F433DE3-C53E-486A-9694-B1666DBC12AD}
 		{EE731559-12AA-4E0F-B4FC-03710B0E41A9} = {DA827992-C7FB-4DF5-A3C3-464F11FB308D}
+		{D5B5EFD1-4A51-4676-AF85-0FA3FB61F566} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6520A525-2E5F-4481-A912-0847D1B50199}
