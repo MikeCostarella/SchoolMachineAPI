@@ -10,10 +10,16 @@ namespace SchoolMachine.Repository.Entities
 {
     public class StudentRepository : RepositoryBase<Student>, IStudentRepository
     {
+        #region Constructors
+
         public StudentRepository(RepositoryContext repositoryContext)
             : base(repositoryContext)
         {
         }
+
+        #endregion Constructors
+
+        #region Public Methods
 
         public IEnumerable<Student> GetAllStudents()
         {
@@ -36,5 +42,7 @@ namespace SchoolMachine.Repository.Entities
                     .Where(a => a.StudentId == studentId)
             };
         }
+
+        #endregion Public Methods
     }
 }

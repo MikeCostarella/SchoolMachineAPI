@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Models;
@@ -13,14 +9,24 @@ namespace SchoolMachine.API.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
+        #region Private Variables
+
         private ILoggerManager _loggerManager;
         private IRepositoryWrapper _repositoryWrapper;
+
+        #endregion Private Variables
+
+        #region Constructors
 
         public StudentController(ILoggerManager loggerManager, IRepositoryWrapper repositoryWrapper)
         {
             _loggerManager = loggerManager;
             _repositoryWrapper = repositoryWrapper;
         }
+
+        #endregion Constructors
+
+        #region Action Methods
 
         // GET: api/Student
         [HttpGet]
@@ -89,8 +95,10 @@ namespace SchoolMachine.API.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
         }
+
+        #endregion Action Methods
     }
 }

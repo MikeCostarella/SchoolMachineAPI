@@ -1,12 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SchoolMachine.Testing.API.Controllers.CRUD
 {
+
+    /// <summary>
+    /// Perform mock unit tests on student controller actions
+    /// </summary>
     [TestClass]
-    public class StudentControllerTests
+    public class StudentControllerUnitTests
     {
         [TestMethod]
         public void GetAllStudents()
@@ -19,9 +20,6 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
 
             #region Assertions
             #endregion Assertions
-
-            #region Tear Down
-            #endregion Tear Down
         }
 
         [TestMethod]
@@ -35,9 +33,6 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
 
             #region Assertions
             #endregion Assertions
-
-            #region Tear Down
-            #endregion Tear Down
         }
 
         [TestMethod]
@@ -51,9 +46,6 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
 
             #region Assertions
             #endregion Assertions
-
-            #region Tear Down
-            #endregion Tear Down
         }
     }
 }

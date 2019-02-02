@@ -1,13 +1,13 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Models;
+using System;
 
-namespace SchoolMachine.API.Controllers
+namespace SchoolMachine.API.Controllers.CRUD
 {
-    [Route("api/school")]
+    [Route("api/schoolstudent")]
     [ApiController]
-    public class SchoolController : ControllerBase
+    public class SchoolStudentController : ControllerBase
     {
         #region Private Variables
 
@@ -18,7 +18,7 @@ namespace SchoolMachine.API.Controllers
 
         #region Constructors
 
-        public SchoolController(ILoggerManager loggerManager, IRepositoryWrapper repositoryWrapper)
+        public SchoolStudentController(ILoggerManager loggerManager, IRepositoryWrapper repositoryWrapper)
         {
             _loggerManager = loggerManager;
             _repositoryWrapper = repositoryWrapper;
@@ -30,47 +30,47 @@ namespace SchoolMachine.API.Controllers
 
         // GET: api/School
         [HttpGet]
-        public IActionResult GetAllSchools()
+        public IActionResult GetAllSchoolStudents()
         {
             try
             {
-                var schools = _repositoryWrapper.School.GetAllSchools();
+                var schoolStudents = _repositoryWrapper.SchoolStudent.GetAllSchoolStudents();
 
-                _loggerManager.LogInfo($"Returned all schools from database.");
+                _loggerManager.LogInfo($"Returned all SchoolStudents from database.");
 
-                return Ok(schools);
+                return Ok(schoolStudents);
             }
             catch (Exception ex)
             {
-                _loggerManager.LogError($"Something went wrong inside GetAllSchools action: {ex.Message}");
+                _loggerManager.LogError($"Something went wrong inside GetAllSchoolStudents action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }
 
         // GET: api/Student/5
         [HttpGet("{id}")]
-        [ProducesResponseType(201, Type = typeof(School))]
+        [ProducesResponseType(201, Type = typeof(SchoolStudent))]
         [ProducesResponseType(400)]
-        public IActionResult GetSchoolById(Guid id)
+        public IActionResult GetSchoolStudentById(Guid id)
         {
             try
             {
-                var school = _repositoryWrapper.School.GetSchoolById(id);
+                var school = _repositoryWrapper.SchoolStudent.GetSchoolStudentById(id);
 
                 if (school.Id.Equals(Guid.Empty))
                 {
-                    _loggerManager.LogError($"School with id: {id}, was not found in db.");
+                    _loggerManager.LogError($"SchoolStudent with id: {id}, was not found in db.");
                     return NotFound();
                 }
                 else
                 {
-                    _loggerManager.LogInfo($"Returned student with id: {id}");
+                    _loggerManager.LogInfo($"Returned SchoolStudent with id: {id}");
                     return Ok(school);
                 }
             }
             catch (Exception ex)
             {
-                _loggerManager.LogError($"Something went wrong inside GetSchoolById action: {ex.Message}");
+                _loggerManager.LogError($"Something went wrong inside GetSchoolStudentById action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -79,7 +79,7 @@ namespace SchoolMachine.API.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public void Post([FromBody] Student value)
+        public void Post([FromBody] SchoolStudent value)
         {
         }
 
@@ -87,7 +87,7 @@ namespace SchoolMachine.API.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public void Put(int id, [FromBody] Student value)
+        public void Put(int id, [FromBody] SchoolStudent value)
         {
         }
 

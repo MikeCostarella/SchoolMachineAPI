@@ -3,14 +3,16 @@ using Newtonsoft.Json;
 using SchoolMachine.DataAccess.Entities.Models;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SchoolMachine.Testing.API.Controllers.CRUD
 {
+
+    /// <summary>
+    /// Perform mock unit tests on school controller actions
+    /// </summary>
     [TestClass]
-    public class SchoolControllerTests
+    public class SchoolControllerUnitTests
     {
         [TestMethod]
         public void GetAllSchools()
@@ -42,7 +44,6 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
             Assert.AreEqual(mockSchools[0].Id, responseData[0].Id);
 
             #endregion Assertions
-
         }
 
         [TestMethod]
@@ -56,9 +57,6 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
 
             #region Assertions
             #endregion Assertions
-
-            #region Tear Down
-            #endregion Tear Down
         }
 
         [TestMethod]
@@ -72,9 +70,6 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
 
             #region Assertions
             #endregion Assertions
-
-            #region Tear Down
-            #endregion Tear Down
         }
 
     }
