@@ -1,0 +1,1 @@
+2019-02-01 16:50:45.4154 INFO Returned all students from database.

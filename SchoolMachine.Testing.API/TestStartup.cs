@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
@@ -8,12 +6,14 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolMachine.API.Extensions;
+using System;
+using System.IO;
 
-namespace SchoolMachine.API
+namespace SchoolMachine.Testing.API
 {
-    public class Startup
+    public class TestStartup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
+        public TestStartup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
         {
             var directoryPath = hostingEnvironment.ContentRootPath;
             NLog.LogManager.LoadConfiguration(String.Concat(directoryPath, "/nlog.config"));
@@ -35,7 +35,9 @@ namespace SchoolMachine.API
 
             services.ConfigureRepositoryWrapper();
 
-            services.AddMvc(mvcOptions =>
+            TestInitializer.RegisterMockRepositories(services);
+
+            services.AddMvcCore(mvcOptions =>
             {
                 mvcOptions.RespectBrowserAcceptHeader = true;
 
@@ -61,7 +63,7 @@ namespace SchoolMachine.API
                 app.UseHsts();
             }
 
-            app.UseCors("CorsPolicy");
+            //app.UseCors("CorsPolicy");
 
             // will forward proxy headers to the current request. Will help during the Linux deployment
             app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -82,9 +84,9 @@ namespace SchoolMachine.API
                 }
             });
 
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseMvc();
         }
