@@ -32,6 +32,16 @@ namespace SchoolMachine.Repository.Entities
                     .FirstOrDefault();
         }
 
+        public IEnumerable<SchoolStudent> SchoolStudentsBySchool(Guid schoolId)
+        {
+            return FindByCondition(a => a.SchoolId.Equals(schoolId));
+        }
+
+        public IEnumerable<SchoolStudent> SchoolStudentsByStudent(Guid studentId)
+        {
+            return FindByCondition(a => a.StudentId.Equals(studentId));
+        }
+
         #endregion Public Methods
     }
 }

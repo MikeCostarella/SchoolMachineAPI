@@ -9,5 +9,9 @@ namespace SchoolMachine.Contracts.EntityRepositories
         IEnumerable<SchoolStudent> GetAllSchoolStudents();
 
         SchoolStudent GetSchoolStudentById(Guid schoolStudentId);
+
+        IEnumerable<SchoolStudent> SchoolStudentsBySchool(Guid schoolId);
+
+        IEnumerable<SchoolStudent> SchoolStudentsByStudent(Guid studentId);
     }
 }

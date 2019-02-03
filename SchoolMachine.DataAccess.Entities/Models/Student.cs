@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SchoolMachine.DataAccess.Entities.Interfaces;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolMachine.DataAccess.Entities.Models
 {
     [Table("Students", Schema = "SchoolData")]
-    public class Student
+    public class Student : IEntity
     {
         [Key]
         [Column("StudentId")]

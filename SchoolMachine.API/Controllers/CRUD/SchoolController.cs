@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
+using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.Models;
 
 namespace SchoolMachine.API.Controllers
@@ -47,8 +49,8 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // GET: api/Student/5
-        [HttpGet("{id}")]
+        // GET: api/School/615226ff-f759-4dc9-84ce-f27228a1252e
+        [HttpGet("{id}", Name="GetSchoolById")]
         [ProducesResponseType(201, Type = typeof(School))]
         [ProducesResponseType(400)]
         public IActionResult GetSchoolById(Guid id)
@@ -57,7 +59,7 @@ namespace SchoolMachine.API.Controllers
             {
                 var school = _repositoryWrapper.School.GetSchoolById(id);
 
-                if (school.Id.Equals(Guid.Empty))
+                if (school.IsEmptyObject())
                 {
                     _loggerManager.LogError($"School with id: {id}, was not found in db.");
                     return NotFound();
@@ -75,28 +77,107 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // POST: api/Student
+        // POST: api/School
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public void Post([FromBody] Student value)
+        public IActionResult CreateSchool([FromBody] School school)
         {
+            try
+            {
+                if (school.IsObjectNull())
+                {
+                    _loggerManager.LogError("School object sent from client is null.");
+                    return BadRequest("School object is null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    _loggerManager.LogError("Invalid school object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+
+                _repositoryWrapper.School.CreateSchool(school);
+
+                return CreatedAtRoute("SchoolById", new { id = school.Id }, school);
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside CreateSchool action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
-        // PUT: api/Student/5
+        // PUT: api/School/615226ff-f759-4dc9-84ce-f27228a1252e
         [HttpPut("{id}")]
-        [ProducesResponseType(201)]
+        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public void Put(int id, [FromBody] Student value)
+        [ProducesResponseType(500)]
+        public IActionResult UpdateSchool(Guid id, [FromBody] School school)
         {
+            try
+            {
+                if (school.IsObjectNull())
+                {
+                    _loggerManager.LogError("School object sent from client is null.");
+                    return BadRequest("School object is null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    _loggerManager.LogError("Invalid owner object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+
+                var dbSchool = _repositoryWrapper.School.GetSchoolById(id);
+                if (dbSchool.IsEmptyObject())
+                {
+                    _loggerManager.LogError($"School with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+
+                _repositoryWrapper.School.UpdateSchool(dbSchool, school);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside UpdateSchool action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
-        // DELETE: api/ApiWithActions/5
-        [ProducesResponseType(201)]
+        // DELETE: api/ApiWithActions/615226ff-f759-4dc9-84ce-f27228a1252e
+        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         [HttpDelete("{id}")]
-        public void Delete(Guid id)
+        public IActionResult DeleteSchool(Guid id)
         {
+            try
+            {
+                var school = _repositoryWrapper.School.GetSchoolById(id);
+                if (school.IsEmptyObject())
+                {
+                    _loggerManager.LogError($"School with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+
+                if (_repositoryWrapper.SchoolStudent.SchoolStudentsBySchool(id).Any())
+                {
+                    _loggerManager.LogError($"Cannot delete school with id: {id}. It has related schoolStudents. Delete those schoolStudents first");
+                    return BadRequest("Cannot delete school. It has related schoolStudents. Delete those schoolStudents first");
+                }
+
+                _repositoryWrapper.School.DeleteSchool(school);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside DeleteSchool action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         #endregion Actions

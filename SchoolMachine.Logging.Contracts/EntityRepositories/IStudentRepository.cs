@@ -12,5 +12,11 @@ namespace SchoolMachine.Contracts.EntityRepositories
         Student GetStudentById(Guid studentId);
 
         StudentExtended GetStudentWithDetails(Guid studentId);
+
+        void CreateStudent(Student student);
+
+        void UpdateStudent(Student dbStudent, Student student);
+
+        void DeleteStudent(Student student);
     }
 }

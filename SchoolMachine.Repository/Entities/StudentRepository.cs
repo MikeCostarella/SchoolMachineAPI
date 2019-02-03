@@ -1,6 +1,7 @@
 ﻿using SchoolMachine.Contracts.EntityRepositories;
 using SchoolMachine.DataAccess.Entities;
 using SchoolMachine.DataAccess.Entities.ExtendedModels;
+using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,26 @@ namespace SchoolMachine.Repository.Entities
                 Schools = RepositoryContext.SchoolStudents
                     .Where(a => a.StudentId == studentId)
             };
+        }
+
+        public void CreateStudent(Student student)
+        {
+            student.Id = Guid.NewGuid();
+            Create(student);
+            Save();
+        }
+
+        public void UpdateStudent(Student dbStudent, Student student)
+        {
+            dbStudent.Map(student);
+            Update(dbStudent);
+            Save();
+        }
+
+        public void DeleteStudent(Student student)
+        {
+            Delete(student);
+            Save();
         }
 
         #endregion Public Methods

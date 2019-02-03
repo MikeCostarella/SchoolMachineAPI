@@ -12,5 +12,11 @@ namespace SchoolMachine.Contracts.EntityRepositories
         School GetSchoolById(Guid schoolId);
 
         SchoolExtended GetSchoolWithDetails(Guid schoolId);
+
+        void CreateSchool(School school);
+
+        void UpdateSchool(School dbSchool, School school);
+
+        void DeleteSchool(School school);
     }
 }
