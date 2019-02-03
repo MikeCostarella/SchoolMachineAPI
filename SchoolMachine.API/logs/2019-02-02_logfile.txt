@@ -1,0 +1,3 @@
+2019-02-02 21:12:59.7851 INFO Returned all schools from database.
+2019-02-02 21:13:54.7915 INFO Returned all schools from database.
+2019-02-02 21:24:20.4132 INFO Returned all students from database.

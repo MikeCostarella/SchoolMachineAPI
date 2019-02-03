@@ -46,6 +46,8 @@ namespace SchoolMachine.API
                 mvcOptions.OutputFormatters.Add(new XmlSerializerOutputFormatter());
             }
             ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.ConfigureSwaggerGenerator();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,6 +87,18 @@ namespace SchoolMachine.API
             app.UseStaticFiles();
 
             app.UseHttpsRedirection();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SchoolMachine API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
 
             app.UseMvc();
         }

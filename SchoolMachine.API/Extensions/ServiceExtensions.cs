@@ -82,5 +82,17 @@ namespace SchoolMachine.API.Extensions
         {
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
+
+        /// <summary>
+        /// Register the Swagger generator, defining the swagger document(s)
+        /// </summary>
+        /// <param name="services"></param>
+        public static void ConfigureSwaggerGenerator(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "SchoolMachine API", Version = "v1" });
+            });
+        }
     }
 }

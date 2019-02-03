@@ -25,7 +25,9 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
                 new School { Id = Guid.NewGuid(), Name = "Liberty High School" }
             };
             var employeeRepositoryMock = TestInitializer.MockSchoolRepository;
-            employeeRepositoryMock.Setup(x => x.GetAllSchools()).Returns((IEnumerable<School>) Task.FromResult(mockSchools));
+            var mock = employeeRepositoryMock.Setup(x => x.GetAllSchools());
+            var taskResult = Task.FromResult(mockSchools);
+            mock.Returns((IEnumerable<School>) taskResult.Result);
 
             #endregion Setup
 
@@ -38,8 +40,10 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
 
             #region Assertions
 
+            Assert.AreEqual(response, null, String.Format("TestHttpClient"));
             var resp = response.Content.ReadAsStringAsync().Result;
             var responseData = JsonConvert.DeserializeObject<List<School>>(resp);
+            Assert.AreEqual(responseData, null);
             Assert.AreEqual(3, responseData.Count);
             Assert.AreEqual(mockSchools[0].Id, responseData[0].Id);
 
