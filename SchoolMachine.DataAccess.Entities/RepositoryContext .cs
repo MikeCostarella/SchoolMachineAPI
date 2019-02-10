@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolMachine.Common.Configuration;
 using SchoolMachine.DataAccess.Entities.Models;
+using SchoolMachine.DataAccess.Entities.SeedData;
 using System;
 
 namespace SchoolMachine.DataAccess.Entities
@@ -39,8 +40,12 @@ namespace SchoolMachine.DataAccess.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<School>().HasData(new School { Id = Guid.NewGuid(), Name = "Girard High School" });
-            modelBuilder.Entity<School>().HasData(new School { Id = Guid.NewGuid(), Name = "Liberty High School" });
+            modelBuilder.Entity<School>().HasData(SeedDataFactory.Schools[0]);
+            modelBuilder.Entity<School>().HasData(SeedDataFactory.Schools[1]);
+            modelBuilder.Entity<Student>().HasData(SeedDataFactory.Students[0]);
+            modelBuilder.Entity<Student>().HasData(SeedDataFactory.Students[1]);
+            modelBuilder.Entity<Student>().HasData(SeedDataFactory.Students[2]);
+            modelBuilder.Entity<Student>().HasData(SeedDataFactory.Students[3]);
         }
 
         #endregion Data Seeding
