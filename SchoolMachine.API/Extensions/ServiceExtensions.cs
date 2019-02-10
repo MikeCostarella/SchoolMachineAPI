@@ -6,6 +6,7 @@ using SchoolMachine.DataAccess.Entities;
 using SchoolMachine.Contracts;
 using SchoolMachine.Logging.LoggerService;
 using SchoolMachine.Repository;
+using SchoolMachine.Common.Configuration;
 
 namespace SchoolMachine.API.Extensions
 {
@@ -68,10 +69,11 @@ namespace SchoolMachine.API.Extensions
         /// <param name="config"></param>
         public static void ConfigureRepositoryContext(this IServiceCollection services, IConfiguration config)
         {
-            // ToDo: refactor connnection to appsettings.json
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=SchoolMachine;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<RepositoryContext>
-                (options => options.UseSqlServer(connection));
+            //services.AddDbContext<RepositoryContext>
+            //    (options => options.UseSqlServer(Utilities.SchoolMachoneDbConnection()));
+            services.AddEntityFrameworkNpgsql()
+                .AddDbContext<RepositoryContext>()
+                .BuildServiceProvider();
         }
 
         /// <summary>
