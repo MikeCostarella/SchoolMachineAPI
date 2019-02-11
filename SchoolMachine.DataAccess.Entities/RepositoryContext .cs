@@ -27,7 +27,7 @@ namespace SchoolMachine.DataAccess.Entities
 
         #endregion Configuration
 
-        #region DbSet Methods
+        #region DbSets
 
         #region SchoolData Schema
 
@@ -48,12 +48,14 @@ namespace SchoolMachine.DataAccess.Entities
     
         #endregion Security Schema
 
-        #endregion DbSet Methods
+        #endregion DbSets
 
         #region Data Seeding
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Role>().HasData(DataSeeder.Roles[0]);
+
             modelBuilder.Entity<User>().HasData(DataSeeder.Users[0]);
 
             modelBuilder.Entity<School>().HasData(DataSeeder.Schools[0]);

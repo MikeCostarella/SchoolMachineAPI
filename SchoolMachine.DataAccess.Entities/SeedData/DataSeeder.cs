@@ -7,6 +7,11 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 {
     public static class DataSeeder
     {
+        public static List<Role> Roles = new List<Role>
+        {
+            new Role { Id = Guid.NewGuid(), Description = "Total access to all other roles", Name = "System Administrator" }
+        };
+
         public static List<School> Schools = new List<School>
         {
             new School { Id = Guid.NewGuid(), Name = "Girard High School" },

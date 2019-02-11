@@ -66,7 +66,6 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                 {
                     RoleId = table.Column<Guid>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: false),
-                    DateModified = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Description = table.Column<string>(maxLength: 1000, nullable: false),
                     IsActive = table.Column<bool>(nullable: false)
@@ -163,8 +162,8 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                 columns: new[] { "SchoolId", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("b9d2b162-6239-4bb5-80bd-699afafe12ef"), "Girard High School" },
-                    { new Guid("00ff2567-ae22-484f-ba62-78e7a727e7f4"), "Liberty High School" }
+                    { new Guid("eb9cd9f6-b98f-4ca0-a895-50c5270b2847"), "Girard High School" },
+                    { new Guid("21042f07-0295-4be3-8a42-b268a85c824c"), "Liberty High School" }
                 });
 
             migrationBuilder.InsertData(
@@ -173,18 +172,24 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                 columns: new[] { "StudentId", "BirthDate", "FirstName", "LastName", "MiddleName" },
                 values: new object[,]
                 {
-                    { new Guid("077ebe32-392f-4408-b994-490be2d93c70"), new DateTime(2005, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John", "Abott", "Alfred" },
-                    { new Guid("27b1e910-bbb8-4a01-8b1f-09ef14eebd8d"), new DateTime(2005, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ann", "Smith", "Grace" },
-                    { new Guid("175e4cfa-49c3-4928-ad9f-0ab69e3e4753"), new DateTime(2004, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bill", "Kriter", "Anthony" },
-                    { new Guid("3178642c-57d3-43f1-a92e-f5d96b7719ca"), new DateTime(2005, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sara", "Carter", "Lynn" },
-                    { new Guid("4c541971-4a1c-43cb-9d0a-ffdea8b3f3be"), new DateTime(2006, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John", "Timkin", "Dudley" }
+                    { new Guid("026e3e0d-b851-45cd-abc6-f8e31c5849e0"), new DateTime(2005, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John", "Abott", "Alfred" },
+                    { new Guid("6f08ff4c-f9c3-485a-bb9c-2063b70cb6b6"), new DateTime(2005, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ann", "Smith", "Grace" },
+                    { new Guid("600f8d50-765b-4d9f-ac4e-41636cf92fa9"), new DateTime(2004, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bill", "Kriter", "Anthony" },
+                    { new Guid("249743a4-208e-41fe-8d95-18eab906fb41"), new DateTime(2005, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sara", "Carter", "Lynn" },
+                    { new Guid("602d3eb8-2d1a-4849-abab-7b8a4c5581b2"), new DateTime(2006, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John", "Timkin", "Dudley" }
                 });
+
+            migrationBuilder.InsertData(
+                schema: "Security",
+                table: "Roles",
+                columns: new[] { "RoleId", "DateCreated", "Description", "IsActive", "Name" },
+                values: new object[] { new Guid("5771357e-8085-4dfb-a8ca-b9e8b4468f54"), new DateTime(2019, 2, 11, 17, 28, 32, 454, DateTimeKind.Utc).AddTicks(1619), "Total access to all other roles", true, "System Administrator" });
 
             migrationBuilder.InsertData(
                 schema: "Security",
                 table: "Users",
                 columns: new[] { "UserId", "DateCreated", "EmailAddress", "FirstName", "IsActive", "LastName", "MiddleName", "UserName" },
-                values: new object[] { new Guid("11bb2175-a073-4dd9-9a30-3af5b7c38756"), new DateTime(2019, 2, 11, 16, 31, 23, 729, DateTimeKind.Utc).AddTicks(4105), "auser1@email.com", "A", true, "User1", "A", "auser1" });
+                values: new object[] { new Guid("4b53cd37-935b-492d-a16f-175cb51ef2ad"), new DateTime(2019, 2, 11, 17, 28, 32, 455, DateTimeKind.Utc).AddTicks(2514), "auser1@email.com", "A", true, "User1", "A", "auser1" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
