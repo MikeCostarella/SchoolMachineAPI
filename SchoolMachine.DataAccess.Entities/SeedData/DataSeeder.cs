@@ -1,10 +1,11 @@
-﻿using SchoolMachine.DataAccess.Entities.Models;
+﻿using SchoolMachine.DataAccess.Entities.Models.Security;
+using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.Collections.Generic;
 
 namespace SchoolMachine.DataAccess.Entities.SeedData
 {
-    public static class SeedDataFactory
+    public static class DataSeeder
     {
         public static List<School> Schools = new List<School>
         {
@@ -21,5 +22,19 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/01/2006"), FirstName = "John", MiddleName = "Dudley", LastName = "Timkin" }
         };
 
+        public static List<User> Users = new List<User>
+        {
+            new User
+            {
+                Id = Guid.NewGuid(),
+                DateCreated = DateTime.UtcNow,
+                EmailAddress = "auser1@email.com",
+                FirstName = "A",
+                IsActive = true,
+                LastName = "User1",
+                MiddleName = "A",
+                UserName = "auser1"
+            }
+        };
     }
 }

@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Extensions;
-using SchoolMachine.DataAccess.Entities.Models;
+using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 
 namespace SchoolMachine.API.Controllers
 {

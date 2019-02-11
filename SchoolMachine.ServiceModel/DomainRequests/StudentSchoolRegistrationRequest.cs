@@ -1,4 +1,4 @@
-﻿using SchoolMachine.DataAccess.Entities.Models;
+﻿using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using SchoolMachine.ServiceModel.Enumerations;
 
 namespace SchoolMachine.ServiceModel.DomainRequests

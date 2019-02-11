@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.Testing.API",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{38DDEC51-1A00-4894-A41C-C75EF3852DA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.Common.Configuration", "SchoolMachine.Common.Configuration\SchoolMachine.Common.Configuration.csproj", "{56110E4D-D9C3-476C-B738-A6571A73C6D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.Common.Configuration", "SchoolMachine.Common.Configuration\SchoolMachine.Common.Configuration.csproj", "{56110E4D-D9C3-476C-B738-A6571A73C6D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

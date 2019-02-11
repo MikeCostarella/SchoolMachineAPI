@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
-using SchoolMachine.DataAccess.Entities.Models;
+using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 
 namespace SchoolMachine.API.Controllers.CRUD

@@ -2,7 +2,7 @@
 using SchoolMachine.DataAccess.Entities;
 using SchoolMachine.DataAccess.Entities.ExtendedModels;
 using SchoolMachine.DataAccess.Entities.Extensions;
-using SchoolMachine.DataAccess.Entities.Models;
+using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
