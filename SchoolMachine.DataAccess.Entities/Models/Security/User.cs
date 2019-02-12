@@ -43,5 +43,10 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
 
         [Column("IsActive")]
         public bool IsActive { get; set; } = true;
+
+        public byte[] PasswordHash { get; set; }
+
+        public byte[] PasswordSalt { get; set; }
+
     }
 }

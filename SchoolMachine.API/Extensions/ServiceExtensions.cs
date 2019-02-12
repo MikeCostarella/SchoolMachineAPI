@@ -1,12 +1,18 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolMachine.DataAccess.Entities;
 using SchoolMachine.Contracts;
 using SchoolMachine.Logging.LoggerService;
 using SchoolMachine.Repository;
-using SchoolMachine.Common.Configuration;
+using SchoolMachine.API.Helpers;
+using System.Text;
+using AutoMapper.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using SchoolMachine.API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Threading.Tasks;
+using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace SchoolMachine.API.Extensions
 {
@@ -15,6 +21,12 @@ namespace SchoolMachine.API.Extensions
     /// </summary>
     public static class ServiceExtensions
     {
+        public static void ConfigureAutoMapper(this IServiceCollection services)
+        {
+            //ToDo: Investigate why this reference is undefined.
+            //services.AddAutoMapper();
+        }
+
         /// <summary>
         /// Configure CORS policy  (Cross-Origin Resource Sharing)
         /// </summary>
@@ -95,6 +107,54 @@ namespace SchoolMachine.API.Extensions
             {
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "SchoolMachine API", Version = "v1" });
             });
+        }
+
+        public static void ConfigureUserService(this IServiceCollection services, IConfiguration configuration)
+        {
+
+            // configure strongly typed settings objects
+            var appSettingsSection = configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = context =>
+                    {
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                        var userId = int.Parse(context.Principal.Identity.Name);
+                        var user = userService.GetById(userId);
+                        if (user == null)
+                        {
+                            // return unauthorized if user no longer exists
+                            context.Fail("Unauthorized");
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+            // configure DI for application services
+            services.AddScoped<IUserService, UserService>();
+
         }
     }
 }

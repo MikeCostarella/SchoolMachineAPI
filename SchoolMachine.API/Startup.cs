@@ -47,6 +47,10 @@ namespace SchoolMachine.API
             }
             ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.ConfigureAutoMapper();
+
+            services.ConfigureUserService(Configuration);
+
             services.ConfigureSwaggerGenerator();
         }
 
