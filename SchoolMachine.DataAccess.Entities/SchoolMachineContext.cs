@@ -7,11 +7,11 @@ using System;
 
 namespace SchoolMachine.DataAccess.Entities
 {
-    public class RepositoryContext : DbContext
+    public class SchoolMachineContext : DbContext
     {
         #region Constructors
 
-        public RepositoryContext(DbContextOptions options)
+        public SchoolMachineContext(DbContextOptions options)
             : base(options)
         {
         }
@@ -22,7 +22,10 @@ namespace SchoolMachine.DataAccess.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(Utilities.SchoolMachoneDbConnection());
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseNpgsql(Utilities.SchoolMachoneDbConnection());
+            }
         }
 
         #endregion Configuration

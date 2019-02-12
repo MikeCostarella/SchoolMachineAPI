@@ -11,7 +11,7 @@ namespace SchoolMachine.Repository.Entities
     {
         #region Constructors
 
-        public SchoolStudentRepository(RepositoryContext repositoryContext)
+        public SchoolStudentRepository(SchoolMachineContext repositoryContext)
             : base(repositoryContext)
         {
         }

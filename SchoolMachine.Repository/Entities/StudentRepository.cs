@@ -13,7 +13,7 @@ namespace SchoolMachine.Repository.Entities
     {
         #region Constructors
 
-        public StudentRepository(RepositoryContext repositoryContext)
+        public StudentRepository(SchoolMachineContext repositoryContext)
             : base(repositoryContext)
         {
         }

@@ -9,9 +9,9 @@ namespace SchoolMachine.Repository
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
-        protected RepositoryContext RepositoryContext { get; set; }
+        protected SchoolMachineContext RepositoryContext { get; set; }
 
-        public RepositoryBase(RepositoryContext repositoryContext)
+        public RepositoryBase(SchoolMachineContext repositoryContext)
         {
             this.RepositoryContext = repositoryContext;
         }

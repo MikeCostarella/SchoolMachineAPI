@@ -9,9 +9,9 @@ namespace SchoolMachine.API.Services
 {
     public class UserService : IUserService
     {
-        private RepositoryContext _context;
+        private SchoolMachineContext _context;
 
-        public UserService(RepositoryContext context)
+        public UserService(SchoolMachineContext context)
         {
             _context = context;
         }

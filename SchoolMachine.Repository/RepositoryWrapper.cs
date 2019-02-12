@@ -9,7 +9,7 @@ namespace SchoolMachine.Repository
     {
         #region Private Variables
 
-        private RepositoryContext _repoContext;
+        private SchoolMachineContext _repoContext;
 
         private ISchoolRepository _school;
         private ISchoolStudentRepository _schoolStudent;
@@ -62,7 +62,7 @@ namespace SchoolMachine.Repository
 
         #region Constructors
     
-        public RepositoryWrapper(RepositoryContext repositoryContext)
+        public RepositoryWrapper(SchoolMachineContext repositoryContext)
         {
             _repoContext = repositoryContext;
         }

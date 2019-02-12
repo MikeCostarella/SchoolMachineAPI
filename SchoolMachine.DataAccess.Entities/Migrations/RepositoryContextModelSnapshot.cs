@@ -8,7 +8,7 @@ using SchoolMachine.DataAccess.Entities;
 
 namespace SchoolMachine.DataAccess.Entities.Migrations
 {
-    [DbContext(typeof(RepositoryContext))]
+    [DbContext(typeof(SchoolMachineContext))]
     partial class RepositoryContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

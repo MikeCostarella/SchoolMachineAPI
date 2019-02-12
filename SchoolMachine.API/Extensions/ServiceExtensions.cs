@@ -7,12 +7,10 @@ using SchoolMachine.Logging.LoggerService;
 using SchoolMachine.Repository;
 using SchoolMachine.API.Helpers;
 using System.Text;
-using AutoMapper.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SchoolMachine.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Threading.Tasks;
-using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace SchoolMachine.API.Extensions
 {
@@ -25,6 +23,14 @@ namespace SchoolMachine.API.Extensions
         {
             //ToDo: Investigate why this reference is undefined.
             //services.AddAutoMapper();
+
+            // Workaround - for now
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new AutoMapperProfile());
+            });
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         /// <summary>
@@ -81,10 +87,13 @@ namespace SchoolMachine.API.Extensions
         /// <param name="config"></param>
         public static void ConfigureRepositoryContext(this IServiceCollection services, IConfiguration config)
         {
+            // When using SQL server
             //services.AddDbContext<RepositoryContext>
             //    (options => options.UseSqlServer(Utilities.SchoolMachoneDbConnection()));
+
+            // When using Postres
             services.AddEntityFrameworkNpgsql()
-                .AddDbContext<RepositoryContext>()
+                .AddDbContext<SchoolMachineContext>()
                 .BuildServiceProvider();
         }
 

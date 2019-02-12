@@ -11,7 +11,7 @@ namespace SchoolMachine.Repository.Entities
 {
     public class SchoolRepository : RepositoryBase<School>, ISchoolRepository
     {
-        public SchoolRepository(RepositoryContext repositoryContext)
+        public SchoolRepository(SchoolMachineContext repositoryContext)
             : base(repositoryContext)
         {
         }

@@ -9,7 +9,7 @@ using SchoolMachine.DataAccess.Entities;
 
 namespace SchoolMachine.DataAccess.Entities.Migrations
 {
-    [DbContext(typeof(RepositoryContext))]
+    [DbContext(typeof(SchoolMachineContext))]
     [Migration("20190211172832_InitialCommit")]
     partial class InitialCommit
     {
