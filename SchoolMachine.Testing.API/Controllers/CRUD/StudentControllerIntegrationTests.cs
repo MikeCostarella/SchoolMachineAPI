@@ -9,30 +9,37 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
     [TestClass]
     public class StudentControllerIntegrationTests
     {
+        // ToDo: Fill in the test logic
+        #region Action Tests
+
         [TestMethod]
         public void GetAllStudents()
         {
-            #region Setup
-            #endregion Setup
-
-            #region Test Logic
-            #endregion Test Logic
-
-            #region Assertions
-            #endregion Assertions
         }
 
         [TestMethod]
         public void GetStudentById()
         {
-            #region Setup
-            #endregion Setup
-
-            #region Test Logic
-            #endregion Test Logic
-
-            #region Assertions
-            #endregion Assertions
         }
+
+        [TestMethod]
+        public void CreateStudent()
+        {
+
+        }
+
+        [TestMethod]
+        public void UpdateStudent()
+        {
+
+        }
+
+        [TestMethod]
+        public void DeleteStudent()
+        {
+
+        }
+
+        #endregion Action Methods
     }
 }

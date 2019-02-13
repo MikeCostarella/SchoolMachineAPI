@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.DataAccess.En
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.Repository.Test", "SchoolMachine.Repository.Test\SchoolMachine.Repository.Test.csproj", "{DA7AFF30-8612-4C7E-98CA-D410F634E806}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.API.UnitTests", "SchoolMachine.API.UnitTests\SchoolMachine.API.UnitTests.csproj", "{E620F17E-C043-4B30-97A0-2158B78BAAF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{DA7AFF30-8612-4C7E-98CA-D410F634E806}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA7AFF30-8612-4C7E-98CA-D410F634E806}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA7AFF30-8612-4C7E-98CA-D410F634E806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E620F17E-C043-4B30-97A0-2158B78BAAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E620F17E-C043-4B30-97A0-2158B78BAAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E620F17E-C043-4B30-97A0-2158B78BAAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E620F17E-C043-4B30-97A0-2158B78BAAF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +97,7 @@ Global
 		{56110E4D-D9C3-476C-B738-A6571A73C6D0} = {38DDEC51-1A00-4894-A41C-C75EF3852DA3}
 		{49633E8F-123D-4352-8D1D-DA398A20263B} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
 		{DA7AFF30-8612-4C7E-98CA-D410F634E806} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
+		{E620F17E-C043-4B30-97A0-2158B78BAAF9} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6520A525-2E5F-4481-A912-0847D1B50199}

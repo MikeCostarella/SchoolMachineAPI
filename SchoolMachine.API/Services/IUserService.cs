@@ -1,4 +1,5 @@
 ﻿using SchoolMachine.DataAccess.Entities.Models.Security;
+using System;
 using System.Collections.Generic;
 
 namespace SchoolMachine.API.Services
@@ -7,9 +8,9 @@ namespace SchoolMachine.API.Services
     {
         User Authenticate(string username, string password);
         IEnumerable<User> GetAll();
-        User GetById(int id);
+        User GetById(Guid id);
         User Create(User user, string password);
         void Update(User user, string password = null);
-        void Delete(int id);
+        void Delete(Guid id);
     }
 }

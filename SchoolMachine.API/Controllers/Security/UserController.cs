@@ -18,7 +18,7 @@ namespace SchoolMachine.API.Controllers.Security
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
         #region Private Variables
 
@@ -30,7 +30,7 @@ namespace SchoolMachine.API.Controllers.Security
 
         #region Constructors
 
-        public UsersController(
+        public UserController(
             IUserService userService,
             IMapper mapper,
             IOptions<AppSettings> appSettings)
@@ -107,7 +107,7 @@ namespace SchoolMachine.API.Controllers.Security
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(Guid id)
         {
             var user = _userService.GetById(id);
             var userDto = _mapper.Map<UserDto>(user);
@@ -135,7 +135,7 @@ namespace SchoolMachine.API.Controllers.Security
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             _userService.Delete(id);
             return Ok();

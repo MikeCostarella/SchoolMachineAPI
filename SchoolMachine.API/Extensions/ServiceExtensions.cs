@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using SchoolMachine.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Threading.Tasks;
+using System;
 
 namespace SchoolMachine.API.Extensions
 {
@@ -140,7 +141,7 @@ namespace SchoolMachine.API.Extensions
                     OnTokenValidated = context =>
                     {
                         var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
-                        var userId = int.Parse(context.Principal.Identity.Name);
+                        var userId = Guid.Parse(context.Principal.Identity.Name);
                         var user = userService.GetById(userId);
                         if (user == null)
                         {
