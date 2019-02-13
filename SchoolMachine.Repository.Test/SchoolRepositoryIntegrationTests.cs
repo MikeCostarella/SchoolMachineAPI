@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SchoolMachine.DataAccess.Entities;
+using SchoolMachine.DataAccess.Entities.Extensions;
+using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using SchoolMachine.DataAccess.Entities.SeedData;
 using SchoolMachine.Repository.Entities;
 using System.Linq;
@@ -9,7 +11,7 @@ using System.Linq;
 namespace SchoolMachine.Repository.Test
 {
     [TestClass]
-    public class SchoolRepositoryIntegrationTests
+    public class SchoolRepositoryIntegrationTest
     {
         public static SchoolMachineContext SchoolMachineContext { get; set; }
 
@@ -59,7 +61,7 @@ namespace SchoolMachine.Repository.Test
             // Test Logic
             var schools = schoolRepository.GetAllSchools();
             // Assertions
-            Assert.IsTrue(schools.Count() == DataSeeder.Schools.Count()
+            Assert.IsTrue(schools.Count() >= DataSeeder.Schools.Count()
                 , string.Format("Database has {0} Schools and Seeder has {1}", schools.Count(), DataSeeder.Schools.Count()));
         }
 
@@ -84,6 +86,75 @@ namespace SchoolMachine.Repository.Test
             var school = schoolRepository.GetSchoolWithDetails(DataSeeder.Schools[0].Id);
             // Assertions
             Assert.IsNotNull(school, string.Format("Did not find school with Id: {0}", DataSeeder.Schools[0].Id));
+        }
+
+        [TestMethod]
+        public void CreateSchool()
+        {
+            // Setup
+            var schoolRepository = new SchoolRepository(SchoolMachineContext);
+            var newSchool = new School {
+                Name = "Test School 1"
+            };
+            // Test Logic
+            schoolRepository.CreateSchool(newSchool);
+            // Assertions
+            var savedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            Assert.IsNotNull(savedSchool, string.Format("School {0} was not saved in the database", newSchool.Id));
+            Assert.IsTrue(savedSchool.Name == newSchool.Name, string.Format("School({0}).Name was not saved in the database", newSchool.Id));
+            // Teardown
+            schoolRepository.DeleteSchool(savedSchool);
+            var shouldBeDeletedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            Assert.IsTrue(shouldBeDeletedSchool.IsEmptyObject(), string.Format("School({0}) was not deleted from the database", newSchool.Id));
+        }
+
+        [TestMethod]
+        public void UpdateSchool()
+        {
+            // Setup
+            var schoolRepository = new SchoolRepository(SchoolMachineContext);
+            var newSchool = new School
+            {
+                Name = "Test School 2"
+            };
+            schoolRepository.CreateSchool(newSchool);
+            var savedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            Assert.IsNotNull(savedSchool, string.Format("School {0} was not saved in the database", newSchool.Id));
+            Assert.IsTrue(savedSchool.Name == newSchool.Name, string.Format("School({0}).Name was not saved in the database", newSchool.Id));
+
+            // Test Logic
+            newSchool.Name = "Test School 2 - Modified";
+            schoolRepository.UpdateSchool(savedSchool, newSchool);
+
+            // Assertions
+            var retrievedSchool = schoolRepository.GetSchoolById(savedSchool.Id);
+            Assert.IsFalse(retrievedSchool.IsEmptyObject(), string.Format("Updated school({0}) was not retrieved from the database", newSchool.Id));
+            Assert.IsTrue(retrievedSchool.Name == newSchool.Name, string.Format("School({0}).Name was not updated in the database", newSchool.Id));
+
+            // Teardown
+            schoolRepository.DeleteSchool(savedSchool);
+            var shouldBeDeletedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            Assert.IsTrue(shouldBeDeletedSchool.IsEmptyObject(), string.Format("School({0}) was not deleted from the database", newSchool.Id));
+        }
+
+        [TestMethod]
+        public void DeleteSchool()
+        {
+            // Setup
+            var schoolRepository = new SchoolRepository(SchoolMachineContext);
+            var newSchool = new School
+            {
+                Name = "Test School 3"
+            };
+            schoolRepository.CreateSchool(newSchool);
+            var savedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            Assert.IsNotNull(savedSchool, string.Format("School {0} was not saved in the database", newSchool.Id));
+            Assert.IsTrue(savedSchool.Name == newSchool.Name, string.Format("School({0}).Name was not saved in the database", newSchool.Id));
+            // Test Logic
+            schoolRepository.DeleteSchool(savedSchool);
+            // Assertions
+            var shouldBeDeletedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            Assert.IsTrue(shouldBeDeletedSchool.IsEmptyObject(), string.Format("School({0}) was not deleted from the database", newSchool.Id));
         }
 
         #endregion Test Methods
