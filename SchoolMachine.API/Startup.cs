@@ -13,6 +13,14 @@ namespace SchoolMachine.API
 {
     public class Startup
     {
+        #region Public Properties
+
+        public IConfiguration Configuration { get; }
+
+        #endregion Public Properties
+
+        #region Public Methods
+
         public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
         {
             var directoryPath = hostingEnvironment.ContentRootPath;
@@ -20,37 +28,25 @@ namespace SchoolMachine.API
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureCors();
-
             services.ConfigureIISIntegration();
-
             services.ConfigureLoggerService();
-
             services.ConfigureRepositoryContext(Configuration);
-
             services.ConfigureRepositoryWrapper();
-
             services.AddMvc(mvcOptions =>
             {
                 mvcOptions.RespectBrowserAcceptHeader = true;
-
                 // Return a 406 (Not Acceptable status code) if invalid media type negotiation is attempted
                 mvcOptions.ReturnHttpNotAcceptable = true;
-
                 mvcOptions.InputFormatters.Add(new XmlSerializerInputFormatter(mvcOptions));
                 mvcOptions.OutputFormatters.Add(new XmlSerializerOutputFormatter());
             }
             ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
             services.ConfigureAutoMapper();
-
             services.ConfigureUserService(Configuration);
-
             services.ConfigureSwaggerGenerator();
         }
 
@@ -66,15 +62,12 @@ namespace SchoolMachine.API
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseCors("CorsPolicy");
-
             // will forward proxy headers to the current request. Will help during the Linux deployment
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.All
             });
-
             // will point on the index page in the Angular project
             app.Use(async (context, next) =>
             {
@@ -87,14 +80,10 @@ namespace SchoolMachine.API
                     await next();
                 }
             });
-
             app.UseStaticFiles();
-
             app.UseHttpsRedirection();
-
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
@@ -102,9 +91,9 @@ namespace SchoolMachine.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SchoolMachine API V1");
                 c.RoutePrefix = string.Empty;
             });
-
-
             app.UseMvc();
         }
+
+        #endregion Public Methods
     }
 }
