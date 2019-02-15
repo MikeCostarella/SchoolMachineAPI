@@ -8,8 +8,9 @@ namespace SchoolMachine.Common.Configuration
         public static string SchoolMachoneDbConnection()
         {
             var builder = new ConfigurationBuilder();
+            var directoryPath = Directory.GetCurrentDirectory();
             builder
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(directoryPath)
                 .AddJsonFile("appsettings.json");
             var configuration = builder.Build();
             var connectionString = configuration.GetConnectionString("SchoolMachineNpgSql");

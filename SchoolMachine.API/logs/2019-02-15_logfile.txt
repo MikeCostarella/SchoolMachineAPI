@@ -1,0 +1,3 @@
+2019-02-15 00:45:46.3122 ERROR Something went wrong inside GetAllStudents action: The configuration file 'appsettings.json' was not found and is not optional. The physical path is 'C:\Program Files\IIS Express\appsettings.json'.
+2019-02-15 00:48:42.7643 ERROR Something went wrong inside GetAllStudents action: The configuration file 'appsettings.json' was not found and is not optional. The physical path is 'C:\Program Files\IIS Express\appsettings.json'.
+2019-02-15 01:00:55.7190 INFO Returned all schools from database.

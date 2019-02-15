@@ -24,7 +24,7 @@ namespace SchoolMachine.DataAccess.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql(Utilities.SchoolMachoneDbConnection());
+                optionsBuilder.UseNpgsql("Server=127.0.0.1;Port=5432;Database=SchoolMachine;User Id=postgres;Password=password;");
             }
         }
 
