@@ -17,4 +17,3 @@ namespace SchoolMachine.DataAccess.Entities.SchoolData.Models
         public string Name { get; set; }
     }
 }
-
