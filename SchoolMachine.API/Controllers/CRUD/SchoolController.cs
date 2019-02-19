@@ -7,6 +7,9 @@ using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 
 namespace SchoolMachine.API.Controllers
 {
+    /// <summary>
+    /// Handles CRUD service operations for the school entity.
+    /// </summary>
     [Route("api/school")]
     [ApiController]
     public class SchoolController : ControllerBase
@@ -29,8 +32,10 @@ namespace SchoolMachine.API.Controllers
         #endregion Constructors
 
         #region Actions
-
-        // GET: api/School
+        /// <summary>
+        /// Gets all schools from the data store
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetAllSchools()
         {
@@ -49,7 +54,11 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // GET: api/School/615226ff-f759-4dc9-84ce-f27228a1252e
+        /// <summary>
+        /// Geta a school by its guid id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name="GetSchoolById")]
         [ProducesResponseType(201, Type = typeof(School))]
         [ProducesResponseType(400)]
@@ -77,7 +86,11 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // POST: api/School
+        /// <summary>
+        /// Stores a new school in the data store based on a unique name
+        /// </summary>
+        /// <param name="school"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -108,7 +121,12 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // PUT: api/School/615226ff-f759-4dc9-84ce-f27228a1252e
+        /// <summary>
+        /// Updates a school object in the data store with identical id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="school"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -147,7 +165,11 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // DELETE: api/ApiWithActions/615226ff-f759-4dc9-84ce-f27228a1252e
+        /// <summary>
+        /// Deletes a school by its unique id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]

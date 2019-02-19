@@ -12,6 +12,8 @@ using SchoolMachine.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Threading.Tasks;
 using System;
+using System.Reflection;
+using System.IO;
 
 namespace SchoolMachine.API.Extensions
 {
@@ -115,8 +117,23 @@ namespace SchoolMachine.API.Extensions
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "SchoolMachine API", Version = "v1" });
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info {
+                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact
+                    {
+                        Email = "mcostarella@gmail.com",
+                        Name = "Mike Costarella",
+                        Url = "https://www.linkedin.com/in/mikecostarella/"
+                    },
+                    Description = "Provides Web API services to support the SchoolMachine domain functionality.",
+                    Title = "SchoolMachine API",
+                    Version = "v1"
+                });
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
+
         }
 
         public static void ConfigureUserService(this IServiceCollection services, IConfiguration configuration)
