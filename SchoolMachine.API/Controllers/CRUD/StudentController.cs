@@ -7,6 +7,9 @@ using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 
 namespace SchoolMachine.API.Controllers
 {
+    /// <summary>
+    /// Provides CRUD functionality for the Student object
+    /// </summary>
     [Route("api/student")]
     [ApiController]
     public class StudentController : ControllerBase
@@ -28,9 +31,12 @@ namespace SchoolMachine.API.Controllers
 
         #endregion Constructors
 
-        #region Action Methods
+        #region Actions
 
-        // GET: api/Student
+        /// <summary>
+        /// Gets all student objects from the data repository
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetAllStudents()
         {
@@ -49,7 +55,11 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // GET: api/Student/615226ff-f759-4dc9-84ce-f27228a1252e
+        /// <summary>
+        /// Gets a Student object from the data repository
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name ="GetStudentById")]
         [ProducesResponseType(201, Type = typeof(Student))]
         [ProducesResponseType(400)]
@@ -77,7 +87,11 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // POST: api/Student
+        /// <summary>
+        /// Creates and saves a student to the data repository based off a unique name (for now)
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -108,7 +122,12 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // PUT: api/Student/615226ff-f759-4dc9-84ce-f27228a1252e
+        /// <summary>
+        /// Updates a student object in the data respository identified by its unique id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="student"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -147,7 +166,11 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        // DELETE: api/ApiWithActions/615226ff-f759-4dc9-84ce-f27228a1252e
+        /// <summary>
+        /// Deletes a student from the data repository identified by its unique id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
@@ -180,6 +203,6 @@ namespace SchoolMachine.API.Controllers
             }
         }
 
-        #endregion Action Methods
+        #endregion Actions
     }
 }

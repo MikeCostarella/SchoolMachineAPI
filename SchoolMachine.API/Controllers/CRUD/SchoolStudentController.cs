@@ -5,6 +5,9 @@ using System;
 
 namespace SchoolMachine.API.Controllers.CRUD
 {
+    /// <summary>
+    /// Provides CRUD functionality for the SchoolStudent object
+    /// </summary>
     [Route("api/schoolstudent")]
     [ApiController]
     public class SchoolStudentController : ControllerBase
@@ -28,7 +31,10 @@ namespace SchoolMachine.API.Controllers.CRUD
 
         #region Actions
 
-        // GET: api/School
+        /// <summary>
+        /// Gets all SchoolStudent objects from the data repository
+        /// </summary>
+        /// <returns>IEnumerable of SchoolStudent(s) </returns>
         [HttpGet]
         public IActionResult GetAllSchoolStudents()
         {
@@ -47,7 +53,11 @@ namespace SchoolMachine.API.Controllers.CRUD
             }
         }
 
-        // GET: api/Student/5
+        /// <summary>
+        /// Gets a SchoolStudent object from the data repository by its unique id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         [ProducesResponseType(201, Type = typeof(SchoolStudent))]
         [ProducesResponseType(400)]
@@ -75,23 +85,33 @@ namespace SchoolMachine.API.Controllers.CRUD
             }
         }
 
-        // POST: api/Student
+        /// <summary>
+        /// Creates and saves a new SchoolStudent record in the data 
+        /// </summary>
+        /// <param name="schoolStudent"></param>
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public void Post([FromBody] SchoolStudent value)
+        public void Post([FromBody] SchoolStudent schoolStudent)
         {
         }
 
-        // PUT: api/Student/5
+        /// <summary>
+        /// Updates a SchoolStudent object in the data store.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="schoolStudent"></param>
         [HttpPut("{id}")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public void Put(int id, [FromBody] SchoolStudent value)
+        public void Put(int id, [FromBody] SchoolStudent schoolStudent)
         {
         }
 
-        // DELETE: api/ApiWithActions/5
+        /// <summary>
+        /// Deletes a SchoolStudent object form the data repository
+        /// </summary>
+        /// <param name="id"></param>
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [HttpDelete("{id}")]

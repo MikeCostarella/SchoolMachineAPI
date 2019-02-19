@@ -8,7 +8,7 @@ using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 namespace SchoolMachine.API.Controllers
 {
     /// <summary>
-    /// Handles CRUD service operations for the school entity.
+    /// Handles CRUD functionality for the school entity.
     /// </summary>
     [Route("api/school")]
     [ApiController]
