@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SchoolMachine.Contracts;
 using SchoolMachine.ServiceModel.DomainRequests;
 using SchoolMachine.ServiceModel.DomainResponses;
 
@@ -13,8 +10,25 @@ namespace SchoolMachine.API.Controllers
     [ApiController]
     public class SchoolStudentRegistrationController : ControllerBase
     {
+        #region Private Variables
 
-        // POST: api/Student
+        private ILoggerManager _loggerManager;
+        private IMapper _mapper;
+        private IRepositoryWrapper _repositoryWrapper;
+
+        #endregion Private Variables
+
+        #region Constructors
+
+        public SchoolStudentRegistrationController(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
+        {
+            _loggerManager = loggerManager;
+            _mapper = mapper;
+            _repositoryWrapper = repositoryWrapper;
+        }
+
+        #endregion Constructors
+
         [HttpPost]
         public StudentSchoolRegistrationResponse Post([FromBody] StudentSchoolRegistrationRequest value)
         {

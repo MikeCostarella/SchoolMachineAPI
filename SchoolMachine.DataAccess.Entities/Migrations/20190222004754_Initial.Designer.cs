@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SchoolMachine.DataAccess.Entities;
@@ -9,9 +10,10 @@ using SchoolMachine.DataAccess.Entities;
 namespace SchoolMachine.DataAccess.Entities.Migrations
 {
     [DbContext(typeof(SchoolMachineContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20190222004754_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,8 +51,8 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5771357e-8085-4dfb-a8ca-b9e8b4468f54"),
-                            DateCreated = new DateTime(2019, 2, 11, 17, 28, 32, 454, DateTimeKind.Utc).AddTicks(1619),
+                            Id = new Guid("4744bebe-3539-4cba-935a-2caabe0e19b5"),
+                            DateCreated = new DateTime(2019, 2, 22, 0, 47, 54, 495, DateTimeKind.Utc).AddTicks(4134),
                             Description = "Total access to all other roles",
                             IsActive = true,
                             Name = "System Administrator"
@@ -160,6 +162,10 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         .HasColumnName("MiddleName")
                         .HasMaxLength(50);
 
+                    b.Property<byte[]>("PasswordHash");
+
+                    b.Property<byte[]>("PasswordSalt");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnName("UserName")
@@ -172,8 +178,8 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4b53cd37-935b-492d-a16f-175cb51ef2ad"),
-                            DateCreated = new DateTime(2019, 2, 11, 17, 28, 32, 455, DateTimeKind.Utc).AddTicks(2514),
+                            Id = new Guid("c7cfac53-dcf9-4af8-b5c4-6588f6dfffe3"),
+                            DateCreated = new DateTime(2019, 2, 22, 0, 47, 54, 496, DateTimeKind.Utc).AddTicks(6547),
                             EmailAddress = "auser1@email.com",
                             FirstName = "A",
                             IsActive = true,
@@ -219,12 +225,12 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("eb9cd9f6-b98f-4ca0-a895-50c5270b2847"),
+                            Id = new Guid("d70fd257-92c8-4ccd-8be8-0e714bd73c1b"),
                             Name = "Girard High School"
                         },
                         new
                         {
-                            Id = new Guid("21042f07-0295-4be3-8a42-b268a85c824c"),
+                            Id = new Guid("78dfb0f0-8eee-44ad-a39f-0b39a2321e99"),
                             Name = "Liberty High School"
                         });
                 });
@@ -279,7 +285,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("026e3e0d-b851-45cd-abc6-f8e31c5849e0"),
+                            Id = new Guid("f651b400-280e-490b-bbe8-a910bb76c834"),
                             BirthDate = new DateTime(2005, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "John",
                             LastName = "Abott",
@@ -287,7 +293,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6f08ff4c-f9c3-485a-bb9c-2063b70cb6b6"),
+                            Id = new Guid("db087aaa-020f-4f51-8667-aab99fa034bb"),
                             BirthDate = new DateTime(2005, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Ann",
                             LastName = "Smith",
@@ -295,7 +301,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("600f8d50-765b-4d9f-ac4e-41636cf92fa9"),
+                            Id = new Guid("bc91ae8f-b26d-45da-82d4-1cde3f760488"),
                             BirthDate = new DateTime(2004, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bill",
                             LastName = "Kriter",
@@ -303,7 +309,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("249743a4-208e-41fe-8d95-18eab906fb41"),
+                            Id = new Guid("60bf103e-3b3d-4f26-8fcc-420d9f3f6134"),
                             BirthDate = new DateTime(2005, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Sara",
                             LastName = "Carter",
@@ -311,7 +317,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("602d3eb8-2d1a-4849-abab-7b8a4c5581b2"),
+                            Id = new Guid("b0a877e7-d97b-4f30-b630-ca3308549b69"),
                             BirthDate = new DateTime(2006, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "John",
                             LastName = "Timkin",

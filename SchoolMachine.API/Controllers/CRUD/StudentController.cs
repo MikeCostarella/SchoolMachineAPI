@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SchoolMachine.API.Dtos;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
@@ -17,15 +19,17 @@ namespace SchoolMachine.API.Controllers
         #region Private Variables
 
         private ILoggerManager _loggerManager;
+        private IMapper _mapper;
         private IRepositoryWrapper _repositoryWrapper;
 
         #endregion Private Variables
 
         #region Constructors
 
-        public StudentController(ILoggerManager loggerManager, IRepositoryWrapper repositoryWrapper)
+        public StudentController(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
         {
             _loggerManager = loggerManager;
+            _mapper = mapper;
             _repositoryWrapper = repositoryWrapper;
         }
 
@@ -34,7 +38,7 @@ namespace SchoolMachine.API.Controllers
         #region Actions
 
         /// <summary>
-        /// Gets all student objects from the data repository
+        /// Gets all students from the data repository
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -56,19 +60,16 @@ namespace SchoolMachine.API.Controllers
         }
 
         /// <summary>
-        /// Gets a Student object from the data repository
+        /// Gets a Student from the data repository by its unique id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name ="GetStudentById")]
-        [ProducesResponseType(201, Type = typeof(Student))]
-        [ProducesResponseType(400)]
         public IActionResult GetStudentById(Guid id)
         {
             try
             {
                 var student = _repositoryWrapper.Student.GetStudentById(id);
-
                 if (student.Id.Equals(Guid.Empty))
                 {
                     _loggerManager.LogError($"Student with id: {id}, was not found in db.");
@@ -90,30 +91,26 @@ namespace SchoolMachine.API.Controllers
         /// <summary>
         /// Creates and saves a student to the data repository based off a unique name (for now)
         /// </summary>
-        /// <param name="student"></param>
+        /// <param name="studentDto"></param>
         /// <returns></returns>
-        [HttpPost]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        public IActionResult CreateStudent([FromBody] Student student)
+        [HttpPost("CreateStudent", Name = "CreateStudent")]
+        public IActionResult CreateStudent([FromQuery] StudentDto studentDto)
         {
             try
             {
-                if (student.IsObjectNull())
+                if (studentDto == null)
                 {
-                    _loggerManager.LogError("Student object sent from client is null.");
-                    return BadRequest("Student object is null");
+                    _loggerManager.LogError("StudentDto sent from client is null.");
+                    return BadRequest("StudentDto is null");
                 }
-
                 if (!ModelState.IsValid)
                 {
-                    _loggerManager.LogError("Invalid student object sent from client.");
-                    return BadRequest("Invalid model object");
+                    _loggerManager.LogError("Invalid StudentDto sent from client.");
+                    return BadRequest("Invalid StudentDto model object");
                 }
-
+                var student = _mapper.Map<Student>(studentDto);
                 _repositoryWrapper.Student.CreateStudent(student);
-
-                return CreatedAtRoute("StudentById", new { id = student.Id }, student);
+                return CreatedAtRoute("GetStudentById", new { id = student.Id }, student);
             }
             catch (Exception ex)
             {
@@ -123,40 +120,34 @@ namespace SchoolMachine.API.Controllers
         }
 
         /// <summary>
-        /// Updates a student object in the data respository identified by its unique id
+        /// Updates a student in the data respository identified by its unique id
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="student"></param>
+        /// <param name="studentDto"></param>
         /// <returns></returns>
-        [HttpPut("{id}")]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
-        public IActionResult UpdateStudent(Guid id, [FromBody] Student student)
+        [HttpPut("UpdateStudent{id}", Name = "UpdateStudent")]
+        public IActionResult UpdateStudent(Guid id, [FromQuery] StudentDto studentDto)
         {
             try
             {
-                if (student.IsObjectNull())
+                if (studentDto == null)
                 {
-                    _loggerManager.LogError("Student object sent from client is null.");
-                    return BadRequest("Student object is null");
+                    _loggerManager.LogError("StudentDto sent from client is null.");
+                    return BadRequest("StudentDto is null");
                 }
-
                 if (!ModelState.IsValid)
                 {
-                    _loggerManager.LogError("Invalid student object sent from client.");
+                    _loggerManager.LogError("Invalid StudentDto sent from client.");
                     return BadRequest("Invalid model object");
                 }
-
+                var student = _mapper.Map<Student>(studentDto);
                 var dbStudent = _repositoryWrapper.Student.GetStudentById(id);
                 if (dbStudent.IsEmptyObject())
                 {
-                    _loggerManager.LogError($"School with id: {id}, hasn't been found in db.");
+                    _loggerManager.LogError($"Student with id: {id}, hasn't been found in db.");
                     return NotFound();
                 }
-
                 _repositoryWrapper.Student.UpdateStudent(dbStudent, student);
-
                 return NoContent();
             }
             catch (Exception ex)
@@ -171,9 +162,6 @@ namespace SchoolMachine.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
         [HttpDelete("{id}")]
         public IActionResult DeleteStudent(Guid id)
         {

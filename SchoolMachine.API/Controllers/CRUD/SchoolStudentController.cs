@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
@@ -15,15 +16,17 @@ namespace SchoolMachine.API.Controllers.CRUD
         #region Private Variables
 
         private ILoggerManager _loggerManager;
+        private IMapper _mapper;
         private IRepositoryWrapper _repositoryWrapper;
 
         #endregion Private Variables
 
         #region Constructors
 
-        public SchoolStudentController(ILoggerManager loggerManager, IRepositoryWrapper repositoryWrapper)
+        public SchoolStudentController(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
         {
             _loggerManager = loggerManager;
+            _mapper = mapper;
             _repositoryWrapper = repositoryWrapper;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Extensions;
@@ -17,15 +18,17 @@ namespace SchoolMachine.API.Controllers
         #region Private Variables
 
         private ILoggerManager _loggerManager;
+        private IMapper _mapper;
         private IRepositoryWrapper _repositoryWrapper;
 
         #endregion Private Variables
 
         #region Constructors
 
-        public SchoolController(ILoggerManager loggerManager, IRepositoryWrapper repositoryWrapper)
+        public SchoolController(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
         {
             _loggerManager = loggerManager;
+            _mapper = mapper;
             _repositoryWrapper = repositoryWrapper;
         }
 

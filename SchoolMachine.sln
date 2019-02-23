@@ -29,11 +29,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{38DDEC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.Common.Configuration", "SchoolMachine.Common.Configuration\SchoolMachine.Common.Configuration.csproj", "{56110E4D-D9C3-476C-B738-A6571A73C6D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.DataAccess.Entities.Test", "SchoolMachine.DataAccess.Entities.Test\SchoolMachine.DataAccess.Entities.Test.csproj", "{49633E8F-123D-4352-8D1D-DA398A20263B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.DataAccess.Entities.Test", "SchoolMachine.DataAccess.Entities.Test\SchoolMachine.DataAccess.Entities.Test.csproj", "{49633E8F-123D-4352-8D1D-DA398A20263B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.Repository.Test", "SchoolMachine.Repository.Test\SchoolMachine.Repository.Test.csproj", "{DA7AFF30-8612-4C7E-98CA-D410F634E806}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.Repository.Test", "SchoolMachine.Repository.Test\SchoolMachine.Repository.Test.csproj", "{DA7AFF30-8612-4C7E-98CA-D410F634E806}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.API.UnitTests", "SchoolMachine.API.UnitTests\SchoolMachine.API.UnitTests.csproj", "{E620F17E-C043-4B30-97A0-2158B78BAAF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.API.UnitTests", "SchoolMachine.API.UnitTests\SchoolMachine.API.UnitTests.csproj", "{E620F17E-C043-4B30-97A0-2158B78BAAF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseScripts", "DatabaseScripts", "{CAEA1FEF-D8B0-42C8-9BA3-6985203679F9}"
+	ProjectSection(SolutionItems) = preProject
+		CleanDatabase.sql = CleanDatabase.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +103,7 @@ Global
 		{49633E8F-123D-4352-8D1D-DA398A20263B} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
 		{DA7AFF30-8612-4C7E-98CA-D410F634E806} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
 		{E620F17E-C043-4B30-97A0-2158B78BAAF9} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
+		{CAEA1FEF-D8B0-42C8-9BA3-6985203679F9} = {DA827992-C7FB-4DF5-A3C3-464F11FB308D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6520A525-2E5F-4481-A912-0847D1B50199}

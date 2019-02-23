@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SchoolMachine.DataAccess.Entities.Migrations
 {
-    public partial class InitialCommit : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -149,7 +149,9 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     UserName = table.Column<string>(maxLength: 50, nullable: false),
                     EmailAddress = table.Column<string>(maxLength: 150, nullable: false),
-                    IsActive = table.Column<bool>(nullable: false)
+                    IsActive = table.Column<bool>(nullable: false),
+                    PasswordHash = table.Column<byte[]>(nullable: true),
+                    PasswordSalt = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -162,8 +164,8 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                 columns: new[] { "SchoolId", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("eb9cd9f6-b98f-4ca0-a895-50c5270b2847"), "Girard High School" },
-                    { new Guid("21042f07-0295-4be3-8a42-b268a85c824c"), "Liberty High School" }
+                    { new Guid("d70fd257-92c8-4ccd-8be8-0e714bd73c1b"), "Girard High School" },
+                    { new Guid("78dfb0f0-8eee-44ad-a39f-0b39a2321e99"), "Liberty High School" }
                 });
 
             migrationBuilder.InsertData(
@@ -172,24 +174,24 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                 columns: new[] { "StudentId", "BirthDate", "FirstName", "LastName", "MiddleName" },
                 values: new object[,]
                 {
-                    { new Guid("026e3e0d-b851-45cd-abc6-f8e31c5849e0"), new DateTime(2005, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John", "Abott", "Alfred" },
-                    { new Guid("6f08ff4c-f9c3-485a-bb9c-2063b70cb6b6"), new DateTime(2005, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ann", "Smith", "Grace" },
-                    { new Guid("600f8d50-765b-4d9f-ac4e-41636cf92fa9"), new DateTime(2004, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bill", "Kriter", "Anthony" },
-                    { new Guid("249743a4-208e-41fe-8d95-18eab906fb41"), new DateTime(2005, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sara", "Carter", "Lynn" },
-                    { new Guid("602d3eb8-2d1a-4849-abab-7b8a4c5581b2"), new DateTime(2006, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John", "Timkin", "Dudley" }
+                    { new Guid("f651b400-280e-490b-bbe8-a910bb76c834"), new DateTime(2005, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John", "Abott", "Alfred" },
+                    { new Guid("db087aaa-020f-4f51-8667-aab99fa034bb"), new DateTime(2005, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ann", "Smith", "Grace" },
+                    { new Guid("bc91ae8f-b26d-45da-82d4-1cde3f760488"), new DateTime(2004, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bill", "Kriter", "Anthony" },
+                    { new Guid("60bf103e-3b3d-4f26-8fcc-420d9f3f6134"), new DateTime(2005, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sara", "Carter", "Lynn" },
+                    { new Guid("b0a877e7-d97b-4f30-b630-ca3308549b69"), new DateTime(2006, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John", "Timkin", "Dudley" }
                 });
 
             migrationBuilder.InsertData(
                 schema: "Security",
                 table: "Roles",
                 columns: new[] { "RoleId", "DateCreated", "Description", "IsActive", "Name" },
-                values: new object[] { new Guid("5771357e-8085-4dfb-a8ca-b9e8b4468f54"), new DateTime(2019, 2, 11, 17, 28, 32, 454, DateTimeKind.Utc).AddTicks(1619), "Total access to all other roles", true, "System Administrator" });
+                values: new object[] { new Guid("4744bebe-3539-4cba-935a-2caabe0e19b5"), new DateTime(2019, 2, 22, 0, 47, 54, 495, DateTimeKind.Utc).AddTicks(4134), "Total access to all other roles", true, "System Administrator" });
 
             migrationBuilder.InsertData(
                 schema: "Security",
                 table: "Users",
-                columns: new[] { "UserId", "DateCreated", "EmailAddress", "FirstName", "IsActive", "LastName", "MiddleName", "UserName" },
-                values: new object[] { new Guid("4b53cd37-935b-492d-a16f-175cb51ef2ad"), new DateTime(2019, 2, 11, 17, 28, 32, 455, DateTimeKind.Utc).AddTicks(2514), "auser1@email.com", "A", true, "User1", "A", "auser1" });
+                columns: new[] { "UserId", "DateCreated", "EmailAddress", "FirstName", "IsActive", "LastName", "MiddleName", "PasswordHash", "PasswordSalt", "UserName" },
+                values: new object[] { new Guid("c7cfac53-dcf9-4af8-b5c4-6588f6dfffe3"), new DateTime(2019, 2, 22, 0, 47, 54, 496, DateTimeKind.Utc).AddTicks(6547), "auser1@email.com", "A", true, "User1", "A", null, null, "auser1" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

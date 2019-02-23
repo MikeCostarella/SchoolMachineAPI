@@ -120,11 +120,11 @@ namespace SchoolMachine.API.Extensions
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info {
                     Contact = new Swashbuckle.AspNetCore.Swagger.Contact
                     {
-                        Email = "mcostarella@gmail.com",
+                        Email = "costarellamike@gmail.com",
                         Name = "Mike Costarella",
                         Url = "https://www.linkedin.com/in/mikecostarella/"
                     },
-                    Description = "Provides Web API services to support the SchoolMachine domain functionality.",
+                    Description = "Provides Web API services to support SchoolMachine functionality.",
                     Title = "SchoolMachine API",
                     Version = "v1"
                 });
