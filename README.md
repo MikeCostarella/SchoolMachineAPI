@@ -26,7 +26,6 @@ Kknown deficiencies and future goals for this solution:
 * Toughen up the TestInitialize method of the repository data integration tests
 * Add CORS restricitons perhaps to the controlle
 * Add user authenitcation and authorization to the controller actions
-* Add a base controller class to factor duplicated behavior
 * Add a base test class to factor duplicated behavior
 * Refactor the services into microservice solutions
 * Dockerize the solutions for Azure and AWS deployment

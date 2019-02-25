@@ -15,7 +15,7 @@ namespace SchoolMachine.API.Controllers
     /// </summary>
     [Route("api/student")]
     [ApiController]
-    public class StudentController : BaseSchoolMachineController
+    public class StudentController : ControllerBaseSchoolMachine
     {
         #region Constructors
 

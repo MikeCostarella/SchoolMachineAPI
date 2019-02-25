@@ -4,7 +4,7 @@ using SchoolMachine.Contracts;
 
 namespace SchoolMachine.API.Controllers
 {
-    public class BaseSchoolMachineController : ControllerBase
+    public class ControllerBaseSchoolMachine : ControllerBase
     {
         #region Private Variables
 
@@ -16,7 +16,7 @@ namespace SchoolMachine.API.Controllers
 
         #region Constructors
 
-        public BaseSchoolMachineController(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
+        public ControllerBaseSchoolMachine(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
         {
             _loggerManager = loggerManager;
             _mapper = mapper;
