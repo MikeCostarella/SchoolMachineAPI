@@ -44,9 +44,7 @@ namespace SchoolMachine.API.Controllers.CRUD
             try
             {
                 var schoolStudents = _repositoryWrapper.SchoolStudent.GetAllSchoolStudents();
-
                 _loggerManager.LogInfo($"Returned all SchoolStudents from database.");
-
                 return Ok(schoolStudents);
             }
             catch (Exception ex)
@@ -62,8 +60,6 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(201, Type = typeof(SchoolStudent))]
-        [ProducesResponseType(400)]
         public IActionResult GetSchoolStudentById(Guid id)
         {
             try
@@ -93,8 +89,6 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <param name="schoolStudent"></param>
         [HttpPost]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
         public void Post([FromBody] SchoolStudent schoolStudent)
         {
         }
@@ -105,8 +99,6 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// <param name="id"></param>
         /// <param name="schoolStudent"></param>
         [HttpPut("{id}")]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
         public void Put(int id, [FromBody] SchoolStudent schoolStudent)
         {
         }
@@ -115,8 +107,6 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// Deletes a SchoolStudent object form the data repository
         /// </summary>
         /// <param name="id"></param>
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {

@@ -94,7 +94,7 @@ namespace SchoolMachine.API.Controllers
         /// </summary>
         /// <param name="schoolDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost("CreateSchool", Name = "CreateSchool")]
         public IActionResult CreateSchool([FromQuery] SchoolDto schoolDto)
         {
             try

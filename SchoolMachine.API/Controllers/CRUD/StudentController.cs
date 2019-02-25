@@ -47,9 +47,7 @@ namespace SchoolMachine.API.Controllers
             try
             {
                 var students = _repositoryWrapper.Student.GetAllStudents();
-
                 _loggerManager.LogInfo($"Returned all students from database.");
-
                 return Ok(students);
             }
             catch (Exception ex)
