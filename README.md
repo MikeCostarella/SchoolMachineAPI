@@ -13,7 +13,7 @@ Ultimately, it will be refactored into a collection of inter-related microservic
 * SchoolMachineUIAngular
     * This project is a prototype UI built in Angular 7.
 
-Kknown deficiencies and future goals for this solution:
+Known deficiencies and future goals for this solution:
 
 * Add foregin constraint(s) on the model entities in the database context.
 * Add cascading deletes perhaps.  (Needs discussion)
@@ -24,7 +24,7 @@ Kknown deficiencies and future goals for this solution:
 * Remove a hard file references inside of RestaurantReviews.API nlog.config.
 * Remove 4 warnings in the repository layer because of asynchronous development issues.  (Need more research there.)
 * Toughen up the TestInitialize method of the repository data integration tests
-* Add CORS restricitons perhaps to the controlle
+* Add CORS restricitons perhaps to the controller
 * Add user authenitcation and authorization to the controller actions
 * Add a base test class to factor duplicated behavior
 * Refactor the services into microservice solutions
@@ -57,6 +57,7 @@ Kknown deficiencies and future goals for this solution:
 * Domain Level Services
   * SchoolStudentRegistration
     * This is the controller that contains the public facing services
+    * It is currently just a skeleton
 
 * CRUD Services
   * School
