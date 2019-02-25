@@ -2,6 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SchoolMachine.API.Dtos;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
@@ -35,6 +36,7 @@ namespace SchoolMachine.API.Controllers
         #endregion Constructors
 
         #region Actions
+
         /// <summary>
         /// Gets all schools from the data store
         /// </summary>
@@ -58,13 +60,11 @@ namespace SchoolMachine.API.Controllers
         }
 
         /// <summary>
-        /// Geta a school by its guid id
+        /// Gets a school from the data respository by its unique id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name="GetSchoolById")]
-        [ProducesResponseType(201, Type = typeof(School))]
-        [ProducesResponseType(400)]
         public IActionResult GetSchoolById(Guid id)
         {
             try
@@ -90,32 +90,28 @@ namespace SchoolMachine.API.Controllers
         }
 
         /// <summary>
-        /// Stores a new school in the data store based on a unique name
+        /// Creates a new school in the data respository based on a unique name
         /// </summary>
-        /// <param name="school"></param>
+        /// <param name="schoolDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        public IActionResult CreateSchool([FromBody] School school)
+        public IActionResult CreateSchool([FromQuery] SchoolDto schoolDto)
         {
             try
             {
-                if (school.IsObjectNull())
+                if (schoolDto == null)
                 {
-                    _loggerManager.LogError("School object sent from client is null.");
-                    return BadRequest("School object is null");
+                    _loggerManager.LogError("SchoolDto object sent from client is null.");
+                    return BadRequest("SchoolDto object is null");
                 }
-
                 if (!ModelState.IsValid)
                 {
-                    _loggerManager.LogError("Invalid school object sent from client.");
-                    return BadRequest("Invalid model object");
+                    _loggerManager.LogError("Invalid SchoolDto object sent from client.");
+                    return BadRequest("Invalid SchoolDto model object");
                 }
-
+                var school = _mapper.Map<School>(schoolDto);
                 _repositoryWrapper.School.CreateSchool(school);
-
-                return CreatedAtRoute("SchoolById", new { id = school.Id }, school);
+                return CreatedAtRoute("GetSchoolById", new { id = school.Id }, school);
             }
             catch (Exception ex)
             {
@@ -125,40 +121,34 @@ namespace SchoolMachine.API.Controllers
         }
 
         /// <summary>
-        /// Updates a school object in the data store with identical id
+        /// Updates a school in the data respository
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="school"></param>
+        /// <param name="schoolDto"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
-        public IActionResult UpdateSchool(Guid id, [FromBody] School school)
+        public IActionResult UpdateSchool(Guid id, [FromQuery] SchoolDto schoolDto)
         {
             try
             {
-                if (school.IsObjectNull())
+                if (schoolDto == null)
                 {
-                    _loggerManager.LogError("School object sent from client is null.");
-                    return BadRequest("School object is null");
+                    _loggerManager.LogError("SchoolDto object sent from client is null.");
+                    return BadRequest("SchoolDto object is null");
                 }
-
                 if (!ModelState.IsValid)
                 {
-                    _loggerManager.LogError("Invalid owner object sent from client.");
-                    return BadRequest("Invalid model object");
+                    _loggerManager.LogError("Invalid SchoolDto object sent from client.");
+                    return BadRequest("Invalid SchoolDto model object");
                 }
-
                 var dbSchool = _repositoryWrapper.School.GetSchoolById(id);
                 if (dbSchool.IsEmptyObject())
                 {
                     _loggerManager.LogError($"School with id: {id}, hasn't been found in db.");
                     return NotFound();
                 }
-
+                var school = _mapper.Map<School>(schoolDto);
                 _repositoryWrapper.School.UpdateSchool(dbSchool, school);
-
                 return NoContent();
             }
             catch (Exception ex)
@@ -169,13 +159,10 @@ namespace SchoolMachine.API.Controllers
         }
 
         /// <summary>
-        /// Deletes a school by its unique id
+        /// Deletes a school from the data respository by its unique id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(500)]
         [HttpDelete("{id}")]
         public IActionResult DeleteSchool(Guid id)
         {
@@ -187,15 +174,12 @@ namespace SchoolMachine.API.Controllers
                     _loggerManager.LogError($"School with id: {id}, hasn't been found in db.");
                     return NotFound();
                 }
-
                 if (_repositoryWrapper.SchoolStudent.SchoolStudentsBySchool(id).Any())
                 {
                     _loggerManager.LogError($"Cannot delete school with id: {id}. It has related schoolStudents. Delete those schoolStudents first");
                     return BadRequest("Cannot delete school. It has related schoolStudents. Delete those schoolStudents first");
                 }
-
                 _repositoryWrapper.School.DeleteSchool(school);
-
                 return NoContent();
             }
             catch (Exception ex)
