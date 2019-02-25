@@ -2,21 +2,22 @@
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SchoolMachine.Contracts.EntityRepositories
 {
     public interface IStudentRepository : IRepositoryBase<Student>
     {
-        IEnumerable<Student> GetAllStudents();
+        Task<IEnumerable<Student>> GetAllStudents();
 
-        Student GetStudentById(Guid studentId);
+        Task<Student> GetStudentById(Guid studentId);
 
-        StudentExtended GetStudentWithDetails(Guid studentId);
+        Task<StudentExtended> GetStudentWithDetails(Guid studentId);
 
-        void CreateStudent(Student student);
+        Task CreateStudent(Student student);
 
-        void UpdateStudent(Student dbStudent, Student student);
+        Task UpdateStudent(Student dbStudent, Student student);
 
-        void DeleteStudent(Student student);
+        Task DeleteStudent(Student student);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using Newtonsoft.Json;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
@@ -30,7 +31,7 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
             var employeeRepositoryMock = TestInitializer.MockSchoolRepository;
             var mock = employeeRepositoryMock.Setup(x => x.GetAllSchools());
             var taskResult = Task.FromResult(mockSchools);
-            mock.Returns((IEnumerable<School>) taskResult.Result);
+            mock.ReturnsAsync((IEnumerable<School>) taskResult.Result);
 
             #endregion Setup
 

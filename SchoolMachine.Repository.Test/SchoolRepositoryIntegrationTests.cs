@@ -59,7 +59,7 @@ namespace SchoolMachine.Repository.Test
             // Setup
             var schoolRepository = new SchoolRepository(SchoolMachineContext);
             // Test Logic
-            var schools = schoolRepository.GetAllSchools();
+            var schools = schoolRepository.GetAllSchools().Result;
             // Assertions
             Assert.IsTrue(schools.Count() >= DataSeeder.Schools.Count()
                 , string.Format("Database has {0} Schools and Seeder has {1}", schools.Count(), DataSeeder.Schools.Count()));
@@ -97,14 +97,14 @@ namespace SchoolMachine.Repository.Test
                 Name = "Test School 1"
             };
             // Test Logic
-            schoolRepository.CreateSchool(newSchool);
+            schoolRepository.CreateSchool(newSchool).Wait();
             // Assertions
-            var savedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            var savedSchool = schoolRepository.GetSchoolById(newSchool.Id).Result;
             Assert.IsNotNull(savedSchool, string.Format("School {0} was not saved in the database", newSchool.Id));
             Assert.IsTrue(savedSchool.Name == newSchool.Name, string.Format("School({0}).Name was not saved in the database", newSchool.Id));
             // Teardown
-            schoolRepository.DeleteSchool(savedSchool);
-            var shouldBeDeletedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            schoolRepository.DeleteSchool(savedSchool).Wait();
+            var shouldBeDeletedSchool = schoolRepository.GetSchoolById(newSchool.Id).Result;
             Assert.IsTrue(shouldBeDeletedSchool.IsEmptyObject(), string.Format("School({0}) was not deleted from the database", newSchool.Id));
         }
 
@@ -117,23 +117,23 @@ namespace SchoolMachine.Repository.Test
             {
                 Name = "Test School 2"
             };
-            schoolRepository.CreateSchool(newSchool);
-            var savedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            schoolRepository.CreateSchool(newSchool).Wait();
+            var savedSchool = schoolRepository.GetSchoolById(newSchool.Id).Result;
             Assert.IsNotNull(savedSchool, string.Format("School {0} was not saved in the database", newSchool.Id));
             Assert.IsTrue(savedSchool.Name == newSchool.Name, string.Format("School({0}).Name was not saved in the database", newSchool.Id));
 
             // Test Logic
             newSchool.Name = "Test School 2 - Modified";
-            schoolRepository.UpdateSchool(savedSchool, newSchool);
+            schoolRepository.UpdateSchool(savedSchool, newSchool).Wait();
 
             // Assertions
-            var retrievedSchool = schoolRepository.GetSchoolById(savedSchool.Id);
+            var retrievedSchool = schoolRepository.GetSchoolById(savedSchool.Id).Result;
             Assert.IsFalse(retrievedSchool.IsEmptyObject(), string.Format("Updated school({0}) was not retrieved from the database", newSchool.Id));
             Assert.IsTrue(retrievedSchool.Name == newSchool.Name, string.Format("School({0}).Name was not updated in the database", newSchool.Id));
 
             // Teardown
-            schoolRepository.DeleteSchool(savedSchool);
-            var shouldBeDeletedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            schoolRepository.DeleteSchool(savedSchool).Wait();
+            var shouldBeDeletedSchool = schoolRepository.GetSchoolById(newSchool.Id).Result;
             Assert.IsTrue(shouldBeDeletedSchool.IsEmptyObject(), string.Format("School({0}) was not deleted from the database", newSchool.Id));
         }
 
@@ -146,14 +146,14 @@ namespace SchoolMachine.Repository.Test
             {
                 Name = "Test School 3"
             };
-            schoolRepository.CreateSchool(newSchool);
-            var savedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            schoolRepository.CreateSchool(newSchool).Wait();
+            var savedSchool = schoolRepository.GetSchoolById(newSchool.Id).Result;
             Assert.IsNotNull(savedSchool, string.Format("School {0} was not saved in the database", newSchool.Id));
             Assert.IsTrue(savedSchool.Name == newSchool.Name, string.Format("School({0}).Name was not saved in the database", newSchool.Id));
             // Test Logic
-            schoolRepository.DeleteSchool(savedSchool);
+            schoolRepository.DeleteSchool(savedSchool).Wait();
             // Assertions
-            var shouldBeDeletedSchool = schoolRepository.GetSchoolById(newSchool.Id);
+            var shouldBeDeletedSchool = schoolRepository.GetSchoolById(newSchool.Id).Result;
             Assert.IsTrue(shouldBeDeletedSchool.IsEmptyObject(), string.Format("School({0}) was not deleted from the database", newSchool.Id));
         }
 

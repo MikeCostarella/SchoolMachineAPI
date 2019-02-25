@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.API.Dtos;
@@ -42,11 +43,11 @@ namespace SchoolMachine.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult GetAllStudents()
+        public async Task<IActionResult> GetAllStudents()
         {
             try
             {
-                var students = _repositoryWrapper.Student.GetAllStudents();
+                var students = await _repositoryWrapper.Student.GetAllStudents();
                 _loggerManager.LogInfo($"Returned all students from database.");
                 return Ok(students);
             }
@@ -63,11 +64,11 @@ namespace SchoolMachine.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name ="GetStudentById")]
-        public IActionResult GetStudentById(Guid id)
+        public async Task<IActionResult> GetStudentById(Guid id)
         {
             try
             {
-                var student = _repositoryWrapper.Student.GetStudentById(id);
+                var student = await _repositoryWrapper.Student.GetStudentById(id);
                 if (student.Id.Equals(Guid.Empty))
                 {
                     _loggerManager.LogError($"Student with id: {id}, was not found in db.");
@@ -92,7 +93,7 @@ namespace SchoolMachine.API.Controllers
         /// <param name="studentDto"></param>
         /// <returns></returns>
         [HttpPost("CreateStudent", Name = "CreateStudent")]
-        public IActionResult CreateStudent([FromQuery] StudentDto studentDto)
+        public async Task<IActionResult> CreateStudent([FromQuery] StudentDto studentDto)
         {
             try
             {
@@ -107,7 +108,7 @@ namespace SchoolMachine.API.Controllers
                     return BadRequest("Invalid StudentDto model object");
                 }
                 var student = _mapper.Map<Student>(studentDto);
-                _repositoryWrapper.Student.CreateStudent(student);
+                await _repositoryWrapper.Student.CreateStudent(student);
                 return CreatedAtRoute("GetStudentById", new { id = student.Id }, student);
             }
             catch (Exception ex)
@@ -124,7 +125,7 @@ namespace SchoolMachine.API.Controllers
         /// <param name="studentDto"></param>
         /// <returns></returns>
         [HttpPut("UpdateStudent{id}", Name = "UpdateStudent")]
-        public IActionResult UpdateStudent(Guid id, [FromQuery] StudentDto studentDto)
+        public async Task<IActionResult> UpdateStudent(Guid id, [FromQuery] StudentDto studentDto)
         {
             try
             {
@@ -139,13 +140,13 @@ namespace SchoolMachine.API.Controllers
                     return BadRequest("Invalid model object");
                 }
                 var student = _mapper.Map<Student>(studentDto);
-                var dbStudent = _repositoryWrapper.Student.GetStudentById(id);
+                var dbStudent = await _repositoryWrapper.Student.GetStudentById(id);
                 if (dbStudent.IsEmptyObject())
                 {
                     _loggerManager.LogError($"Student with id: {id}, hasn't been found in db.");
                     return NotFound();
                 }
-                _repositoryWrapper.Student.UpdateStudent(dbStudent, student);
+                await _repositoryWrapper.Student.UpdateStudent(dbStudent, student);
                 return NoContent();
             }
             catch (Exception ex)
@@ -161,25 +162,22 @@ namespace SchoolMachine.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public IActionResult DeleteStudent(Guid id)
+        public async Task<IActionResult> DeleteStudent(Guid id)
         {
             try
             {
-                var student = _repositoryWrapper.Student.GetStudentById(id);
+                var student = await _repositoryWrapper.Student.GetStudentById(id);
                 if (student.IsEmptyObject())
                 {
                     _loggerManager.LogError($"School with id: {id}, hasn't been found in db.");
                     return NotFound();
                 }
-
-                if (_repositoryWrapper.SchoolStudent.SchoolStudentsByStudent(id).Any())
+                if ((await _repositoryWrapper.SchoolStudent.SchoolStudentsByStudent(id)).Any())
                 {
                     _loggerManager.LogError($"Cannot delete student with id: {id}. It has related schoolStudents. Delete those schoolStudents first");
                     return BadRequest("Cannot delete student. It has related schoolStudents. Delete those schoolStudents first");
                 }
-
-                _repositoryWrapper.Student.DeleteStudent(student);
-
+                await _repositoryWrapper.Student.DeleteStudent(student);
                 return NoContent();
             }
             catch (Exception ex)

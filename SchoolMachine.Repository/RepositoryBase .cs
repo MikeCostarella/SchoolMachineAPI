@@ -1,9 +1,11 @@
-﻿using SchoolMachine.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace SchoolMachine.Repository
 {
@@ -16,34 +18,34 @@ namespace SchoolMachine.Repository
             this.RepositoryContext = repositoryContext;
         }
 
-        public IEnumerable<T> FindAll()
+        public async Task<IEnumerable<T>> FindAll()
         {
-            return this.RepositoryContext.Set<T>();
+            return await this.RepositoryContext.Set<T>().ToListAsync();
         }
 
-        public IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        public async Task<IEnumerable<T>> FindByCondition(Expression<Func<T, bool>> expression)
         {
-            return this.RepositoryContext.Set<T>().Where(expression);
+            return await this.RepositoryContext.Set<T>().Where(expression).ToListAsync();
         }
 
-        public void Create(T entity)
+        public async Task Create(T entity)
         {
-            this.RepositoryContext.Set<T>().Add(entity);
+            await this.RepositoryContext.Set<T>().AddAsync(entity);
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             this.RepositoryContext.Set<T>().Update(entity);
         }
 
-        public void Delete(T entity)
+        public async Task Delete(T entity)
         {
             this.RepositoryContext.Set<T>().Remove(entity);
         }
 
-        public void Save()
+        public async Task Save()
         {
-            this.RepositoryContext.SaveChanges();
+            await this.RepositoryContext.SaveChangesAsync();
         }
     }
 }

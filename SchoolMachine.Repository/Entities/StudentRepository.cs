@@ -6,6 +6,7 @@ using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SchoolMachine.Repository.Entities
 {
@@ -22,46 +23,45 @@ namespace SchoolMachine.Repository.Entities
 
         #region Public Methods
 
-        public IEnumerable<Student> GetAllStudents()
+        public async Task<IEnumerable<Student>> GetAllStudents()
         {
-            return FindAll()
-                .OrderBy(ow => ow.LastName);
+            return (await FindAll()).OrderBy(ow => ow.LastName);
         }
 
-        public Student GetStudentById(Guid studentId)
+        public async Task<Student> GetStudentById(Guid studentId)
         {
-            return FindByCondition(student => student.Id.Equals(studentId))
+            return (await FindByCondition(student => student.Id.Equals(studentId)))
                     .DefaultIfEmpty(new Student())
                     .FirstOrDefault();
         }
 
-        public StudentExtended GetStudentWithDetails(Guid studentId)
+        public async Task<StudentExtended> GetStudentWithDetails(Guid studentId)
         {
-            return new StudentExtended(GetStudentById(studentId))
+            return new StudentExtended(await GetStudentById(studentId))
             {
                 Schools = RepositoryContext.SchoolStudents
                     .Where(a => a.StudentId == studentId)
             };
         }
 
-        public void CreateStudent(Student student)
+        public async Task CreateStudent(Student student)
         {
             student.Id = Guid.NewGuid();
-            Create(student);
-            Save();
+            await Create(student);
+            await Save();
         }
 
-        public void UpdateStudent(Student dbStudent, Student student)
+        public async Task UpdateStudent(Student dbStudent, Student student)
         {
             dbStudent.Map(student);
-            Update(dbStudent);
-            Save();
+            await Update(dbStudent);
+            await Save();
         }
 
-        public void DeleteStudent(Student student)
+        public async Task DeleteStudent(Student student)
         {
-            Delete(student);
-            Save();
+            await Delete(student);
+            await Save();
         }
 
         #endregion Public Methods

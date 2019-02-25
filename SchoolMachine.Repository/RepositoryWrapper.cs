@@ -30,6 +30,7 @@ namespace SchoolMachine.Repository
 
                 return _school;
             }
+            set { _school = value; }
         }
 
         public ISchoolStudentRepository SchoolStudent
@@ -43,6 +44,7 @@ namespace SchoolMachine.Repository
 
                 return _schoolStudent;
             }
+            set { _schoolStudent = value; }
         }
 
         public IStudentRepository Student
@@ -56,12 +58,13 @@ namespace SchoolMachine.Repository
 
                 return _student;
             }
+            set { _student = value; }
         }
 
         #endregion Repository Properties
 
         #region Constructors
-    
+
         public RepositoryWrapper(SchoolMachineContext repositoryContext)
         {
             _repoContext = repositoryContext;

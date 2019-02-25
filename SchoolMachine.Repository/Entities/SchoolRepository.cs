@@ -6,6 +6,7 @@ using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SchoolMachine.Repository.Entities
 {
@@ -16,46 +17,45 @@ namespace SchoolMachine.Repository.Entities
         {
         }
 
-        public IEnumerable<School> GetAllSchools()
+        public async Task<IEnumerable<School>> GetAllSchools()
         {
-            return FindAll()
-                .OrderBy(ow => ow.Name);
+            return (await FindAll()).OrderBy(ow => ow.Name);
         }
 
-        public School GetSchoolById(Guid schoolId)
+        public async Task<School> GetSchoolById(Guid schoolId)
         {
-            return FindByCondition(student => student.Id.Equals(schoolId))
+            return (await FindByCondition(student => student.Id.Equals(schoolId)))
                     .DefaultIfEmpty(new School())
                     .FirstOrDefault();
         }
 
-        public SchoolExtended GetSchoolWithDetails(Guid studentId)
+        public async Task<SchoolExtended> GetSchoolWithDetails(Guid studentId)
         {
-            return new SchoolExtended(GetSchoolById(studentId))
+            return new SchoolExtended(await GetSchoolById(studentId))
             {
                 Students = RepositoryContext.SchoolStudents
                     .Where(a => a.SchoolId == studentId)
             };
         }
 
-        public void CreateSchool(School school)
+        public async Task CreateSchool(School school)
         {
             school.Id = Guid.NewGuid();
-            Create(school);
-            Save();
+            await Create(school);
+            await Save();
         }
 
-        public void UpdateSchool(School dbSchool, School school)
+        public async Task UpdateSchool(School dbSchool, School school)
         {
             dbSchool.Map(school);
-            Update(dbSchool);
-            Save();
+            await Update(dbSchool);
+            await Save();
         }
 
-        public void DeleteSchool(School school)
+        public async Task DeleteSchool(School school)
         {
-            Delete(school);
-            Save();
+            await Delete(school);
+            await Save();
         }
     }
 }

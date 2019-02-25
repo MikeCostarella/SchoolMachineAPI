@@ -4,6 +4,7 @@ using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SchoolMachine.Repository.Entities
 {
@@ -20,26 +21,26 @@ namespace SchoolMachine.Repository.Entities
 
         #region Public Methods
 
-        public IEnumerable<SchoolStudent> GetAllSchoolStudents()
+        public async Task<IEnumerable<SchoolStudent>> GetAllSchoolStudents()
         {
-            return FindAll();
+            return await FindAll();
         }
 
-        public SchoolStudent GetSchoolStudentById(Guid schoolStudentId)
+        public async Task<SchoolStudent> GetSchoolStudentById(Guid schoolStudentId)
         {
-            return FindByCondition(schooltudent => schooltudent.Id.Equals(schoolStudentId))
+            return (await FindByCondition(schooltudent => schooltudent.Id.Equals(schoolStudentId)))
                     .DefaultIfEmpty(new SchoolStudent())
                     .FirstOrDefault();
         }
 
-        public IEnumerable<SchoolStudent> SchoolStudentsBySchool(Guid schoolId)
+        public async Task<IEnumerable<SchoolStudent>> SchoolStudentsBySchool(Guid schoolId)
         {
-            return FindByCondition(a => a.SchoolId.Equals(schoolId));
+            return await FindByCondition(a => a.SchoolId.Equals(schoolId));
         }
 
-        public IEnumerable<SchoolStudent> SchoolStudentsByStudent(Guid studentId)
+        public async Task<IEnumerable<SchoolStudent>> SchoolStudentsByStudent(Guid studentId)
         {
-            return FindByCondition(a => a.StudentId.Equals(studentId));
+            return await FindByCondition(a => a.StudentId.Equals(studentId));
         }
 
         #endregion Public Methods

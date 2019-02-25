@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace SchoolMachine.API.Controllers.CRUD
 {
@@ -39,11 +40,11 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <returns>IEnumerable of SchoolStudent(s) </returns>
         [HttpGet]
-        public IActionResult GetAllSchoolStudents()
+        public async Task<IActionResult> GetAllSchoolStudents()
         {
             try
             {
-                var schoolStudents = _repositoryWrapper.SchoolStudent.GetAllSchoolStudents();
+                var schoolStudents = await _repositoryWrapper.SchoolStudent.GetAllSchoolStudents();
                 _loggerManager.LogInfo($"Returned all SchoolStudents from database.");
                 return Ok(schoolStudents);
             }
@@ -60,11 +61,11 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public IActionResult GetSchoolStudentById(Guid id)
+        public async Task<IActionResult> GetSchoolStudentById(Guid id)
         {
             try
             {
-                var school = _repositoryWrapper.SchoolStudent.GetSchoolStudentById(id);
+                var school = await _repositoryWrapper.SchoolStudent.GetSchoolStudentById(id);
 
                 if (school.Id.Equals(Guid.Empty))
                 {
@@ -89,8 +90,9 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <param name="schoolStudent"></param>
         [HttpPost]
-        public void Post([FromBody] SchoolStudent schoolStudent)
+        public async Task<IActionResult> Post([FromBody] SchoolStudent schoolStudent)
         {
+            return Ok();
         }
 
         /// <summary>
@@ -99,8 +101,9 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// <param name="id"></param>
         /// <param name="schoolStudent"></param>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] SchoolStudent schoolStudent)
+        public async Task<IActionResult> Put(int id, [FromBody] SchoolStudent schoolStudent)
         {
+            return Ok();
         }
 
         /// <summary>
@@ -108,8 +111,9 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <param name="id"></param>
         [HttpDelete("{id}")]
-        public void Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
+            return Ok();
         }
 
         #endregion Actions
