@@ -15,23 +15,13 @@ namespace SchoolMachine.API.Controllers
     /// </summary>
     [Route("api/school")]
     [ApiController]
-    public class SchoolController : ControllerBase
+    public class SchoolController : BaseSchoolMachineController
     {
-        #region Private Variables
-
-        private ILoggerManager _loggerManager;
-        private IMapper _mapper;
-        private IRepositoryWrapper _repositoryWrapper;
-
-        #endregion Private Variables
-
         #region Constructors
 
         public SchoolController(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
+            : base(loggerManager, mapper, repositoryWrapper)
         {
-            _loggerManager = loggerManager;
-            _mapper = mapper;
-            _repositoryWrapper = repositoryWrapper;
         }
 
         #endregion Constructors

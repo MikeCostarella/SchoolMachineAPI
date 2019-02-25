@@ -8,26 +8,18 @@ namespace SchoolMachine.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SchoolStudentRegistrationController : ControllerBase
+    public class SchoolStudentRegistrationController : BaseSchoolMachineController
     {
-        #region Private Variables
-
-        private ILoggerManager _loggerManager;
-        private IMapper _mapper;
-        private IRepositoryWrapper _repositoryWrapper;
-
-        #endregion Private Variables
-
         #region Constructors
 
         public SchoolStudentRegistrationController(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
+            : base(loggerManager, mapper, repositoryWrapper)
         {
-            _loggerManager = loggerManager;
-            _mapper = mapper;
-            _repositoryWrapper = repositoryWrapper;
         }
 
         #endregion Constructors
+
+        #region Action Methods
 
         [HttpPost]
         public StudentSchoolRegistrationResponse Post([FromBody] StudentSchoolRegistrationRequest value)
@@ -35,5 +27,7 @@ namespace SchoolMachine.API.Controllers
             // TODO: fill in logic
             return new StudentSchoolRegistrationResponse();
         }
+
+        #endregion Action Methods
     }
 }
