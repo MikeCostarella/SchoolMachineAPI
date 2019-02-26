@@ -99,7 +99,8 @@ namespace SchoolMachine.API.Controllers
                 }
                 var school = _mapper.Map<School>(schoolDto);
                 await _repositoryWrapper.School.CreateSchool(school);
-                return CreatedAtRoute("GetSchoolById", new { id = school.Id }, school);
+                var dbSchool = await _repositoryWrapper.School.GetSchoolById(school.Id);
+                return Ok(dbSchool);
             }
             catch (Exception ex)
             {

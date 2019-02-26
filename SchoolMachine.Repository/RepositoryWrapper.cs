@@ -17,6 +17,19 @@ namespace SchoolMachine.Repository
 
         #endregion Private Variables
 
+        #region Constructors
+
+        public RepositoryWrapper(SchoolMachineContext repositoryContext)
+        {
+            _repoContext = repositoryContext;
+        }
+
+        public RepositoryWrapper()
+        {
+        }
+
+        #endregion Constructors
+
         #region Repository Properties
 
         public ISchoolRepository School
@@ -62,14 +75,5 @@ namespace SchoolMachine.Repository
         }
 
         #endregion Repository Properties
-
-        #region Constructors
-
-        public RepositoryWrapper(SchoolMachineContext repositoryContext)
-        {
-            _repoContext = repositoryContext;
-        }
-
-        #endregion Constructors
     }
 }
