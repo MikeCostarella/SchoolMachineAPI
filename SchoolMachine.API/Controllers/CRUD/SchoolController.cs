@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SchoolMachine.API.Controllers.Base;
 using SchoolMachine.API.Dtos;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Extensions;
@@ -99,6 +100,11 @@ namespace SchoolMachine.API.Controllers
                 }
                 var school = _mapper.Map<School>(schoolDto);
                 await _repositoryWrapper.School.CreateSchool(school);
+                if (school.IsEmptyObject())
+                {
+                    _loggerManager.LogError($"Save operation failed inside CreateSchool action");
+                    return StatusCode(500, "Internal server error while saving School ");
+                }
                 var dbSchool = await _repositoryWrapper.School.GetSchoolById(school.Id);
                 return Ok(dbSchool);
             }

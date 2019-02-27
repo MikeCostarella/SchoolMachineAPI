@@ -1,46 +1,20 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SchoolMachine.API.Controllers;
 using SchoolMachine.API.Dtos;
-using SchoolMachine.API.Helpers;
-using SchoolMachine.API.UnitTests.Mocks;
-using SchoolMachine.Contracts;
-using SchoolMachine.Contracts.EntityRepositories;
+using SchoolMachine.API.UnitTests.Base;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using SchoolMachine.DataAccess.Entities.SeedData;
-using SchoolMachine.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace SchoolMachine.API.UnitTests
+namespace SchoolMachine.API.UnitTests.CRUDServices
 {
     [TestClass]
-    public class SchoolControllerUnitTests
+    public class SchoolControllerUnitTests : BaseControllerUnitTests
     {
-        #region Private Variables
-
-        private ILoggerManager _loggerManager = new MockLoggerManager();
-        private IMapper _mapper;
-        private MapperConfiguration _mapperConfiguration;
-        private IRepositoryWrapper _repositoryWrapper;
-
-        #endregion Private Variables
-
-        [TestInitialize]
-        public void TestInitialization()
-        {
-            _mapperConfiguration = new MapperConfiguration(cfg => { cfg.AddProfile<AutoMapperProfile>(); });
-            _mapper = _mapperConfiguration.CreateMapper();
-            _mapper = new Mapper(_mapperConfiguration);
-            _repositoryWrapper = Mock.Of<RepositoryWrapper>();
-            _repositoryWrapper.School = Mock.Of<ISchoolRepository>();
-            _repositoryWrapper.SchoolStudent = Mock.Of<ISchoolStudentRepository>();
-        }
-
         [TestMethod]
         public void GetAllSchools()
         {
@@ -69,8 +43,8 @@ namespace SchoolMachine.API.UnitTests
             // Assert 
             var okObjectResult = actionResult as OkObjectResult;
             Assert.IsNotNull(okObjectResult);
-            var resutlSchool = okObjectResult.Value as School;
-            Assert.IsTrue(resutlSchool.Id == school.Id);
+            var resultList = okObjectResult.Value as School;
+            Assert.IsTrue(resultList.Id == school.Id);
         }
 
         [TestMethod]
@@ -82,7 +56,6 @@ namespace SchoolMachine.API.UnitTests
                 Name = "New School 1"
             };
             var school = _mapper.Map<School>(schoolDto);
-            school.Id = Guid.NewGuid();
             Mock.Get(_repositoryWrapper.School).Setup(x => x.CreateSchool(school));
             Mock.Get(_repositoryWrapper.School).Setup(x => x.GetSchoolById(school.Id)).ReturnsAsync(school);
             var controller = new SchoolController(_loggerManager, _mapper, _repositoryWrapper);
@@ -114,7 +87,7 @@ namespace SchoolMachine.API.UnitTests
         }
 
         // ToDo: Figure out why the mock setup for SchoolRepository.DeleteSchool() is not being mocked correctly 
-        //[TestMethod]
+        [TestMethod]
         public void DeleteSchool()
         {
             // Arrange

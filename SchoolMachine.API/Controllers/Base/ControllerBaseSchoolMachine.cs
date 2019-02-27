@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
 
-namespace SchoolMachine.API.Controllers
+namespace SchoolMachine.API.Controllers.Base
 {
     public class ControllerBaseSchoolMachine : ControllerBase
     {

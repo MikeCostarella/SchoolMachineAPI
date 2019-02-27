@@ -14,5 +14,11 @@ namespace SchoolMachine.Contracts.EntityRepositories
         Task<IEnumerable<SchoolStudent>> SchoolStudentsBySchool(Guid schoolId);
 
         Task<IEnumerable<SchoolStudent>> SchoolStudentsByStudent(Guid studentId);
+
+        Task DeleteSchoolStudent(SchoolStudent schoolStudent);
+
+        Task UpdateSchoolStudent(SchoolStudent dbSchoolStudent, SchoolStudent schoolStudent);
+
+        Task CreateSchoolStudent(SchoolStudent schoolStudent);
     }
 }

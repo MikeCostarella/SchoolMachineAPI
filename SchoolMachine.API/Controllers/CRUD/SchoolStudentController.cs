@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SchoolMachine.API.Controllers.Base;
+using SchoolMachine.API.Dtos;
 using SchoolMachine.Contracts;
+using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.Threading.Tasks;
@@ -56,7 +59,6 @@ namespace SchoolMachine.API.Controllers.CRUD
             try
             {
                 var school = await _repositoryWrapper.SchoolStudent.GetSchoolStudentById(id);
-
                 if (school.Id.Equals(Guid.Empty))
                 {
                     _loggerManager.LogError($"SchoolStudent with id: {id}, was not found in db.");
@@ -76,24 +78,76 @@ namespace SchoolMachine.API.Controllers.CRUD
         }
 
         /// <summary>
-        /// Creates and saves a new SchoolStudent record in the data 
+        /// Creates and saves a new SchoolStudent record in the data repository
         /// </summary>
-        /// <param name="schoolStudent"></param>
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] SchoolStudent schoolStudent)
+        /// <param name="schoolStudentDto"></param>
+        [HttpPost("CreateSchoolStudent", Name = "CreateSchoolStudent")]
+        public async Task<IActionResult> CreateSchoolStudent([FromQuery] SchoolStudentDto schoolStudentDto)
         {
-            return Ok();
+            try
+            {
+                if (schoolStudentDto == null)
+                {
+                    _loggerManager.LogError("schoolStudentDto object sent from client is null.");
+                    return BadRequest("schoolStudentDto object is null");
+                }
+                if (!ModelState.IsValid)
+                {
+                    _loggerManager.LogError("Invalid schoolStudentDto object sent from client.");
+                    return BadRequest("Invalid schoolStudentDto model object");
+                }
+                var schoolStudent = _mapper.Map<SchoolStudent>(schoolStudentDto);
+                await _repositoryWrapper.SchoolStudent.CreateSchoolStudent(schoolStudent);
+                if (schoolStudent.IsEmptyObject())
+                {
+                    _loggerManager.LogError($"Save operation failed inside CreateSchoolStudent action");
+                    return StatusCode(500, "Internal server error while saving School ");
+                }
+                var dbObject = await _repositoryWrapper.SchoolStudent.GetSchoolStudentById(schoolStudent.Id);
+                return Ok(dbObject);
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside CreateSchoolStudent action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         /// <summary>
         /// Updates a SchoolStudent object in the data store.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="schoolStudent"></param>
+        /// <param name="schoolStudentDto"></param>
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] SchoolStudent schoolStudent)
+        public async Task<IActionResult> UpdateSchoolStudent(Guid id, [FromQuery] SchoolStudentDto schoolStudentDto)
         {
-            return Ok();
+            try
+            {
+                if (schoolStudentDto == null)
+                {
+                    _loggerManager.LogError("SchoolStudentDto object sent from client is null.");
+                    return BadRequest("SchoolStudentDto object is null");
+                }
+                if (!ModelState.IsValid)
+                {
+                    _loggerManager.LogError("Invalid SchoolStudentDto object sent from client.");
+                    return BadRequest("Invalid SchoolStudentDto model object");
+                }
+                var dbSchoolStudentDto = await _repositoryWrapper.SchoolStudent.GetSchoolStudentById(id);
+                if (dbSchoolStudentDto.IsEmptyObject())
+                {
+                    _loggerManager.LogError($"School with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+                var schoolStudent = _mapper.Map<SchoolStudent>(schoolStudentDto);
+                await _repositoryWrapper.SchoolStudent.UpdateSchoolStudent(dbSchoolStudentDto, schoolStudent);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside UpdateSchoolStudent action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         /// <summary>
@@ -101,9 +155,24 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <param name="id"></param>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> DeleteSchoolStudent(Guid id)
         {
-            return Ok();
+            try
+            {
+                var schoolStudent = await _repositoryWrapper.SchoolStudent.GetSchoolStudentById(id);
+                if (schoolStudent.IsEmptyObject())
+                {
+                    _loggerManager.LogError($"SchoolStudent with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+                await _repositoryWrapper.SchoolStudent.DeleteSchoolStudent(schoolStudent);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside DeleteSchoolStudent action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         #endregion Actions

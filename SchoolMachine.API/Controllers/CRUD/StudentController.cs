@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SchoolMachine.API.Controllers.Base;
 using SchoolMachine.API.Dtos;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Extensions;
@@ -99,7 +100,13 @@ namespace SchoolMachine.API.Controllers
                 }
                 var student = _mapper.Map<Student>(studentDto);
                 await _repositoryWrapper.Student.CreateStudent(student);
-                return CreatedAtRoute("GetStudentById", new { id = student.Id }, student);
+                if (student.IsEmptyObject())
+                {
+                    _loggerManager.LogError($"Save operation failed inside CreateStudent action");
+                    return StatusCode(500, "Internal server error while saving Student ");
+                }
+                var dbSchool = await _repositoryWrapper.Student.GetStudentById(student.Id);
+                return Ok(dbSchool);
             }
             catch (Exception ex)
             {

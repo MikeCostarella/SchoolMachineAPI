@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SchoolMachine.API.Controllers.Base;
 using SchoolMachine.Contracts;
 using SchoolMachine.ServiceModel.DomainRequests;
 using SchoolMachine.ServiceModel.DomainResponses;

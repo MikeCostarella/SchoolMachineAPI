@@ -43,6 +43,29 @@ namespace SchoolMachine.Repository.Entities
             return await FindByCondition(a => a.StudentId.Equals(studentId));
         }
 
+        public async Task CreateSchoolStudent(SchoolStudent schoolStudent)
+        {
+            schoolStudent.Id = Guid.NewGuid();
+            await Create(schoolStudent);
+            await Save();
+        }
+
+        public async Task UpdateSchoolStudent(SchoolStudent dbSchoolStudent, SchoolStudent schoolStudent)
+        {
+            dbSchoolStudent.GradeLevel = schoolStudent.GradeLevel;
+            dbSchoolStudent.RegistrationDate = schoolStudent.RegistrationDate;
+            dbSchoolStudent.SchoolId = schoolStudent.SchoolId;
+            dbSchoolStudent.StudentId = schoolStudent.StudentId;
+            await Update(dbSchoolStudent);
+            await Save();
+        }
+
+        public async Task DeleteSchoolStudent(SchoolStudent schoolStudent)
+        {
+            await Delete(schoolStudent);
+            await Save();
+        }
+
         #endregion Public Methods
     }
 }

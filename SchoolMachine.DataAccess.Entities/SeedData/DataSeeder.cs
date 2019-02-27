@@ -27,6 +27,19 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/01/2006"), FirstName = "John", MiddleName = "Dudley", LastName = "Timkin" }
         };
 
+        public static List<SchoolStudent> SchoolStudents = new List<SchoolStudent>
+        {
+            new SchoolStudent
+            {
+                DateCreated = DateTime.UtcNow,
+                GradeLevel = "9",
+                Id = Guid.NewGuid(),
+                RegistrationDate = DateTime.UtcNow,
+                SchoolId = Schools[0].Id,
+                StudentId = Students[0].Id
+            }
+        };
+
         public static List<User> Users = new List<User>
         {
             new User

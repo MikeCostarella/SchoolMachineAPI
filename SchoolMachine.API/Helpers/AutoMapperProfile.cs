@@ -2,6 +2,7 @@
 using SchoolMachine.API.Dtos;
 using SchoolMachine.DataAccess.Entities.Models.Security;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
+using System;
 
 namespace SchoolMachine.API.Helpers
 {
@@ -10,13 +11,13 @@ namespace SchoolMachine.API.Helpers
         public AutoMapperProfile()
         {
             CreateMap<School, SchoolDto>();
-            CreateMap<SchoolDto, School>();
+            CreateMap<SchoolDto, School>().BeforeMap((s, d) => d.Id = Guid.NewGuid());
             CreateMap<Student, StudentDto>();
-            CreateMap<StudentDto, Student>();
+            CreateMap<StudentDto, Student>().BeforeMap((s, d) => d.Id = Guid.NewGuid());
             CreateMap<SchoolStudent, SchoolStudentDto>();
-            CreateMap<SchoolStudentDto, SchoolStudent>();
+            CreateMap<SchoolStudentDto, SchoolStudent>().BeforeMap((s, d) => d.Id = Guid.NewGuid());
             CreateMap<User, UserDto>();
-            CreateMap<UserDto, User>();
+            CreateMap<UserDto, User>().BeforeMap((s, d) => d.Id = Guid.NewGuid());
         }
     }
 }
