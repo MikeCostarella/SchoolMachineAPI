@@ -5,6 +5,12 @@
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\Services\**" />
+    <EmbeddedResource Remove="Controllers\Services\**" />
+    <None Remove="Controllers\Services\**" />
+  </ItemGroup>
   
   <ItemGroup>
     <None Remove="nlog.config" />
@@ -36,10 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SchoolMachine.API\SchoolMachine.API.csproj" />
   </ItemGroup>
 
@@ -50,17 +52,11 @@
     <Reference Include="Microsoft.AspNetCore.Mvc.Core">
       <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.core\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Cors">
-      <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.cors\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Cors.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection">
       <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection\2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Caching.Memory">
       <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.caching.memory\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.HttpsPolicy">
-      <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.httpspolicy\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.HttpsPolicy.dll</HintPath>
     </Reference>
   </ItemGroup>
 
