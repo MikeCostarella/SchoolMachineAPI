@@ -4,6 +4,7 @@ using SchoolMachine.API.Controllers.Base;
 using SchoolMachine.Contracts;
 using SchoolMachine.ServiceModel.DomainRequests;
 using SchoolMachine.ServiceModel.DomainResponses;
+using System.Threading.Tasks;
 
 namespace SchoolMachine.API.Controllers
 {
@@ -23,10 +24,11 @@ namespace SchoolMachine.API.Controllers
         #region Action Methods
 
         [HttpPost]
-        public StudentSchoolRegistrationResponse Post([FromBody] StudentSchoolRegistrationRequest value)
+        public async Task<IActionResult> Post([FromBody] StudentSchoolRegistrationRequest value)
         {
+            await Task.Delay(0);
             // TODO: fill in logic
-            return new StudentSchoolRegistrationResponse();
+            return Ok(new StudentSchoolRegistrationResponse());
         }
 
         #endregion Action Methods

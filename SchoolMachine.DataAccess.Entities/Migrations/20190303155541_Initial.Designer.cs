@@ -10,7 +10,7 @@ using SchoolMachine.DataAccess.Entities;
 namespace SchoolMachine.DataAccess.Entities.Migrations
 {
     [DbContext(typeof(SchoolMachineContext))]
-    [Migration("20190222004754_Initial")]
+    [Migration("20190303155541_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,8 +51,8 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4744bebe-3539-4cba-935a-2caabe0e19b5"),
-                            DateCreated = new DateTime(2019, 2, 22, 0, 47, 54, 495, DateTimeKind.Utc).AddTicks(4134),
+                            Id = new Guid("a2e6f3ab-bfb1-4521-b061-6774f4be0008"),
+                            DateCreated = new DateTime(2019, 3, 3, 15, 55, 41, 380, DateTimeKind.Utc).AddTicks(2612),
                             Description = "Total access to all other roles",
                             IsActive = true,
                             Name = "System Administrator"
@@ -178,8 +178,8 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c7cfac53-dcf9-4af8-b5c4-6588f6dfffe3"),
-                            DateCreated = new DateTime(2019, 2, 22, 0, 47, 54, 496, DateTimeKind.Utc).AddTicks(6547),
+                            Id = new Guid("e0033060-e8f3-40a4-acc0-813ea7adadd0"),
+                            DateCreated = new DateTime(2019, 3, 3, 15, 55, 41, 381, DateTimeKind.Utc).AddTicks(8652),
                             EmailAddress = "auser1@email.com",
                             FirstName = "A",
                             IsActive = true,
@@ -225,12 +225,22 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d70fd257-92c8-4ccd-8be8-0e714bd73c1b"),
+                            Id = new Guid("6b77d52b-d051-4a0a-8887-5a9ab8cc5135"),
+                            Name = "Austintown Fitch High School"
+                        },
+                        new
+                        {
+                            Id = new Guid("e48eaa8b-ceee-4072-b980-c58fad81dbe2"),
+                            Name = "Canfield High School"
+                        },
+                        new
+                        {
+                            Id = new Guid("009a3c04-aec4-4ac6-ae28-dda69ea49d99"),
                             Name = "Girard High School"
                         },
                         new
                         {
-                            Id = new Guid("78dfb0f0-8eee-44ad-a39f-0b39a2321e99"),
+                            Id = new Guid("a4cccd64-2b80-417a-ab3f-471a677a6459"),
                             Name = "Liberty High School"
                         });
                 });
@@ -256,6 +266,35 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SchoolStudents","SchoolData");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ca46cb70-34e7-4f5a-9043-b9fd7ccabc2e"),
+                            DateCreated = new DateTime(2019, 3, 3, 15, 55, 41, 381, DateTimeKind.Utc).AddTicks(2751),
+                            GradeLevel = "9",
+                            RegistrationDate = new DateTime(2019, 3, 3, 15, 55, 41, 381, DateTimeKind.Utc).AddTicks(4997),
+                            SchoolId = new Guid("6b77d52b-d051-4a0a-8887-5a9ab8cc5135"),
+                            StudentId = new Guid("8eb4056f-7dc0-46cf-ba91-a7a45f6c2e72")
+                        },
+                        new
+                        {
+                            Id = new Guid("c8765f5d-ab61-4568-b636-7a5467643502"),
+                            DateCreated = new DateTime(2019, 3, 3, 15, 55, 41, 381, DateTimeKind.Utc).AddTicks(7414),
+                            GradeLevel = "9",
+                            RegistrationDate = new DateTime(2019, 3, 3, 15, 55, 41, 381, DateTimeKind.Utc).AddTicks(7429),
+                            SchoolId = new Guid("e48eaa8b-ceee-4072-b980-c58fad81dbe2"),
+                            StudentId = new Guid("194bb537-38ea-4bd3-901b-2eda9ff1e2ae")
+                        },
+                        new
+                        {
+                            Id = new Guid("c446c0af-baf7-4cc3-955f-4d3824e852d5"),
+                            DateCreated = new DateTime(2019, 3, 3, 15, 55, 41, 381, DateTimeKind.Utc).AddTicks(7445),
+                            GradeLevel = "9",
+                            RegistrationDate = new DateTime(2019, 3, 3, 15, 55, 41, 381, DateTimeKind.Utc).AddTicks(7447),
+                            SchoolId = new Guid("e48eaa8b-ceee-4072-b980-c58fad81dbe2"),
+                            StudentId = new Guid("039545ed-ef84-4e4b-a6fa-c96566fdbb9e")
+                        });
                 });
 
             modelBuilder.Entity("SchoolMachine.DataAccess.Entities.SchoolData.Models.Student", b =>
@@ -285,7 +324,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f651b400-280e-490b-bbe8-a910bb76c834"),
+                            Id = new Guid("8eb4056f-7dc0-46cf-ba91-a7a45f6c2e72"),
                             BirthDate = new DateTime(2005, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "John",
                             LastName = "Abott",
@@ -293,7 +332,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("db087aaa-020f-4f51-8667-aab99fa034bb"),
+                            Id = new Guid("194bb537-38ea-4bd3-901b-2eda9ff1e2ae"),
                             BirthDate = new DateTime(2005, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Ann",
                             LastName = "Smith",
@@ -301,7 +340,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bc91ae8f-b26d-45da-82d4-1cde3f760488"),
+                            Id = new Guid("039545ed-ef84-4e4b-a6fa-c96566fdbb9e"),
                             BirthDate = new DateTime(2004, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bill",
                             LastName = "Kriter",
@@ -309,7 +348,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("60bf103e-3b3d-4f26-8fcc-420d9f3f6134"),
+                            Id = new Guid("eacced0f-57bc-4d3c-a646-b469e4792ead"),
                             BirthDate = new DateTime(2005, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Sara",
                             LastName = "Carter",
@@ -317,11 +356,19 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b0a877e7-d97b-4f30-b630-ca3308549b69"),
+                            Id = new Guid("95ec2b04-9ddb-46c1-81e9-be1f4c2ea665"),
                             BirthDate = new DateTime(2006, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "John",
                             LastName = "Timkin",
                             MiddleName = "Dudley"
+                        },
+                        new
+                        {
+                            Id = new Guid("049579e8-6b69-4a02-a41c-4209af03fa53"),
+                            BirthDate = new DateTime(2006, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Abby",
+                            LastName = "Smart",
+                            MiddleName = "Darla"
                         });
                 });
 #pragma warning restore 612, 618

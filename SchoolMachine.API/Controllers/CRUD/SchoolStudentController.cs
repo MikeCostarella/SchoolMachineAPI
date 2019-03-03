@@ -6,6 +6,7 @@ using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SchoolMachine.API.Controllers.CRUD
@@ -53,7 +54,7 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("GetSchoolStudentById{id}", Name = "GetSchoolStudentById")]
         public async Task<IActionResult> GetSchoolStudentById(Guid id)
         {
             try
@@ -73,6 +74,48 @@ namespace SchoolMachine.API.Controllers.CRUD
             catch (Exception ex)
             {
                 _loggerManager.LogError($"Something went wrong inside GetSchoolStudentById action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        /// <summary>
+        /// Gets SchoolStudent objects from the data repository by a unique School id
+        /// </summary>
+        /// <param name="schoolId"></param>
+        /// <returns></returns>
+        [HttpGet("GetSchoolStudentsBySchoolId", Name = "GetSchoolStudentsBySchoolId")]
+        public async Task<IActionResult> GetSchoolStudentsBySchoolId(Guid schoolId)
+        {
+            try
+            {
+                var schoolStudents = await _repositoryWrapper.SchoolStudent.SchoolStudentsBySchool(schoolId);
+                _loggerManager.LogInfo($"Returned { schoolStudents.Count() } SchoolStudents from repository for School { schoolId }.");
+                return Ok(schoolStudents);
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside GetSchoolStudentsBySchoolId action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        /// <summary>
+        /// Gets SchoolStudent objects from the data repository by a unique Student id
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        [HttpGet("GetSchoolStudentsByStudentId", Name = "GetSchoolStudentsByStudentId")]
+        public async Task<IActionResult> GetSchoolStudentsByStudentId(Guid studentId)
+        {
+            try
+            {
+                var schoolStudents = await _repositoryWrapper.SchoolStudent.SchoolStudentsByStudent(studentId);
+                _loggerManager.LogInfo($"Returned { schoolStudents.Count() } SchoolStudents from repository for Student { studentId }.");
+                return Ok(schoolStudents);
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside GetSchoolStudentsByStudentId action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }

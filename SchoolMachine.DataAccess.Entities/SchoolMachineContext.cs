@@ -24,6 +24,7 @@ namespace SchoolMachine.DataAccess.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
+                // ToDo: place this db connection into appsettings.json as a secret
                 optionsBuilder.UseNpgsql("Server=127.0.0.1;Port=5432;Database=SchoolMachine;User Id=postgres;Password=password;");
             }
         }
@@ -57,18 +58,11 @@ namespace SchoolMachine.DataAccess.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Role>().HasData(DataSeeder.Roles[0]);
-
-            modelBuilder.Entity<User>().HasData(DataSeeder.Users[0]);
-
-            modelBuilder.Entity<School>().HasData(DataSeeder.Schools[0]);
-            modelBuilder.Entity<School>().HasData(DataSeeder.Schools[1]);
-
-            modelBuilder.Entity<Student>().HasData(DataSeeder.Students[0]);
-            modelBuilder.Entity<Student>().HasData(DataSeeder.Students[1]);
-            modelBuilder.Entity<Student>().HasData(DataSeeder.Students[2]);
-            modelBuilder.Entity<Student>().HasData(DataSeeder.Students[3]);
-            modelBuilder.Entity<Student>().HasData(DataSeeder.Students[4]);
+            foreach (var role in DataSeeder.Roles) { modelBuilder.Entity<Role>().HasData(role); }
+            foreach (var user in DataSeeder.Users) { modelBuilder.Entity<User>().HasData(user); }
+            foreach (var school in DataSeeder.Schools) { modelBuilder.Entity<School>().HasData(school); }
+            foreach (var school in DataSeeder.Students) { modelBuilder.Entity<Student>().HasData(school); }
+            foreach (var schoolStudent in DataSeeder.SchoolStudents) { modelBuilder.Entity<SchoolStudent>().HasData(schoolStudent); }
         }
 
         #endregion Data Seeding
