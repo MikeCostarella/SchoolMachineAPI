@@ -2,7 +2,7 @@
 
 namespace SchoolMachine.ServiceModel.DomainResponses
 {
-    public class StudentSchoolRegistrationResponse
+    public class StudentRegistrationResponse
     {
         public Guid Indentifier { get; set; }
 

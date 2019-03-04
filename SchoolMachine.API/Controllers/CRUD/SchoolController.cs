@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -74,6 +75,34 @@ namespace SchoolMachine.API.Controllers
             catch (Exception ex)
             {
                 _loggerManager.LogError($"Something went wrong inside GetSchoolById action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        /// <summary>
+        /// Gets Student objects from the data repository by a unique School id
+        /// </summary>
+        /// <param name="schoolId"></param>
+        /// <returns></returns>
+        [HttpGet("GetStudentsBySchoolId", Name = "GetStudentsBySchoolId")]
+        public async Task<IActionResult> GetStudentsBySchoolId(Guid schoolId)
+        {
+            try
+            {
+                // ToDo: factor this into a join in the repository method
+                var schoolStudents = await _repositoryWrapper.SchoolStudent.SchoolStudentsBySchool(schoolId);
+                var students = new List<Student>();
+                foreach (var schoolStudent in schoolStudents)
+                {
+                    var student = await _repositoryWrapper.Student.GetStudentById(schoolStudent.StudentId);
+                    students.Add(student);
+                }
+                _loggerManager.LogInfo($"Returned { schoolStudents.Count() } SchoolStudents from repository for School { schoolId }.");
+                return Ok(students);
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside GetSchoolStudentsBySchoolId action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }

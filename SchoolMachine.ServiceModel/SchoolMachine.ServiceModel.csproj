@@ -5,15 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Classes\School.cs" />
-    <Compile Remove="Classes\Student.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SchoolMachine.DataAccess.Entities\SchoolMachine.DataAccess.Entities.csproj" />
   </ItemGroup>
 

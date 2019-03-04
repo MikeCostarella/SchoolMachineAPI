@@ -3,7 +3,7 @@ using System;
 
 namespace SchoolMachine.ServiceModel.DomainRequests
 {
-    public class StudentSchoolRegistrationRequest
+    public class StudentRegistrationRequest
     {
         public Guid SchoolId { get; set; }
 

@@ -10,11 +10,11 @@ namespace SchoolMachine.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SchoolStudentRegistrationController : ControllerBaseSchoolMachine
+    public class SchoolManagementController : ControllerBaseSchoolMachine
     {
         #region Constructors
 
-        public SchoolStudentRegistrationController(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
+        public SchoolManagementController(ILoggerManager loggerManager, IMapper mapper, IRepositoryWrapper repositoryWrapper)
             : base(loggerManager, mapper, repositoryWrapper)
         {
         }
@@ -23,12 +23,17 @@ namespace SchoolMachine.API.Controllers
 
         #region Action Methods
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] StudentSchoolRegistrationRequest value)
+        /// <summary>
+        /// Registers a student into a School
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("RegisterStudentForSchool", Name = "RegisterStudentForSchool")]
+        public async Task<IActionResult> RegisterStudentForSchool([FromBody] StudentRegistrationRequest request)
         {
             await Task.Delay(0);
             // TODO: fill in logic
-            return Ok(new StudentSchoolRegistrationResponse());
+            return Ok(new StudentRegistrationResponse());
         }
 
         #endregion Action Methods
