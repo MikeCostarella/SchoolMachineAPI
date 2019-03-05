@@ -5,7 +5,7 @@ namespace SchoolMachine.Testing.API.Controllers.Security
     /// <summary>
     /// Performs integration tests on UserController action methods
     /// </summary>
-    [TestClass]
+    //[TestClass]
     public class UserControllerIntegrationTests
     {
         #region Test Action Tests

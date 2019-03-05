@@ -35,14 +35,26 @@ namespace SchoolMachine.Repository.Test.Base
                 SchoolMachineContext.Database.Migrate();
 
                 // Test Assertions
-                Assert.IsTrue(SchoolMachineContext.Roles.Count() == DataSeeder.Roles.Count()
+                Assert.IsTrue(SchoolMachineContext.Roles.Count() >= DataSeeder.Roles.Count()
                     , string.Format("Database has {0} Roles and Seeder has {1}", SchoolMachineContext.Roles.Count(), DataSeeder.Roles.Count()));
-                Assert.IsTrue(SchoolMachineContext.Schools.Count() == DataSeeder.Schools.Count()
+
+                Assert.IsTrue(SchoolMachineContext.SchoolDistricts.Count() >= DataSeeder.SchoolDistricts.Count()
+                    , string.Format("Database has {0} SchoolDistricts and Seeder has {1}", SchoolMachineContext.SchoolDistricts.Count(), DataSeeder.SchoolDistricts.Count()));
+
+                Assert.IsTrue(SchoolMachineContext.Schools.Count() >= DataSeeder.Schools.Count()
                     , string.Format("Database has {0} Schools and Seeder has {1}", SchoolMachineContext.Schools.Count(), DataSeeder.Schools.Count()));
-                Assert.IsTrue(SchoolMachineContext.Students.Count() == DataSeeder.Students.Count()
+
+                Assert.IsTrue(SchoolMachineContext.Students.Count() >= DataSeeder.Students.Count()
                     , string.Format("Database has {0} Students and Seeder has {1}", SchoolMachineContext.Students.Count(), DataSeeder.Students.Count()));
-                Assert.IsTrue(SchoolMachineContext.Users.Count() == DataSeeder.Users.Count()
+
+                Assert.IsTrue(SchoolMachineContext.Users.Count() >= DataSeeder.Users.Count()
                     , string.Format("Database has {0} Users and Seeder has {1}", SchoolMachineContext.Users.Count(), DataSeeder.Users.Count()));
+
+                Assert.IsTrue(SchoolMachineContext.SchoolDistrictSchools.Count() >= DataSeeder.SchoolDistrictSchools.Count()
+                    , string.Format("Database has {0} SchoolDistrictSchools and Seeder has {1}", SchoolMachineContext.SchoolDistrictSchools.Count(), DataSeeder.SchoolDistrictSchools.Count()));
+
+                Assert.IsTrue(SchoolMachineContext.SchoolStudents.Count() >= DataSeeder.SchoolStudents.Count()
+                    , string.Format("Database has {0} SchoolStudents and Seeder has {1}", SchoolMachineContext.SchoolStudents.Count(), DataSeeder.SchoolStudents.Count()));
             }
             catch (Exception ex)
             {

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SchoolMachine.Repository.Test
 {
-    [TestClass]
+    //[TestClass]
     public class SchoolStudentRepositoryIntegrationTests : BaseRepositoryIntegrationTests
     {
         #region Setup/Teardown

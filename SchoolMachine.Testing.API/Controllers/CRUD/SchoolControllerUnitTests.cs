@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Newtonsoft.Json;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
     /// <summary>
     /// Perform mock unit tests on school controller actions
     /// </summary>
-    [TestClass]
+    //[TestClass]
     public class SchoolControllerUnitTests
     {
         // ToDo: Fill in the test logic

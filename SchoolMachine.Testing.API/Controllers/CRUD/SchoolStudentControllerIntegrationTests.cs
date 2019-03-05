@@ -6,7 +6,7 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
     /// <summary>
     /// Perform integration tests on SchoolStudent controller actions
     /// </summary>
-    [TestClass]
+    //[TestClass]
     public class SchoolStudentControllerIntegrationTests
     {
         // ToDo: Fill in the test logic
