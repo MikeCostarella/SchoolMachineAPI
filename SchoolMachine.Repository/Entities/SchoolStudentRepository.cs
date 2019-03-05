@@ -38,6 +38,35 @@ namespace SchoolMachine.Repository.Entities
             return await FindByCondition(a => a.SchoolId.Equals(schoolId));
         }
 
+        public async Task<IEnumerable<Student>> StudentsBySchool(Guid schoolId)
+        {
+            // ToDo: Figure out the syntax for this join in EF
+            //await Task.Delay(0);
+            //var schoolStudents = RepositoryContext.SchoolStudents;
+            //var students = RepositoryContext.Students;
+            //var query = schoolStudents.GroupJoin(students, schoolStudent => schoolStudent.SchoolId, student => student.Id,
+            //    (schoolStudent, student) => new
+            //    {
+            //        Students = student
+            //    });
+            //var studentCollection = new List<Student>();
+            //foreach (var group in query)
+            //{
+            //    studentCollection.AddRange(group.Students);
+            //}
+            //return studentCollection;
+
+            var schoolStudents = await SchoolStudentsBySchool(schoolId);
+            var studentRepository = new StudentRepository(RepositoryContext);
+            var students = new List<Student>();
+            foreach (var schoolStudent in schoolStudents)
+            {
+                var student = await studentRepository.GetStudentById(schoolStudent.StudentId);
+                students.Add(student);
+            }
+            return students;
+        }
+
         public async Task<IEnumerable<SchoolStudent>> SchoolStudentsByStudent(Guid studentId)
         {
             return await FindByCondition(a => a.StudentId.Equals(studentId));

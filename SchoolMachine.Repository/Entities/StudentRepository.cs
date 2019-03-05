@@ -1,6 +1,5 @@
 ﻿using SchoolMachine.Contracts.EntityRepositories;
 using SchoolMachine.DataAccess.Entities;
-using SchoolMachine.DataAccess.Entities.ExtendedModels;
 using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
@@ -33,15 +32,6 @@ namespace SchoolMachine.Repository.Entities
             return (await FindByCondition(student => student.Id.Equals(studentId)))
                     .DefaultIfEmpty(new Student())
                     .FirstOrDefault();
-        }
-
-        public async Task<StudentExtended> GetStudentWithDetails(Guid studentId)
-        {
-            return new StudentExtended(await GetStudentById(studentId))
-            {
-                Schools = RepositoryContext.SchoolStudents
-                    .Where(a => a.StudentId == studentId)
-            };
         }
 
         public async Task CreateStudent(Student student)

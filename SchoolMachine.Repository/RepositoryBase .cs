@@ -35,11 +35,13 @@ namespace SchoolMachine.Repository
 
         public async Task Update(T entity)
         {
+            await Task.Delay(0);
             this.RepositoryContext.Set<T>().Update(entity);
         }
 
         public async Task Delete(T entity)
         {
+            await Task.Delay(0);
             this.RepositoryContext.Set<T>().Remove(entity);
         }
 
