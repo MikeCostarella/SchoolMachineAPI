@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -54,7 +55,7 @@ namespace SchoolMachine.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}", Name ="GetStudentById")]
+        [HttpGet("GetStudentById", Name ="GetStudentById")]
         public async Task<IActionResult> GetStudentById(Guid id)
         {
             try
@@ -74,6 +75,34 @@ namespace SchoolMachine.API.Controllers
             catch (Exception ex)
             {
                 _loggerManager.LogError($"Something went wrong inside GetSTudentById action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        /// <summary>
+        /// Gets School objects from the data repository by a unique Student id
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        [HttpGet("GetSchoolsByStudentId", Name = "GetSchoolsByStudentId")]
+        public async Task<IActionResult> GetSchoolsByStudentId(Guid studentId)
+        {
+            try
+            {
+                // ToDo: factor this into a join in the repository method
+                var schoolStudents = await _repositoryWrapper.SchoolStudent.SchoolStudentsByStudent(studentId);
+                var schools = new List<School>();
+                foreach (var schoolStudent in schoolStudents)
+                {
+                    var school = await _repositoryWrapper.School.GetSchoolById(schoolStudent.SchoolId);
+                    schools.Add(school);
+                }
+                _loggerManager.LogInfo($"Returned { schoolStudents.Count() } SchoolStudents from repository for Student { studentId }.");
+                return Ok(schools);
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside GetSchoolsByStudentId action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }
