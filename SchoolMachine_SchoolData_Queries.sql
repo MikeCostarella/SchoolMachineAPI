@@ -1,6 +1,6 @@
 ﻿-- Returns the districts with their schools, ordered by district name
 SELECT
-  district.name AS "DistrictName",
+  district.name AS DistrictName,
   school.name AS "SchoolName"
 FROM 
   ((schooldata.school  
