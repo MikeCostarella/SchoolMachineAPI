@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolMachine.DataAccess.Entities.SchoolData.Models
 {
-    [Table("students", Schema = "school_data")]
+    [Table("student", Schema = "schooldata")]
     public class Student : IEntity
     {
         [Key]
-        [Column("student_id")]
+        [Column("id")]
         public Guid Id { get; set; }
 
         [Column("first_name")]

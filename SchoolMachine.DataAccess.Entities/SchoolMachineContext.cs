@@ -35,8 +35,8 @@ namespace SchoolMachine.DataAccess.Entities
 
         #region SchoolData Schema
 
-        public DbSet<SchoolDistrict> SchoolDistricts { get; set; }
-        public DbSet<SchoolDistrictSchool> SchoolDistrictSchools { get; set; }
+        public DbSet<District> SchoolDistricts { get; set; }
+        public DbSet<DistrictSchool> SchoolDistrictSchools { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolStudent> SchoolStudents { get; set; }
         public DbSet<Student> Students { get; set; }
@@ -62,10 +62,10 @@ namespace SchoolMachine.DataAccess.Entities
         {
             foreach (var role in DataSeeder.Roles) { modelBuilder.Entity<Role>().HasData(role); }
             foreach (var user in DataSeeder.Users) { modelBuilder.Entity<User>().HasData(user); }
-            foreach (var schoolDistrict in DataSeeder.SchoolDistricts) { modelBuilder.Entity<SchoolDistrict>().HasData(schoolDistrict); }
+            foreach (var schoolDistrict in DataSeeder.SchoolDistricts) { modelBuilder.Entity<District>().HasData(schoolDistrict); }
             foreach (var school in DataSeeder.Schools) { modelBuilder.Entity<School>().HasData(school); }
             foreach (var school in DataSeeder.Students) { modelBuilder.Entity<Student>().HasData(school); }
-            foreach (var schoolDistrictSchool in DataSeeder.SchoolDistrictSchools) { modelBuilder.Entity<SchoolDistrictSchool>().HasData(schoolDistrictSchool); }
+            foreach (var schoolDistrictSchool in DataSeeder.SchoolDistrictSchools) { modelBuilder.Entity<DistrictSchool>().HasData(schoolDistrictSchool); }
             foreach (var schoolStudent in DataSeeder.SchoolStudents) { modelBuilder.Entity<SchoolStudent>().HasData(schoolStudent); }
         }
 

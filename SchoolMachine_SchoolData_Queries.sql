@@ -1,5 +1,11 @@
-﻿SELECT 
-  school_districts.name, 
-  school_districts.school_district_id
+﻿-- Returns the districts with their schools, ordered by district name
+SELECT
+  district.name AS "DistrictName",
+  school.name AS "SchoolName"
 FROM 
-  school_data.school_districts INNER JOIN school_data.school_district_schools ON school_district_schools.school_district_id = school_districts.school_district_id
+  ((schooldata.school  
+	INNER JOIN schooldata.district_school
+		ON district_school.school_id = school.id)		
+	INNER JOIN schooldata.district
+		ON district_school.district_id = district.id)
+ORDER BY district.name;

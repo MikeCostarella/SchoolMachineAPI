@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolMachine.DataAccess.Entities.Models.Security
 {
-    [Table("team_roles", Schema = "security")]
+    [Table("team_role", Schema = "security")]
     public class TeamRole
     {
         [Key]
-        [Column("team_role_id")]
+        [Column("id")]
         public Guid Id { get; set; }
 
         [Column("date_created")]
