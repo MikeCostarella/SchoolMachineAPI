@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SchoolMachine.DataAccess.Entities.Extensions;
+using SchoolMachine.DataAccess.Entities.Extensions.Base;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using SchoolMachine.DataAccess.Entities.SeedData;
 using SchoolMachine.Repository.Entities;

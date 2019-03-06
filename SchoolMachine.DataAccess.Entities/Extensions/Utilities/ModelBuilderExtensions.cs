@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
-namespace SchoolMachine.DataAccess.Entities.Extensions
+namespace SchoolMachine.DataAccess.Entities.Extensions.Utilities
 {
     public static class ModelBuilderExtensions
     {

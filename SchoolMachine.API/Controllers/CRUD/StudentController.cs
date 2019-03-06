@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.API.Controllers.Base;
 using SchoolMachine.API.Dtos;
 using SchoolMachine.Contracts;
-using SchoolMachine.DataAccess.Entities.Extensions;
+using SchoolMachine.DataAccess.Entities.Extensions.Base;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 
 namespace SchoolMachine.API.Controllers

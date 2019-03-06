@@ -55,27 +55,40 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
         {
             new District { Id = Guid.NewGuid(), Name = "Austintown Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Bloomfield-Mespo Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "Boardman Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Bristol Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Brookfield Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "Canfield Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Champion Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Girard City School District" },
             new District { Id = Guid.NewGuid(), Name = "Howland Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Hubbard Exempted Village School District" },
+            new District { Id = Guid.NewGuid(), Name = "Howland Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "Hubbard Exempted Village School District" },
+            new District { Id = Guid.NewGuid(), Name = "Jackson-Milton Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Joseph Badger Local School District" },
             new District { Id = Guid.NewGuid(), Name = "LaBrae Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Lakeview Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Liberty Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Lordstown Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "Lowellville Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Maplewood Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Mathews Local School District" },
             new District { Id = Guid.NewGuid(), Name = "McDonald Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Newton Falls Exempted Village School District" },
             new District { Id = Guid.NewGuid(), Name = "Niles City School District" },
+            new District { Id = Guid.NewGuid(), Name = "Sebring Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Southington Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "South Range Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "Springfield Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "Struthers City School District" },
             new District { Id = Guid.NewGuid(), Name = "Trumbull Career & Technical Center" },
             new District { Id = Guid.NewGuid(), Name = "Trumbull County Educational Service Center" },
             new District { Id = Guid.NewGuid(), Name = "Warren City School District" },
-            new District { Id = Guid.NewGuid(), Name = "Weathersfield Local School District" }
+            new District { Id = Guid.NewGuid(), Name = "Weathersfield Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "West Branch Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "Western Reserve Local School District" },
+            new District { Id = Guid.NewGuid(), Name = "Youngstown City School District" }
         };
 
         #endregion SchoolDistricts
@@ -115,9 +128,15 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new School { Id = Guid.NewGuid(), Name = "Girard High School" },
             new School { Id = Guid.NewGuid(), Name = "Girard Intermediate" },
             new School { Id = Guid.NewGuid(), Name = "Girard Junior High School" },
+            new School { Id = Guid.NewGuid(), Name = "Glen Primary School" }, // Howland Local School District
+            new School { Id = Guid.NewGuid(), Name = "H.C. Mines Elementary" }, // Howland Local School District
+            new School { Id = Guid.NewGuid(), Name = "Howland High School" },
+            new School { Id = Guid.NewGuid(), Name = "Howland Middle School" },
             new School { Id = Guid.NewGuid(), Name = "Liberty High School" },
             new School { Id = Guid.NewGuid(), Name = "Mesopatamia Elementary" }, // Bloomfield-Mespo Local School District
+            new School { Id = Guid.NewGuid(), Name = "North Road Intermediate" }, // Howland Local School District
             new School { Id = Guid.NewGuid(), Name = "Prospect Elementary" }, // Girard City School District
+            new School { Id = Guid.NewGuid(), Name = "Springs Primary School" }, // Howland Local School District
         };
 
         #endregion Schools
@@ -126,21 +145,21 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         public static List<DistrictSchool> SchoolDistrictSchools = new List<DistrictSchool>
         {
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Austintown Local School District"].Id, SchoolId = SchoolDictionary["Austintown Fitch High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Bloomfield-Mespo Local School District"].Id, SchoolId = SchoolDictionary["Bloomfield Middle/High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Bloomfield-Mespo Local School District"].Id, SchoolId = SchoolDictionary["Mesopatamia Elementary"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Bristol Local School District"].Id, SchoolId = SchoolDictionary["Bristol Elementary"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Bristol Local School District"].Id, SchoolId = SchoolDictionary["Bristol Middle & High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Elementary School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Middle School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Central Elementary"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion Middle School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Intermediate"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Junior High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), SchoolDistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Prospect Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Austintown Local School District"].Id, SchoolId = SchoolDictionary["Austintown Fitch High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Bloomfield-Mespo Local School District"].Id, SchoolId = SchoolDictionary["Bloomfield Middle/High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Bloomfield-Mespo Local School District"].Id, SchoolId = SchoolDictionary["Mesopatamia Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Bristol Local School District"].Id, SchoolId = SchoolDictionary["Bristol Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Bristol Local School District"].Id, SchoolId = SchoolDictionary["Bristol Middle & High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Elementary School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Middle School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Central Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion Middle School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Intermediate"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Junior High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Prospect Elementary"].Id, StartDate = DateTime.UtcNow },
         };
 
         #endregion SchoolDistrictSchools

@@ -1,7 +1,7 @@
 ﻿using SchoolMachine.DataAccess.Entities.Interfaces;
 using System;
 
-namespace SchoolMachine.DataAccess.Entities.Extensions
+namespace SchoolMachine.DataAccess.Entities.Extensions.Base
 {
     public static class IEntityExtensions
     {

@@ -1,9 +1,12 @@
-﻿using SchoolMachine.DataAccess.Entities.SchoolData.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 
 namespace SchoolMachine.DataAccess.Entities.Extensions
 {
     public static class StudentExtensions
     {
+
+        // ToDo: Replace this with automapper call
         public static void Map(this Student dbStudent, Student student)
         {
             dbStudent.BirthDate = student.BirthDate;
@@ -11,5 +14,6 @@ namespace SchoolMachine.DataAccess.Entities.Extensions
             dbStudent.LastName = student.LastName;
             dbStudent.MiddleName = student.MiddleName;
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using SchoolMachine.DataAccess.Entities.Interfaces;
+﻿using Newtonsoft.Json;
+using SchoolMachine.DataAccess.Entities.Interfaces;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,10 +16,14 @@ namespace SchoolMachine.DataAccess.Entities.SchoolData.Models
         [Column("school_id")]
         [Required(ErrorMessage = "School Id is required")]
         public Guid SchoolId { get; set; }
+        [JsonIgnore]
+        public School School { get; set; }
 
         [Column("student_id")]
         [Required(ErrorMessage = "Student Id is required")]
         public Guid StudentId { get; set; }
+        [JsonIgnore]
+        public Student Student { get; set; }
 
         [Column("grade_level")]
         [Required(ErrorMessage = "Grade Level is required")]

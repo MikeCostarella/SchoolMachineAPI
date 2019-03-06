@@ -1,5 +1,5 @@
 ﻿DROP TABLE IF EXISTS schooldata.school_student;
-DROP TABLE IF EXISTS schooldata.district_schools;
+DROP TABLE IF EXISTS schooldata.district_school;
 DROP TABLE IF EXISTS schooldata.district;
 DROP TABLE IF EXISTS schooldata.student;
 DROP TABLE IF EXISTS schooldata.school;

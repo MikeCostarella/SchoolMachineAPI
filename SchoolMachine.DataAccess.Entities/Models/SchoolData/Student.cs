@@ -1,5 +1,6 @@
 ﻿using SchoolMachine.DataAccess.Entities.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -30,5 +31,7 @@ namespace SchoolMachine.DataAccess.Entities.SchoolData.Models
         [Column("birth_date")]
         [Required(ErrorMessage = "Date of birth is required")]
         public DateTime BirthDate { get; set; }
+
+        public List<SchoolStudent> SchoolStudents { get; set; }
     }
 }
