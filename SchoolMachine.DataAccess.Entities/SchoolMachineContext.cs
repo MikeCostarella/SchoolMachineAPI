@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.Models.Security;
 using SchoolMachine.DataAccess.Entities.SchoolData.Models;
@@ -35,7 +36,7 @@ namespace SchoolMachine.DataAccess.Entities
         #region SchoolData Schema
 
         public DbSet<SchoolDistrict> SchoolDistricts { get; set; }
-        public DbSet<SchoolDistrict> SchoolDistrictSchools { get; set; }
+        public DbSet<SchoolDistrictSchool> SchoolDistrictSchools { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolStudent> SchoolStudents { get; set; }
         public DbSet<Student> Students { get; set; }

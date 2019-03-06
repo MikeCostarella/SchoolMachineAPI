@@ -45,6 +45,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseQueries", "DatabaseQueries", "{494CFAFE-5439-44DA-B10D-240FD78BF33B}"
+	ProjectSection(SolutionItems) = preProject
+		SchoolMachine_SchoolData_Queries.sql = SchoolMachine_SchoolData_Queries.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +114,7 @@ Global
 		{DA7AFF30-8612-4C7E-98CA-D410F634E806} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
 		{E620F17E-C043-4B30-97A0-2158B78BAAF9} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
 		{CAEA1FEF-D8B0-42C8-9BA3-6985203679F9} = {DA827992-C7FB-4DF5-A3C3-464F11FB308D}
+		{494CFAFE-5439-44DA-B10D-240FD78BF33B} = {DA827992-C7FB-4DF5-A3C3-464F11FB308D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6520A525-2E5F-4481-A912-0847D1B50199}

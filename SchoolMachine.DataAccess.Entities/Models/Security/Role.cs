@@ -4,28 +4,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolMachine.DataAccess.Entities.Models.Security
 {
-    [Table("Roles", Schema = "Security")]
+    [Table("roles", Schema = "security")]
     public class Role
     {
         [Key]
-        [Column("RoleId")]
+        [Column("role_id")]
         public Guid Id { get; set; }
 
-        [Column("DateCreated")]
+        [Column("date_created")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 
-        [Column("Name")]
+        [Column("name")]
         [Required(ErrorMessage = "Name is required")]
         [StringLength(100, ErrorMessage = "Name can't be longer than 100 characters")]
         public string Name { get; set; }
 
-        [Column("Description")]
+        [Column("description")]
         [Required(ErrorMessage = "Description is required")]
         [StringLength(1000, ErrorMessage = "Description can't be longer than 1000 characters")]
         public string Description { get; set; }
 
-        [Column("IsActive")]
+        [Column("is_active")]
         public bool IsActive { get; set; } = true;
     }
 }
