@@ -115,6 +115,9 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
         public static List<School> Schools = new List<School>
         {
             new School { Id = Guid.NewGuid(), Name = "Austintown Fitch High School" },
+            new School { Id = Guid.NewGuid(), Name = "Badger Elementary School" },
+            new School { Id = Guid.NewGuid(), Name = "Badger Middle School" },
+            new School { Id = Guid.NewGuid(), Name = "Badger High School" },
             new School { Id = Guid.NewGuid(), Name = "Bloomfield Middle/High School" },
             new School { Id = Guid.NewGuid(), Name = "Bristol Elementary" },
             new School { Id = Guid.NewGuid(), Name = "Bristol Middle & High School" },
@@ -130,6 +133,9 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new School { Id = Guid.NewGuid(), Name = "Girard Junior High School" },
             new School { Id = Guid.NewGuid(), Name = "Glen Primary School" }, // Howland Local School District
             new School { Id = Guid.NewGuid(), Name = "H.C. Mines Elementary" }, // Howland Local School District
+            new School { Id = Guid.NewGuid(), Name = "Hubbard Elementary School" },
+            new School { Id = Guid.NewGuid(), Name = "Hubbard High School" },
+            new School { Id = Guid.NewGuid(), Name = "Hubbard Middle School" },
             new School { Id = Guid.NewGuid(), Name = "Howland High School" },
             new School { Id = Guid.NewGuid(), Name = "Howland Middle School" },
             new School { Id = Guid.NewGuid(), Name = "Liberty High School" },
@@ -173,7 +179,25 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("09/01/2004"), FirstName = "Bill", MiddleName = "Anthony", LastName = "Kriter" },
             new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("01/01/2005"), FirstName = "Sara", MiddleName = "Lynn", LastName = "Carter" },
             new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/01/2006"), FirstName = "John", MiddleName = "Dudley", LastName = "Timkin" },
-            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Abby", MiddleName = "Darla", LastName = "Smart" }
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("09/01/2008"), FirstName = "Abby", MiddleName = "Darla", LastName = "Smart" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/03/2008"), FirstName = "Ronald", MiddleName = "Burger", LastName = "McDonald" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("01/10/2009"), FirstName = "James", MiddleName = "Theodore", LastName = "Kirk" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Donald", MiddleName = "John", LastName = "Trump" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Barack", MiddleName = "Hussein", LastName = "Obama" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "William", MiddleName = "Jefferson", LastName = "Clinton" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Riahna", MiddleName = "Darla", LastName = "Fabian" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Janet", MiddleName = "Philomena", LastName = "Flores" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Daffy", MiddleName = "Junior", LastName = "Duck" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "William", MiddleName = "Daryl", LastName = "Smart" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Joe", MiddleName = "Bagga", LastName = "Donuts" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Roger", MiddleName = "The", LastName = "Doger" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Bernie", MiddleName = "QB", LastName = "Kosar" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Rictor", MiddleName = "The", LastName = "Scale" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Brian", MiddleName = "Donald", LastName = "Man" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Wilomena", MiddleName = "Darla", LastName = "Rogers" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Lovely", MiddleName = "Ionez", LastName = "Beefton" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Jane", MiddleName = "Alla", LastName = "Doe" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "William", MiddleName = "Henry", LastName = "Harrison" }
         };
 
         #endregion Students
@@ -235,6 +259,15 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
                 RegistrationDate = DateTime.UtcNow,
                 SchoolId = SchoolDictionary["Girard High School"].Id,
                 StudentId = Students[5].Id
+            },
+            new SchoolStudent
+            {
+                DateCreated = DateTime.UtcNow,
+                GradeLevel = "9",
+                Id = Guid.NewGuid(),
+                RegistrationDate = DateTime.UtcNow,
+                SchoolId = SchoolDictionary["Girard High School"].Id,
+                StudentId = Students[6].Id
             }
         };
 
