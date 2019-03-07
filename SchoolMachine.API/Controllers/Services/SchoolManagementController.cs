@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace SchoolMachine.API.Controllers
 {
+    /// <summary>
+    /// Will provide domain level services for schools
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class SchoolManagementController : ControllerBaseSchoolMachine
