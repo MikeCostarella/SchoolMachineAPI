@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolMachine.API.Extensions;
+using SchoolMachine.DataAccess.Entities;
 
 namespace SchoolMachine.API
 {
@@ -59,6 +60,12 @@ namespace SchoolMachine.API
         {
             if (env.IsDevelopment())
             {
+                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    var context = serviceScope.ServiceProvider.GetRequiredService<SchoolMachineContext>();
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
+                }
                 app.UseDeveloperExceptionPage();
             }
             else

@@ -197,7 +197,8 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Wilomena", MiddleName = "Darla", LastName = "Rogers" },
             new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Lovely", MiddleName = "Ionez", LastName = "Beefton" },
             new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "Jane", MiddleName = "Alla", LastName = "Doe" },
-            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "William", MiddleName = "Henry", LastName = "Harrison" }
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("12/10/2006"), FirstName = "William", MiddleName = "Henry", LastName = "Harrison" },
+            new Student { Id = Guid.NewGuid(), BirthDate = DateTime.Parse("02/10/2010"), FirstName = "Jared", MiddleName = "Henry", LastName = "Tullet" }
         };
 
         #endregion Students
