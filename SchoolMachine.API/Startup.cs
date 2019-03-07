@@ -60,12 +60,7 @@ namespace SchoolMachine.API
         {
             if (env.IsDevelopment())
             {
-                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-                {
-                    var context = serviceScope.ServiceProvider.GetRequiredService<SchoolMachineContext>();
-                    context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
-                }
+                app.DeleteAndRecreateDatabase();
                 app.UseDeveloperExceptionPage();
             }
             else

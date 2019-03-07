@@ -19,3 +19,8 @@ This project is responsible for the creation and maintenance of the code first d
 
 ## Data Seeding
 
+* Currently the project is set up to delete the database and recreate each time SchoolMachineAPI project is run.
+  * See SchoolMachine.API.Extensions.ApplicationBuilderExtensions.DeleteAndRecreateDatabase()
+  * Currently called in Startup.cs of the ShoolMachineAPI project for greenfield development.
+    * NOTE: STRONG MEDICINE.
+    * Make sure to remove this or turn it by application setting prior to deployment to production.
