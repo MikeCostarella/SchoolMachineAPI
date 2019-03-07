@@ -36,9 +36,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="internal_logs\" />
-    <Folder Include="logs\" />
-  </ItemGroup>
-
 </Project>
