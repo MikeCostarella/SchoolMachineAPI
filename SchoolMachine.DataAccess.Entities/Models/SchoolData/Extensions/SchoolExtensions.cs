@@ -1,6 +1,6 @@
 ﻿using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 
-namespace SchoolMachine.DataAccess.Entities.Extensions
+namespace SchoolMachine.DataAccess.Entities.Models.SchoolData.Extensions
 {
     public static class SchoolExtensions
     {

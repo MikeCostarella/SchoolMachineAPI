@@ -37,182 +37,182 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("af19034a-9b05-40cd-b669-1e3a20700a7e"),
+                            Id = new Guid("ac112e56-9409-422e-8e5d-2bc9ac5ab05b"),
                             Name = "Austintown Local School District"
                         },
                         new
                         {
-                            Id = new Guid("7dc25aba-4996-4903-9103-c8ccad9ec7eb"),
+                            Id = new Guid("9c74ed78-e932-4d4f-bdd8-c39fcf172995"),
                             Name = "Bloomfield-Mespo Local School District"
                         },
                         new
                         {
-                            Id = new Guid("2333535d-1a2b-49f2-a524-b42a339360e6"),
+                            Id = new Guid("98c8b304-ec0a-42cc-9842-57624fe6e3a8"),
                             Name = "Boardman Local School District"
                         },
                         new
                         {
-                            Id = new Guid("4f2ca199-aba5-41c8-9b17-1f998b74ef9b"),
+                            Id = new Guid("23abe574-14d1-4b99-8c75-977be6c0bce8"),
                             Name = "Bristol Local School District"
                         },
                         new
                         {
-                            Id = new Guid("80a3a720-15ad-40ac-a99b-b8fc3c25e0ad"),
+                            Id = new Guid("3648ed8f-f71c-4b97-bebc-75f4ba32c7d9"),
                             Name = "Brookfield Local School District"
                         },
                         new
                         {
-                            Id = new Guid("7e112678-f650-4579-8e09-cf499c694ddc"),
+                            Id = new Guid("568baef0-8f0c-454e-adb8-858857a1ce57"),
                             Name = "Canfield Local School District"
                         },
                         new
                         {
-                            Id = new Guid("da0c5498-16c3-4e0c-82bd-5ffc72499116"),
+                            Id = new Guid("0f4aac48-2179-4e3e-8036-71157353cfe8"),
                             Name = "Champion Local School District"
                         },
                         new
                         {
-                            Id = new Guid("5462e10a-d37d-460b-b397-44efb6e8ed97"),
+                            Id = new Guid("6f6c792e-eda8-44b4-acc3-7cafa6753700"),
                             Name = "Girard City School District"
                         },
                         new
                         {
-                            Id = new Guid("a2adc3f9-8e43-4245-b39f-17ec9b885b89"),
+                            Id = new Guid("06a9e290-17f6-44ac-b879-2c92c29cc7c5"),
                             Name = "Howland Local School District"
                         },
                         new
                         {
-                            Id = new Guid("a85c7946-feea-4bbb-b9eb-55638af824a7"),
+                            Id = new Guid("080e36da-d385-4134-9cb2-37828dbbf64f"),
                             Name = "Hubbard Exempted Village School District"
                         },
                         new
                         {
-                            Id = new Guid("8d53de90-4bc2-4834-af8b-2d1613ab8b4d"),
+                            Id = new Guid("2096d914-933d-4794-9cf4-d0d589a6fc60"),
                             Name = "Howland Local School District"
                         },
                         new
                         {
-                            Id = new Guid("17710eba-149b-47b2-ab53-280296f8fa93"),
+                            Id = new Guid("0be7b00a-c3eb-4660-bdac-789284fed347"),
                             Name = "Hubbard Exempted Village School District"
                         },
                         new
                         {
-                            Id = new Guid("e298ba9f-09b1-453d-9437-b0fcf05de2a6"),
+                            Id = new Guid("255945ec-8f13-44cc-b3e0-5e6971bb6819"),
                             Name = "Jackson-Milton Local School District"
                         },
                         new
                         {
-                            Id = new Guid("ba0197d4-49dd-4e17-8d0e-f2c714f07b48"),
+                            Id = new Guid("278dd3a4-d13f-4d5d-b521-8d2d300bde5d"),
                             Name = "Joseph Badger Local School District"
                         },
                         new
                         {
-                            Id = new Guid("17deafb6-0c14-4ba9-8229-6d9e0b6431f5"),
+                            Id = new Guid("5bdfb4a0-ebe7-4a9a-89d6-db4abe1ca2f2"),
                             Name = "LaBrae Local School District"
                         },
                         new
                         {
-                            Id = new Guid("175a7430-8fe5-460d-803b-5ee5cab7bbb2"),
+                            Id = new Guid("462dd80c-80ba-4772-b9db-725b37761e63"),
                             Name = "Lakeview Local School District"
                         },
                         new
                         {
-                            Id = new Guid("5079bbd1-ddee-4db8-b442-74932ad3899c"),
+                            Id = new Guid("a502223e-927f-4d66-a811-0197ea69c8e4"),
                             Name = "Liberty Local School District"
                         },
                         new
                         {
-                            Id = new Guid("c2bbbc3d-054b-47e5-b5f3-53810bb1621b"),
+                            Id = new Guid("0a7b30b9-844d-4f40-bc05-7228cccc1ee9"),
                             Name = "Lordstown Local School District"
                         },
                         new
                         {
-                            Id = new Guid("f44f30f6-0c7e-41ba-acc4-10b5324b093a"),
+                            Id = new Guid("31777f11-332d-4083-a01c-4e4fdaa03d48"),
                             Name = "Lowellville Local School District"
                         },
                         new
                         {
-                            Id = new Guid("37606e42-c5e6-4dcd-bedd-c47510a30b3f"),
+                            Id = new Guid("da9f6314-5dad-4442-a919-088612be16de"),
                             Name = "Maplewood Local School District"
                         },
                         new
                         {
-                            Id = new Guid("d55d6520-f910-4062-87ca-e74eee9689a8"),
+                            Id = new Guid("f61479af-1ef2-451c-a624-44149eb85db6"),
                             Name = "Mathews Local School District"
                         },
                         new
                         {
-                            Id = new Guid("88835e1e-51a0-473f-b860-c3b550fc5be8"),
+                            Id = new Guid("9f2df305-1d70-4c82-9e0f-8498ddeca2df"),
                             Name = "McDonald Local School District"
                         },
                         new
                         {
-                            Id = new Guid("0d484526-9b1b-4cf1-b46f-8eebe5991d7e"),
+                            Id = new Guid("b3df86d3-1345-40d0-9edc-ecb978ff9356"),
                             Name = "Newton Falls Exempted Village School District"
                         },
                         new
                         {
-                            Id = new Guid("829dbcd7-9c24-49db-b976-05951cc9599b"),
+                            Id = new Guid("9aca2523-779d-47f8-a1df-3c5db0b5b7a4"),
                             Name = "Niles City School District"
                         },
                         new
                         {
-                            Id = new Guid("58f02df8-aca2-429e-ba40-58a33fc384af"),
+                            Id = new Guid("37892e5e-f6b8-4dd6-abd6-a61c84923002"),
                             Name = "Sebring Local School District"
                         },
                         new
                         {
-                            Id = new Guid("2473faa7-036c-491b-80d3-d96a13ec7ae4"),
+                            Id = new Guid("6fb4e100-a0db-495c-9322-5acea50bbadc"),
                             Name = "Southington Local School District"
                         },
                         new
                         {
-                            Id = new Guid("f21437d5-2001-432d-b78b-498f83f7ae66"),
+                            Id = new Guid("d500c683-6b0d-405a-a433-09d8006753a8"),
                             Name = "South Range Local School District"
                         },
                         new
                         {
-                            Id = new Guid("a8c69e3c-7c46-47d0-9116-1ee6e74e7119"),
+                            Id = new Guid("936d451e-800d-4149-bc69-347dcb2b817a"),
                             Name = "Springfield Local School District"
                         },
                         new
                         {
-                            Id = new Guid("e9aed448-91bf-499a-97ea-619e8a1a73bf"),
+                            Id = new Guid("2836f926-6fdb-441b-8bef-b07092e2b2e6"),
                             Name = "Struthers City School District"
                         },
                         new
                         {
-                            Id = new Guid("b89ac4fa-156a-44b0-bc77-867f0adc866f"),
+                            Id = new Guid("689be0e3-d639-46d7-803d-78322debf360"),
                             Name = "Trumbull Career & Technical Center"
                         },
                         new
                         {
-                            Id = new Guid("be91dc50-b90b-4ece-9b9f-e4ae71ace0c3"),
+                            Id = new Guid("f26c3c96-42cc-4990-96e2-e61a586cee5f"),
                             Name = "Trumbull County Educational Service Center"
                         },
                         new
                         {
-                            Id = new Guid("e43a4044-9a5d-4780-a857-57a804d661c8"),
+                            Id = new Guid("c1c05dc2-bff7-4f3f-a779-be43c205a24f"),
                             Name = "Warren City School District"
                         },
                         new
                         {
-                            Id = new Guid("09a4f24d-2b9f-437a-8148-b7180d350254"),
+                            Id = new Guid("627708e4-3165-4381-9092-92c735bf119e"),
                             Name = "Weathersfield Local School District"
                         },
                         new
                         {
-                            Id = new Guid("cc32fcc9-78b6-4398-96e3-bdc3f1448704"),
+                            Id = new Guid("0daaa034-31dd-4b03-adbc-ba3cd6d7e5b1"),
                             Name = "West Branch Local School District"
                         },
                         new
                         {
-                            Id = new Guid("41495d82-ba39-44df-b360-279d1bc4b2f6"),
+                            Id = new Guid("4bb93135-e5eb-4ead-b6f9-f17a76eccea8"),
                             Name = "Western Reserve Local School District"
                         },
                         new
                         {
-                            Id = new Guid("cd381eb2-ca3b-476c-a76f-b7ed71739278"),
+                            Id = new Guid("b93c127b-6944-436f-9449-5603d777cc2a"),
                             Name = "Youngstown City School District"
                         });
                 });
@@ -250,123 +250,123 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("247d8161-1415-47cb-aca3-284e300916a8"),
+                            Id = new Guid("d04ea3d4-759b-4127-a748-ccbe1d1225e6"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("af19034a-9b05-40cd-b669-1e3a20700a7e"),
-                            SchoolId = new Guid("5196a610-8b03-42b1-a808-65d54d5314d5"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(2426)
+                            DistrictId = new Guid("ac112e56-9409-422e-8e5d-2bc9ac5ab05b"),
+                            SchoolId = new Guid("e2bf738c-c3e1-4b3f-bb5e-e9b39916a101"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(6905)
                         },
                         new
                         {
-                            Id = new Guid("bcf7996b-6eed-494a-98a9-7605a0a61df4"),
+                            Id = new Guid("1a4b1bee-d5e7-47bd-8e7c-514b67fb132d"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("7dc25aba-4996-4903-9103-c8ccad9ec7eb"),
-                            SchoolId = new Guid("fbbed763-515c-48d9-9c8e-98ae6b64b2ce"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(2980)
+                            DistrictId = new Guid("9c74ed78-e932-4d4f-bdd8-c39fcf172995"),
+                            SchoolId = new Guid("add594cf-b745-485a-ac80-54a6dc50d5d1"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7475)
                         },
                         new
                         {
-                            Id = new Guid("9d071f7a-1464-4e37-abe9-a6a8c9070df9"),
+                            Id = new Guid("33141cf3-5b93-4190-9c7e-7c8dd35aec78"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("7dc25aba-4996-4903-9103-c8ccad9ec7eb"),
-                            SchoolId = new Guid("30aa33a9-454b-45ef-a33a-13c149aaf909"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(2992)
+                            DistrictId = new Guid("9c74ed78-e932-4d4f-bdd8-c39fcf172995"),
+                            SchoolId = new Guid("cbc08341-7a0d-4acf-a5e7-6960c68b813b"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7488)
                         },
                         new
                         {
-                            Id = new Guid("801f5d98-bc67-483f-90aa-0011910e97ae"),
+                            Id = new Guid("771f5f0b-1a39-4d1c-860a-dd8d04258a2c"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("4f2ca199-aba5-41c8-9b17-1f998b74ef9b"),
-                            SchoolId = new Guid("5044182c-8159-494a-917c-61e7ea88da67"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3005)
+                            DistrictId = new Guid("23abe574-14d1-4b99-8c75-977be6c0bce8"),
+                            SchoolId = new Guid("f95acc0c-78c7-4a2a-8dcb-da5a40ac1041"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7496)
                         },
                         new
                         {
-                            Id = new Guid("97e786f8-9085-402a-80a3-4c0b894a5d2e"),
+                            Id = new Guid("1529f759-156d-47b7-9b27-b6b6422e3113"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("4f2ca199-aba5-41c8-9b17-1f998b74ef9b"),
-                            SchoolId = new Guid("19ff2588-3584-4451-b149-728b403bcd77"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3014)
+                            DistrictId = new Guid("23abe574-14d1-4b99-8c75-977be6c0bce8"),
+                            SchoolId = new Guid("6c9536d4-a77d-450e-aeef-8f3d1936d59f"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7505)
                         },
                         new
                         {
-                            Id = new Guid("b029c316-1117-44c3-9fec-2961d39e8fb0"),
+                            Id = new Guid("cfca42da-8562-4df2-8950-6d54c410ca64"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("80a3a720-15ad-40ac-a99b-b8fc3c25e0ad"),
-                            SchoolId = new Guid("ea306521-8580-481f-8465-1975e4edc967"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3024)
+                            DistrictId = new Guid("3648ed8f-f71c-4b97-bebc-75f4ba32c7d9"),
+                            SchoolId = new Guid("1d580cde-3263-493f-be4b-760de01713e6"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7515)
                         },
                         new
                         {
-                            Id = new Guid("954b859c-c18b-418b-a908-ed2979b692fd"),
+                            Id = new Guid("d8ed4439-6d8f-42b2-bac5-56186b0baa6f"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("80a3a720-15ad-40ac-a99b-b8fc3c25e0ad"),
-                            SchoolId = new Guid("72c09015-3818-4dde-ad25-9d1f74666cca"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3032)
+                            DistrictId = new Guid("3648ed8f-f71c-4b97-bebc-75f4ba32c7d9"),
+                            SchoolId = new Guid("012bc14a-396e-4074-b1a3-1b4d027fd53e"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7529)
                         },
                         new
                         {
-                            Id = new Guid("b34ccb5f-40bc-4748-87a1-cac0a7f6c2ea"),
+                            Id = new Guid("e15d9f80-1122-4052-8b2d-e7d338ac5b9e"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("80a3a720-15ad-40ac-a99b-b8fc3c25e0ad"),
-                            SchoolId = new Guid("a0f3d3be-fad9-4271-b985-7053b711ddd0"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3040)
+                            DistrictId = new Guid("3648ed8f-f71c-4b97-bebc-75f4ba32c7d9"),
+                            SchoolId = new Guid("4b8bee85-3673-4ee6-8f2e-f5535f5f04ca"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7537)
                         },
                         new
                         {
-                            Id = new Guid("b19a8487-7379-4d35-bed5-26cba9eadf62"),
+                            Id = new Guid("dfec2780-1ff7-408b-b412-10fe8d8df115"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("da0c5498-16c3-4e0c-82bd-5ffc72499116"),
-                            SchoolId = new Guid("d7622023-d0f7-46dc-91b2-2115dd85bf59"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3049)
+                            DistrictId = new Guid("0f4aac48-2179-4e3e-8036-71157353cfe8"),
+                            SchoolId = new Guid("eb5f060c-6df2-4eb2-b9a5-5acf85b02088"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7546)
                         },
                         new
                         {
-                            Id = new Guid("40b70eb0-c1fb-4f22-81ba-216b61b9f619"),
+                            Id = new Guid("afdb099c-081c-4e44-9914-573b19d98505"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("da0c5498-16c3-4e0c-82bd-5ffc72499116"),
-                            SchoolId = new Guid("cebf61e5-b9bd-4425-8569-25624346559b"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3058)
+                            DistrictId = new Guid("0f4aac48-2179-4e3e-8036-71157353cfe8"),
+                            SchoolId = new Guid("e6f5652d-30c9-4e5d-975c-f63dbe97ed7b"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7555)
                         },
                         new
                         {
-                            Id = new Guid("5c74e792-347a-417d-9931-393123741ab1"),
+                            Id = new Guid("383dc10e-bf4c-4da0-a5b9-d4b048ef8873"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("da0c5498-16c3-4e0c-82bd-5ffc72499116"),
-                            SchoolId = new Guid("441f7072-921c-4ae7-83dc-9829e9249fdd"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3066)
+                            DistrictId = new Guid("0f4aac48-2179-4e3e-8036-71157353cfe8"),
+                            SchoolId = new Guid("4c402f06-7e83-454d-9c57-286de97816f9"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7563)
                         },
                         new
                         {
-                            Id = new Guid("6ea6883b-4660-4bf3-8d94-2f15e2dcc659"),
+                            Id = new Guid("dae221d5-5baf-47e8-894f-3751ba879e37"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("5462e10a-d37d-460b-b397-44efb6e8ed97"),
-                            SchoolId = new Guid("dc8c4a32-c1b1-4f05-b7fc-b39e3d90cb34"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3077)
+                            DistrictId = new Guid("6f6c792e-eda8-44b4-acc3-7cafa6753700"),
+                            SchoolId = new Guid("b7c65e6a-5581-4ce9-b8d6-dddf4aff0552"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7572)
                         },
                         new
                         {
-                            Id = new Guid("c170809d-c8a4-487e-a110-e0382127be3a"),
+                            Id = new Guid("096866ca-1831-4ddf-8822-e9c05512d254"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("5462e10a-d37d-460b-b397-44efb6e8ed97"),
-                            SchoolId = new Guid("e5cfc991-c7f2-49b1-b01c-cd0278b712bd"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3084)
+                            DistrictId = new Guid("6f6c792e-eda8-44b4-acc3-7cafa6753700"),
+                            SchoolId = new Guid("81aa83c9-a7b5-4993-b896-a017ef4e64a9"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7580)
                         },
                         new
                         {
-                            Id = new Guid("87dfebe7-e94e-4185-9c45-3e8aa3bce2e3"),
+                            Id = new Guid("a9304f5f-0b24-4cd1-ade6-42c72606e53c"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("5462e10a-d37d-460b-b397-44efb6e8ed97"),
-                            SchoolId = new Guid("08ce76cf-1d7b-4f51-9f04-557506c16c4f"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3092)
+                            DistrictId = new Guid("6f6c792e-eda8-44b4-acc3-7cafa6753700"),
+                            SchoolId = new Guid("f226e0ad-af8d-4dc7-bc71-517dfd3752a5"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7588)
                         },
                         new
                         {
-                            Id = new Guid("603ca2a5-7f32-4a40-89ac-86a1769f61fc"),
+                            Id = new Guid("0454cb94-67d9-4595-ba1b-ef74c78ca84a"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DistrictId = new Guid("5462e10a-d37d-460b-b397-44efb6e8ed97"),
-                            SchoolId = new Guid("837c19e9-70cc-4c49-b55c-41f659d518c8"),
-                            StartDate = new DateTime(2019, 3, 6, 21, 58, 52, 309, DateTimeKind.Utc).AddTicks(3100)
+                            DistrictId = new Guid("6f6c792e-eda8-44b4-acc3-7cafa6753700"),
+                            SchoolId = new Guid("b17919e5-9077-4379-a7c7-7d79a93a6179"),
+                            StartDate = new DateTime(2019, 3, 7, 0, 44, 49, 566, DateTimeKind.Utc).AddTicks(7598)
                         });
                 });
 
@@ -400,8 +400,8 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c30fcad3-1662-4f7b-abbf-440b5dc77443"),
-                            DateCreated = new DateTime(2019, 3, 6, 21, 58, 52, 307, DateTimeKind.Utc).AddTicks(7144),
+                            Id = new Guid("4b8acc42-896b-4637-83b8-e153d647a974"),
+                            DateCreated = new DateTime(2019, 3, 7, 0, 44, 49, 564, DateTimeKind.Utc).AddTicks(9373),
                             Description = "Total access to all other roles",
                             IsActive = true,
                             Name = "System Administrator"
@@ -458,6 +458,10 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("TeamId");
+
                     b.ToTable("team_role","security");
                 });
 
@@ -478,6 +482,10 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TeamId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("team_user","security");
                 });
@@ -533,8 +541,8 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("40a63361-6277-479c-84fc-6183a8d2a949"),
-                            DateCreated = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(5121),
+                            Id = new Guid("2f09d6c4-424c-4333-be6c-d0510e3bd51a"),
+                            DateCreated = new DateTime(2019, 3, 7, 0, 44, 49, 568, DateTimeKind.Utc).AddTicks(124),
                             EmailAddress = "auser1@email.com",
                             FirstName = "A",
                             IsActive = true,
@@ -562,6 +570,10 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
                     b.ToTable("user_role","security");
                 });
 
@@ -583,117 +595,117 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5196a610-8b03-42b1-a808-65d54d5314d5"),
+                            Id = new Guid("e2bf738c-c3e1-4b3f-bb5e-e9b39916a101"),
                             Name = "Austintown Fitch High School"
                         },
                         new
                         {
-                            Id = new Guid("fbbed763-515c-48d9-9c8e-98ae6b64b2ce"),
+                            Id = new Guid("add594cf-b745-485a-ac80-54a6dc50d5d1"),
                             Name = "Bloomfield Middle/High School"
                         },
                         new
                         {
-                            Id = new Guid("5044182c-8159-494a-917c-61e7ea88da67"),
+                            Id = new Guid("f95acc0c-78c7-4a2a-8dcb-da5a40ac1041"),
                             Name = "Bristol Elementary"
                         },
                         new
                         {
-                            Id = new Guid("19ff2588-3584-4451-b149-728b403bcd77"),
+                            Id = new Guid("6c9536d4-a77d-450e-aeef-8f3d1936d59f"),
                             Name = "Bristol Middle & High School"
                         },
                         new
                         {
-                            Id = new Guid("ea306521-8580-481f-8465-1975e4edc967"),
+                            Id = new Guid("1d580cde-3263-493f-be4b-760de01713e6"),
                             Name = "Brookfield Elementary School"
                         },
                         new
                         {
-                            Id = new Guid("72c09015-3818-4dde-ad25-9d1f74666cca"),
+                            Id = new Guid("012bc14a-396e-4074-b1a3-1b4d027fd53e"),
                             Name = "Brookfield Middle School"
                         },
                         new
                         {
-                            Id = new Guid("a0f3d3be-fad9-4271-b985-7053b711ddd0"),
+                            Id = new Guid("4b8bee85-3673-4ee6-8f2e-f5535f5f04ca"),
                             Name = "Brookfield High School"
                         },
                         new
                         {
-                            Id = new Guid("816bb6cb-6521-4a5c-a2d8-861c15ae1f23"),
+                            Id = new Guid("b821dc6f-0c54-43c4-beaf-823df2afedab"),
                             Name = "Canfield High School"
                         },
                         new
                         {
-                            Id = new Guid("d7622023-d0f7-46dc-91b2-2115dd85bf59"),
+                            Id = new Guid("eb5f060c-6df2-4eb2-b9a5-5acf85b02088"),
                             Name = "Central Elementary"
                         },
                         new
                         {
-                            Id = new Guid("cebf61e5-b9bd-4425-8569-25624346559b"),
+                            Id = new Guid("e6f5652d-30c9-4e5d-975c-f63dbe97ed7b"),
                             Name = "Champion High School"
                         },
                         new
                         {
-                            Id = new Guid("441f7072-921c-4ae7-83dc-9829e9249fdd"),
+                            Id = new Guid("4c402f06-7e83-454d-9c57-286de97816f9"),
                             Name = "Champion Middle School"
                         },
                         new
                         {
-                            Id = new Guid("dc8c4a32-c1b1-4f05-b7fc-b39e3d90cb34"),
+                            Id = new Guid("b7c65e6a-5581-4ce9-b8d6-dddf4aff0552"),
                             Name = "Girard High School"
                         },
                         new
                         {
-                            Id = new Guid("e5cfc991-c7f2-49b1-b01c-cd0278b712bd"),
+                            Id = new Guid("81aa83c9-a7b5-4993-b896-a017ef4e64a9"),
                             Name = "Girard Intermediate"
                         },
                         new
                         {
-                            Id = new Guid("08ce76cf-1d7b-4f51-9f04-557506c16c4f"),
+                            Id = new Guid("f226e0ad-af8d-4dc7-bc71-517dfd3752a5"),
                             Name = "Girard Junior High School"
                         },
                         new
                         {
-                            Id = new Guid("c924a9d2-244a-4886-bc7b-8c7e2d26ffe8"),
+                            Id = new Guid("d1004426-cbe3-4b82-bbe5-ff054065f290"),
                             Name = "Glen Primary School"
                         },
                         new
                         {
-                            Id = new Guid("a7782fc8-1996-4793-8202-22bc4da62b19"),
+                            Id = new Guid("552c37e8-d58e-4bd9-bbe5-84904b93c1b4"),
                             Name = "H.C. Mines Elementary"
                         },
                         new
                         {
-                            Id = new Guid("69485dff-e8a3-4289-bb6e-0e49c3adf80b"),
+                            Id = new Guid("f769f34d-81c0-4f72-9f1e-7604f2754dce"),
                             Name = "Howland High School"
                         },
                         new
                         {
-                            Id = new Guid("d95323a9-5afb-405f-877d-ef3a729876ef"),
+                            Id = new Guid("b996f4c2-58ee-49e2-b9b8-ab185c616222"),
                             Name = "Howland Middle School"
                         },
                         new
                         {
-                            Id = new Guid("8d13f86c-2ad1-4388-9549-47095efa80e2"),
+                            Id = new Guid("c868b914-de91-4fe0-b2df-acc76573094a"),
                             Name = "Liberty High School"
                         },
                         new
                         {
-                            Id = new Guid("30aa33a9-454b-45ef-a33a-13c149aaf909"),
+                            Id = new Guid("cbc08341-7a0d-4acf-a5e7-6960c68b813b"),
                             Name = "Mesopatamia Elementary"
                         },
                         new
                         {
-                            Id = new Guid("172d5551-2338-4782-ac1a-bb6fd4d3740a"),
+                            Id = new Guid("11671033-1aa8-4ac8-9ed0-2a0a4878047a"),
                             Name = "North Road Intermediate"
                         },
                         new
                         {
-                            Id = new Guid("837c19e9-70cc-4c49-b55c-41f659d518c8"),
+                            Id = new Guid("b17919e5-9077-4379-a7c7-7d79a93a6179"),
                             Name = "Prospect Elementary"
                         },
                         new
                         {
-                            Id = new Guid("66a84276-387a-48d4-a9da-e5c85acb19f4"),
+                            Id = new Guid("149fc309-51e7-4fd0-bc28-076373e400f0"),
                             Name = "Springs Primary School"
                         });
                 });
@@ -732,57 +744,57 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fd705a62-0488-4b98-b1b7-5f911879b8b8"),
-                            DateCreated = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(48),
+                            Id = new Guid("eee0f271-a2a7-473e-88eb-cb0a6bae05db"),
+                            DateCreated = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(4752),
                             GradeLevel = "9",
-                            RegistrationDate = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(1498),
-                            SchoolId = new Guid("5196a610-8b03-42b1-a808-65d54d5314d5"),
-                            StudentId = new Guid("64c3e34d-d1a1-4c3f-9c8f-1a5df56e76d3")
+                            RegistrationDate = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(6168),
+                            SchoolId = new Guid("e2bf738c-c3e1-4b3f-bb5e-e9b39916a101"),
+                            StudentId = new Guid("1b254eff-dc80-4908-a0f9-d1e4ea092e42")
                         },
                         new
                         {
-                            Id = new Guid("c6dffc63-0a0f-4c64-9aea-8d19bab70c52"),
-                            DateCreated = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3430),
+                            Id = new Guid("ff543df7-139a-4c02-8d25-f2103e076afa"),
+                            DateCreated = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8802),
                             GradeLevel = "9",
-                            RegistrationDate = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3445),
-                            SchoolId = new Guid("fbbed763-515c-48d9-9c8e-98ae6b64b2ce"),
-                            StudentId = new Guid("298e516a-83ce-4892-9aca-de0146a130ca")
+                            RegistrationDate = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8823),
+                            SchoolId = new Guid("add594cf-b745-485a-ac80-54a6dc50d5d1"),
+                            StudentId = new Guid("93299e96-c240-4c64-89c5-3734edd8e0ce")
                         },
                         new
                         {
-                            Id = new Guid("a719f43c-0083-4343-b8fb-690949dd90c9"),
-                            DateCreated = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3468),
+                            Id = new Guid("7bd896b1-709e-493b-afca-f69aa11a53f1"),
+                            DateCreated = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8846),
                             GradeLevel = "9",
-                            RegistrationDate = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3470),
-                            SchoolId = new Guid("fbbed763-515c-48d9-9c8e-98ae6b64b2ce"),
-                            StudentId = new Guid("49644507-908c-42ca-b7a4-4a787e7ba1d5")
+                            RegistrationDate = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8848),
+                            SchoolId = new Guid("add594cf-b745-485a-ac80-54a6dc50d5d1"),
+                            StudentId = new Guid("cc051008-6703-4e00-b096-88f70e7309eb")
                         },
                         new
                         {
-                            Id = new Guid("917a14b0-b0d0-4598-b215-2e231cb55d5b"),
-                            DateCreated = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3475),
+                            Id = new Guid("014772bd-8e4b-4837-a057-53918472ff97"),
+                            DateCreated = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8852),
                             GradeLevel = "9",
-                            RegistrationDate = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3476),
-                            SchoolId = new Guid("dc8c4a32-c1b1-4f05-b7fc-b39e3d90cb34"),
-                            StudentId = new Guid("dc799f62-5825-417d-97d6-23b95d0c0e7a")
+                            RegistrationDate = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8854),
+                            SchoolId = new Guid("b7c65e6a-5581-4ce9-b8d6-dddf4aff0552"),
+                            StudentId = new Guid("1010d7a6-a45f-410b-9a39-9eb01123de24")
                         },
                         new
                         {
-                            Id = new Guid("ccd5bc5a-cc82-4135-b2eb-d65f841671e5"),
-                            DateCreated = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3480),
+                            Id = new Guid("4674f7e6-3c8c-4185-8452-bcc55882011a"),
+                            DateCreated = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8859),
                             GradeLevel = "9",
-                            RegistrationDate = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3481),
-                            SchoolId = new Guid("dc8c4a32-c1b1-4f05-b7fc-b39e3d90cb34"),
-                            StudentId = new Guid("a22a800c-35bc-4b03-9727-50faba4a03b5")
+                            RegistrationDate = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8861),
+                            SchoolId = new Guid("b7c65e6a-5581-4ce9-b8d6-dddf4aff0552"),
+                            StudentId = new Guid("13bc301d-929a-43c8-893f-a939abbbf145")
                         },
                         new
                         {
-                            Id = new Guid("77b30c82-8e53-45df-ab7b-ed79280b54af"),
-                            DateCreated = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3487),
+                            Id = new Guid("53939f7f-729a-416d-9483-8ea9d5e26f52"),
+                            DateCreated = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8867),
                             GradeLevel = "9",
-                            RegistrationDate = new DateTime(2019, 3, 6, 21, 58, 52, 310, DateTimeKind.Utc).AddTicks(3488),
-                            SchoolId = new Guid("dc8c4a32-c1b1-4f05-b7fc-b39e3d90cb34"),
-                            StudentId = new Guid("cdbdfd16-39cd-4ba4-a852-6bcd3b85603a")
+                            RegistrationDate = new DateTime(2019, 3, 7, 0, 44, 49, 567, DateTimeKind.Utc).AddTicks(8868),
+                            SchoolId = new Guid("b7c65e6a-5581-4ce9-b8d6-dddf4aff0552"),
+                            StudentId = new Guid("975199a3-a6fd-487c-8687-2248c1989b0b")
                         });
                 });
 
@@ -817,7 +829,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("64c3e34d-d1a1-4c3f-9c8f-1a5df56e76d3"),
+                            Id = new Guid("1b254eff-dc80-4908-a0f9-d1e4ea092e42"),
                             BirthDate = new DateTime(2005, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "John",
                             LastName = "Abott",
@@ -825,7 +837,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("298e516a-83ce-4892-9aca-de0146a130ca"),
+                            Id = new Guid("93299e96-c240-4c64-89c5-3734edd8e0ce"),
                             BirthDate = new DateTime(2005, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Ann",
                             LastName = "Smith",
@@ -833,7 +845,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("49644507-908c-42ca-b7a4-4a787e7ba1d5"),
+                            Id = new Guid("cc051008-6703-4e00-b096-88f70e7309eb"),
                             BirthDate = new DateTime(2004, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bill",
                             LastName = "Kriter",
@@ -841,7 +853,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("dc799f62-5825-417d-97d6-23b95d0c0e7a"),
+                            Id = new Guid("1010d7a6-a45f-410b-9a39-9eb01123de24"),
                             BirthDate = new DateTime(2005, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Sara",
                             LastName = "Carter",
@@ -849,7 +861,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a22a800c-35bc-4b03-9727-50faba4a03b5"),
+                            Id = new Guid("13bc301d-929a-43c8-893f-a939abbbf145"),
                             BirthDate = new DateTime(2006, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "John",
                             LastName = "Timkin",
@@ -857,7 +869,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         },
                         new
                         {
-                            Id = new Guid("cdbdfd16-39cd-4ba4-a852-6bcd3b85603a"),
+                            Id = new Guid("975199a3-a6fd-487c-8687-2248c1989b0b"),
                             BirthDate = new DateTime(2006, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Abby",
                             LastName = "Smart",
@@ -878,6 +890,45 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("SchoolMachine.DataAccess.Entities.Models.Security.TeamRole", b =>
+                {
+                    b.HasOne("SchoolMachine.DataAccess.Entities.Models.Security.Role", "Role")
+                        .WithMany("Teams")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SchoolMachine.DataAccess.Entities.Models.Security.Team", "Team")
+                        .WithMany("Roles")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SchoolMachine.DataAccess.Entities.Models.Security.TeamUser", b =>
+                {
+                    b.HasOne("SchoolMachine.DataAccess.Entities.Models.Security.Team", "Team")
+                        .WithMany("Users")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SchoolMachine.DataAccess.Entities.Models.Security.User", "User")
+                        .WithMany("Teams")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SchoolMachine.DataAccess.Entities.Models.Security.UserRole", b =>
+                {
+                    b.HasOne("SchoolMachine.DataAccess.Entities.Models.Security.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SchoolMachine.DataAccess.Entities.Models.Security.User", "User")
+                        .WithMany("Roles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("SchoolMachine.DataAccess.Entities.SchoolData.Models.SchoolStudent", b =>
                 {
                     b.HasOne("SchoolMachine.DataAccess.Entities.SchoolData.Models.School", "School")
@@ -886,7 +937,7 @@ namespace SchoolMachine.DataAccess.Entities.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SchoolMachine.DataAccess.Entities.SchoolData.Models.Student", "Student")
-                        .WithMany("SchoolStudents")
+                        .WithMany("Schools")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

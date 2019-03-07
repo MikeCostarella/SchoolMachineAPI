@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,9 +20,13 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
         [Column("role_id")]
         [Required(ErrorMessage = "Role Id is required")]
         public Guid RoleId { get; set; }
+        [JsonIgnore]
+        public Role Role { get; set; }
 
         [Column("team_id")]
         [Required(ErrorMessage = "Team Id is required")]
         public Guid TeamId { get; set; }
+        [JsonIgnore]
+        public Team Team { get; set; }
     }
 }

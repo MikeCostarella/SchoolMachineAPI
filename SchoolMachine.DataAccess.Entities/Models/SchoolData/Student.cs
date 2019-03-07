@@ -1,4 +1,5 @@
-﻿using SchoolMachine.DataAccess.Entities.Interfaces;
+﻿using Newtonsoft.Json;
+using SchoolMachine.DataAccess.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -32,6 +33,7 @@ namespace SchoolMachine.DataAccess.Entities.SchoolData.Models
         [Required(ErrorMessage = "Date of birth is required")]
         public DateTime BirthDate { get; set; }
 
-        public List<SchoolStudent> SchoolStudents { get; set; }
+        [JsonIgnore]
+        public List<SchoolStudent> Schools { get; set; }
     }
 }

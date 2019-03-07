@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,5 +33,11 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
 
         [Column("is_active")]
         public bool IsActive { get; set; } = true;
+
+        [JsonIgnore]
+        public List<TeamRole> Roles { get; set; }
+
+        [JsonIgnore]
+        public List<TeamUser> Users { get; set; }
     }
 }

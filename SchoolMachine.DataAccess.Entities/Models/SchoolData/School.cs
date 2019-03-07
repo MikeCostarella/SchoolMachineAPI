@@ -1,4 +1,5 @@
-﻿using SchoolMachine.DataAccess.Entities.Interfaces;
+﻿using Newtonsoft.Json;
+using SchoolMachine.DataAccess.Entities.Interfaces;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,10 @@ namespace SchoolMachine.DataAccess.Entities.SchoolData.Models
         [StringLength(100, ErrorMessage = "Name can't be longer than 100 characters")]
         public string Name { get; set; }
 
+        [JsonIgnore]
         public List<SchoolStudent> Students { get; set; }
+
+        [JsonIgnore]
         public List<DistrictSchool> Districts { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -49,6 +51,12 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
 
         [Column("password_salt")]
         public byte[] PasswordSalt { get; set; }
+
+        [JsonIgnore]
+        public List<UserRole> Roles { get; set; }
+
+        [JsonIgnore]
+        public List<TeamUser> Teams { get; set; }
 
     }
 }
