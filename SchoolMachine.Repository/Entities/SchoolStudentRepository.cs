@@ -1,6 +1,6 @@
 ﻿using SchoolMachine.Contracts.EntityRepositories;
 using SchoolMachine.DataAccess.Entities;
-using SchoolMachine.DataAccess.Entities.SchoolData.Models;
+using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,7 +4,7 @@ using Moq;
 using SchoolMachine.API.Controllers.CRUD;
 using SchoolMachine.API.Dtos;
 using SchoolMachine.API.UnitTests.Base;
-using SchoolMachine.DataAccess.Entities.SchoolData.Models;
+using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.SeedData;
 using System;
 using System.Collections.Generic;

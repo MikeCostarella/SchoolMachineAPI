@@ -4,12 +4,11 @@ using Moq;
 using SchoolMachine.API.Controllers;
 using SchoolMachine.API.Dtos;
 using SchoolMachine.API.UnitTests.Base;
-using SchoolMachine.DataAccess.Entities.SchoolData.Models;
+using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.SeedData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace SchoolMachine.API.UnitTests.CRUDServices
 {

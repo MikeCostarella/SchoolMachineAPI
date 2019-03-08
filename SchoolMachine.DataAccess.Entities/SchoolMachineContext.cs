@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.Models.Security;
-using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using SchoolMachine.DataAccess.Entities.SeedData;
 
 namespace SchoolMachine.DataAccess.Entities

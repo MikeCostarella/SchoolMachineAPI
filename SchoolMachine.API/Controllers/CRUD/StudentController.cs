@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -8,7 +7,7 @@ using SchoolMachine.API.Controllers.Base;
 using SchoolMachine.API.Dtos;
 using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Extensions.Base;
-using SchoolMachine.DataAccess.Entities.SchoolData.Models;
+using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 
 namespace SchoolMachine.API.Controllers
 {

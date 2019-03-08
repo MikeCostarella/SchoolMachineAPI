@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 
 namespace SchoolMachine.DataAccess.Entities.Models.SchoolData.Extensions
 {

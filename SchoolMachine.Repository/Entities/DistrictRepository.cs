@@ -28,6 +28,16 @@ namespace SchoolMachine.Repository.Entities
                     .FirstOrDefault();
         }
 
+        public async Task<IQueryable<School>> GetSchoolsByDistrictId(Guid districtId)
+        {
+            await Task.Delay(0);
+            var schools = from districtSchool in RepositoryContext.DistrictSchools
+                           join school in RepositoryContext.Schools on districtSchool.SchoolId equals school.Id
+                           where (districtSchool.DistrictId == districtId)
+                           select school;
+            return schools;
+        }
+
         public async Task CreateDistrict(District district)
         {
             district.Id = Guid.NewGuid();

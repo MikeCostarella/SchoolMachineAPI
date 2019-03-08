@@ -79,6 +79,27 @@ namespace SchoolMachine.API.Controllers.CRUD
         }
 
         /// <summary>
+        /// Gets Schools from the data repository by a unique District id
+        /// </summary>
+        /// <param name="districtId"></param>
+        /// <returns></returns>
+        [HttpGet("GetSchoolsByDistrictId", Name = "GetSchoolsByDistrictId")]
+        public async Task<IActionResult> GetSchoolsByDistrictId(Guid districtId)
+        {
+            try
+            {
+                var schools = await _repositoryWrapper.District.GetSchoolsByDistrictId(districtId);
+                _loggerManager.LogInfo($"Returned { schools.Count() } Schools from repository for District { districtId }.");
+                return Ok(schools);
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside GetSchoolsByStudentId action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        /// <summary>
         /// Creates a new district in the data respository based on a unique name
         /// </summary>
         /// <param name="districtDto"></param>

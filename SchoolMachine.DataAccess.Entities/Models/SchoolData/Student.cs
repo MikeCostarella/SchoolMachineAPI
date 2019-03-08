@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace SchoolMachine.DataAccess.Entities.SchoolData.Models
+namespace SchoolMachine.DataAccess.Entities.Models.SchoolData
 {
     [Table("student", Schema = "schooldata")]
     public class Student : IEntity, INamedEntity

@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using SchoolMachine.DataAccess.Entities.Interfaces;
-using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
