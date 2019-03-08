@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace SchoolMachine.API.Controllers.CRUD
 {
     /// <summary>
-    /// Provides CRUD functionality for the SchoolStudent object
+    /// Provides CRUD functionality for SchoolStudent(s)
     /// </summary>
     [Route("api/schoolstudent")]
     [ApiController]
@@ -30,16 +30,16 @@ namespace SchoolMachine.API.Controllers.CRUD
         #region Actions
 
         /// <summary>
-        /// Gets all SchoolStudent objects from the data repository
+        /// Gets all SchoolStudent(s) from the repository
         /// </summary>
-        /// <returns>IEnumerable of SchoolStudent(s) </returns>
+        /// <returns>IEnumerable of SchoolStudent(s)</returns>
         [HttpGet]
         public async Task<IActionResult> GetAllSchoolStudents()
         {
             try
             {
                 var schoolStudents = await _repositoryWrapper.SchoolStudent.GetAllSchoolStudents();
-                _loggerManager.LogInfo($"Returned all SchoolStudents from database.");
+                _loggerManager.LogInfo($"Returned { schoolStudents.Count() } SchoolStudents from repository.");
                 return Ok(schoolStudents);
             }
             catch (Exception ex)
@@ -121,7 +121,7 @@ namespace SchoolMachine.API.Controllers.CRUD
         }
 
         /// <summary>
-        /// Creates and saves a new SchoolStudent record in the data repository
+        /// Creates a new SchoolStudent in the repository
         /// </summary>
         /// <param name="schoolStudentDto"></param>
         [HttpPost("CreateSchoolStudent", Name = "CreateSchoolStudent")]
@@ -157,7 +157,7 @@ namespace SchoolMachine.API.Controllers.CRUD
         }
 
         /// <summary>
-        /// Updates a SchoolStudent object in the data store.
+        /// Updates a SchoolStudent, identified by its unique id, in the repository.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="schoolStudentDto"></param>
@@ -194,7 +194,7 @@ namespace SchoolMachine.API.Controllers.CRUD
         }
 
         /// <summary>
-        /// Deletes a SchoolStudent object form the data repository
+        /// Deletes a SchoolStudent, identified by its unique id, form the repository
         /// </summary>
         /// <param name="id"></param>
         [HttpDelete("{id}")]
