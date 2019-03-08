@@ -8,30 +8,6 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 {
     public static class DataSeeder
     {
-        #region Roles
-
-        private static Dictionary<string, Role> _roleDictionary;
-        public static Dictionary<string, Role> RoleDictionary {
-            get {
-                if (_roleDictionary == null)
-                {
-                    _roleDictionary = new Dictionary<string, Role>();
-                    foreach (var obj in Roles)
-                    {
-                        _roleDictionary[obj.Name] = obj;
-                    }
-                }
-                return _roleDictionary;
-            }
-            set { _roleDictionary = value; }
-        }
-        public static List<Role> Roles = new List<Role>
-        {
-            new Role { Id = Guid.NewGuid(), Name = "System Administrator", Description = "Total access to all other roles" }
-        };
-
-        #endregion Roles
-
         #region SchoolDistricts
 
         private static Dictionary<string, District> _schoolDistrictDictionary;
@@ -147,7 +123,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         #endregion Schools
 
-        #region SchoolDistrictSchools
+        #region DistrictSchools
 
         public static List<DistrictSchool> SchoolDistrictSchools = new List<DistrictSchool>
         {
@@ -168,7 +144,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Prospect Elementary"].Id, StartDate = DateTime.UtcNow },
         };
 
-        #endregion SchoolDistrictSchools
+        #endregion DistrictSchools
 
         #region Students
 
@@ -274,6 +250,44 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         #endregion SchoolStudents
 
+        #region Roles
+
+        private static Dictionary<string, Role> _roleDictionary;
+        public static Dictionary<string, Role> RoleDictionary
+        {
+            get
+            {
+                if (_roleDictionary == null)
+                {
+                    _roleDictionary = new Dictionary<string, Role>();
+                    foreach (var obj in Roles)
+                    {
+                        _roleDictionary[obj.Name] = obj;
+                    }
+                }
+                return _roleDictionary;
+            }
+            set { _roleDictionary = value; }
+        }
+        public static List<Role> Roles = new List<Role>
+        {
+            new Role { Id = Guid.NewGuid(), Name = "System Administrator", Description = "Total access to all other roles" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Create District Information", Description = "Can Create District Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Read District Information", Description = "Can Read District Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Update District Information", Description = "Can View District Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Delete District Information", Description = "Can Delete District Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Create School Information", Description = "Can Create School Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Read School Information", Description = "Can Read School Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Update School Information", Description = "Can View School Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Delete School Information", Description = "Can Delete School Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Create Student Information", Description = "Can Create Student Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Read Student Information", Description = "Can Read Student Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Update Student Information", Description = "Can View Student Information" },
+            new Role { Id = Guid.NewGuid(), Name = "Can Delete Student Information", Description = "Can Delete Student Information" }
+        };
+
+        #endregion Roles
+
         #region Users
 
         public static List<User> Users = new List<User>
@@ -282,15 +296,30 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             {
                 Id = Guid.NewGuid(),
                 DateCreated = DateTime.UtcNow,
-                EmailAddress = "auser1@email.com",
-                FirstName = "A",
+                EmailAddress = "CostarellaMike@gmail.com",
+                FirstName = "Mike",
                 IsActive = true,
-                LastName = "User1",
-                MiddleName = "A",
-                UserName = "auser1"
+                LastName = "Costarella",
+                MiddleName = "A.",
+                UserName = "MikeCostarella"
             }
         };
 
         #endregion Users
+
+        #region UserRoles
+
+        public static List<UserRole> UserRoles = new List<UserRole>
+        {
+            new UserRole
+            {
+                Id = Guid.NewGuid(),
+                DateCreated = DateTime.UtcNow,
+                RoleId = Roles[0].Id,
+                UserId = Users[0].Id
+            }
+        };
+
+        #endregion UserRoles
     }
 }

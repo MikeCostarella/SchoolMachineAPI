@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SchoolMachine.DataAccess.Entities.SchoolData.Models
 {
     [Table("school", Schema = "schooldata")]
-    public class School : IEntity
+    public class School : IEntity, INamedEntity
     {
         [Key]
         [Column("id")]
