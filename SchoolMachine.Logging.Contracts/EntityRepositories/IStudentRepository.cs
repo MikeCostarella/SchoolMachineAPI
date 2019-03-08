@@ -12,6 +12,8 @@ namespace SchoolMachine.Contracts.EntityRepositories
 
         Task<Student> GetStudentById(Guid studentId);
 
+        Task<IQueryable<School>> GetSchoolsByStudentId(Guid studentId);
+
         Task<IQueryable<Student>> GetStudentsBySchoolId(Guid schoolId);
 
         Task CreateStudent(Student student);

@@ -34,13 +34,23 @@ namespace SchoolMachine.Repository.Entities
                     .FirstOrDefault();
         }
 
+        public async Task<IQueryable<School>> GetSchoolsByStudentId(Guid studentId)
+        {
+            await Task.Delay(0);
+            var schools = from schoolStudent in RepositoryContext.SchoolStudents
+                           join school in RepositoryContext.Schools on schoolStudent.SchoolId equals school.Id
+                           where (schoolStudent.StudentId == studentId)
+                           select school;
+            return schools;
+        }
+
         public async Task<IQueryable<Student>> GetStudentsBySchoolId(Guid schoolId)
         {
             await Task.Delay(0);
             var students = from schoolStudent in RepositoryContext.SchoolStudents
-                                 join student in RepositoryContext.Students on schoolStudent.StudentId equals student.Id
+                           join student in RepositoryContext.Students on schoolStudent.StudentId equals student.Id
                            where (schoolStudent.SchoolId == schoolId)
-                                 select student;
+                           select student;
             return students;
         }
 

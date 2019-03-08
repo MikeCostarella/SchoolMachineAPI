@@ -89,15 +89,8 @@ namespace SchoolMachine.API.Controllers
         {
             try
             {
-                // ToDo: factor this into a join in the repository method
-                var schoolStudents = await _repositoryWrapper.SchoolStudent.SchoolStudentsByStudent(studentId);
-                var schools = new List<School>();
-                foreach (var schoolStudent in schoolStudents)
-                {
-                    var school = await _repositoryWrapper.School.GetSchoolById(schoolStudent.SchoolId);
-                    schools.Add(school);
-                }
-                _loggerManager.LogInfo($"Returned { schoolStudents.Count() } SchoolStudents from repository for Student { studentId }.");
+                var schools = await _repositoryWrapper.Student.GetSchoolsByStudentId(studentId);
+                _loggerManager.LogInfo($"Returned { schools.Count() } SchoolStudents from repository for Student { studentId }.");
                 return Ok(schools);
             }
             catch (Exception ex)
