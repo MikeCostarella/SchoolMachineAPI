@@ -1,6 +1,7 @@
 ﻿using SchoolMachine.DataAccess.Entities.SchoolData.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SchoolMachine.Contracts.EntityRepositories
@@ -10,6 +11,8 @@ namespace SchoolMachine.Contracts.EntityRepositories
         Task<IEnumerable<Student>> GetAllStudents();
 
         Task<Student> GetStudentById(Guid studentId);
+
+        Task<IQueryable<Student>> GetStudentsBySchoolId(Guid schoolId);
 
         Task CreateStudent(Student student);
 

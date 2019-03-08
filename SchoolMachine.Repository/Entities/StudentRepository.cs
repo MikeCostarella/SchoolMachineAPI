@@ -34,6 +34,16 @@ namespace SchoolMachine.Repository.Entities
                     .FirstOrDefault();
         }
 
+        public async Task<IQueryable<Student>> GetStudentsBySchoolId(Guid schoolId)
+        {
+            await Task.Delay(0);
+            var students = from schoolStudent in RepositoryContext.SchoolStudents
+                                 join student in RepositoryContext.Students on schoolStudent.StudentId equals student.Id
+                           where (schoolStudent.SchoolId == schoolId)
+                                 select student;
+            return students;
+        }
+
         public async Task CreateStudent(Student student)
         {
             student.Id = Guid.NewGuid();
