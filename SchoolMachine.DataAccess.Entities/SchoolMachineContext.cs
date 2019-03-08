@@ -35,8 +35,8 @@ namespace SchoolMachine.DataAccess.Entities
 
         #region SchoolData Schema
 
-        public DbSet<District> SchoolDistricts { get; set; }
-        public DbSet<DistrictSchool> SchoolDistrictSchools { get; set; }
+        public DbSet<District> Districts { get; set; }
+        public DbSet<DistrictSchool> DistrictSchools { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolStudent> SchoolStudents { get; set; }
         public DbSet<Student> Students { get; set; }

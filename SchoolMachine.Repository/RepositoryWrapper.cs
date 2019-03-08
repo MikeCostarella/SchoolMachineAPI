@@ -11,6 +11,8 @@ namespace SchoolMachine.Repository
 
         private SchoolMachineContext _repoContext;
 
+        private IDistrictRepository _district;
+        private IDistrictSchoolRepository _districtSchool;
         private ISchoolRepository _school;
         private ISchoolStudentRepository _schoolStudent;
         private IStudentRepository _student;
@@ -31,6 +33,34 @@ namespace SchoolMachine.Repository
         #endregion Constructors
 
         #region Repository Properties
+
+        public IDistrictRepository District
+        {
+            get
+            {
+                if (_district == null)
+                {
+                    _district = new DistrictRepository(_repoContext);
+                }
+
+                return _district;
+            }
+            set { _district = value; }
+        }
+
+        public IDistrictSchoolRepository DistrictSchool
+        {
+            get
+            {
+                if (_districtSchool == null)
+                {
+                    _districtSchool = new DistrictSchoolRepository(_repoContext);
+                }
+
+                return _districtSchool;
+            }
+            set { _districtSchool = value; }
+        }
 
         public ISchoolRepository School
         {
