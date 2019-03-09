@@ -7,7 +7,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 {
     public static class DataSeeder
     {
-        #region SchoolDistricts
+        #region Districts
 
         private static Dictionary<string, District> _schoolDistrictDictionary;
         public static Dictionary<string, District> SchoolDistrictDictionary
@@ -66,7 +66,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new District { Id = Guid.NewGuid(), Name = "Youngstown City School District" }
         };
 
-        #endregion SchoolDistricts
+        #endregion Districts
 
         #region Schools
 
@@ -118,7 +118,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new School { Id = Guid.NewGuid(), Name = "North Road Intermediate" }, // Howland Local School District
             new School { Id = Guid.NewGuid(), Name = "Prospect Elementary" }, // Girard City School District
             new School { Id = Guid.NewGuid(), Name = "Springs Primary School" }, // Howland Local School District
-            new School { Id = Guid.NewGuid(), Name = "Trumbull Career & Technical Center" }
+            new School { Id = Guid.NewGuid(), Name = "Trumbull Career & Technical Center" } // Multi-School District Owned
         };
 
         #endregion Schools
