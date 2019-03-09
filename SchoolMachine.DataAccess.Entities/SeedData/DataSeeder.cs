@@ -143,7 +143,16 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Intermediate"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Junior High School"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Prospect Elementary"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Trumbull Career & Technical Center"].Id, StartDate = DateTime.UtcNow }
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Trumbull Career & Technical Center"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Glen Primary School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["H.C. Mines Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["North Road Intermediate"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Howland High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Howland Middle School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Springs Primary School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Hubbard Exempted Village School District"].Id, SchoolId = SchoolDictionary["Hubbard Elementary School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Hubbard Exempted Village School District"].Id, SchoolId = SchoolDictionary["Hubbard High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Hubbard Exempted Village School District"].Id, SchoolId = SchoolDictionary["Hubbard Middle School"].Id, StartDate = DateTime.UtcNow }
         };
 
         #endregion DistrictSchools
