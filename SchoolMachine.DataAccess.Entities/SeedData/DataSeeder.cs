@@ -125,7 +125,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         #region DistrictSchools
 
-        public static List<DistrictSchool> SchoolDistrictSchools = new List<DistrictSchool>
+        public static List<DistrictSchool> DistrictSchools = new List<DistrictSchool>
         {
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Austintown Local School District"].Id, SchoolId = SchoolDictionary["Austintown Fitch High School"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Bloomfield-Mespo Local School District"].Id, SchoolId = SchoolDictionary["Bloomfield Middle/High School"].Id, StartDate = DateTime.UtcNow },

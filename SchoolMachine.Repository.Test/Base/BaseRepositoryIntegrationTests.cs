@@ -50,8 +50,8 @@ namespace SchoolMachine.Repository.Test.Base
                 Assert.IsTrue(SchoolMachineContext.Users.Count() >= DataSeeder.Users.Count()
                     , string.Format("Database has {0} Users and Seeder has {1}", SchoolMachineContext.Users.Count(), DataSeeder.Users.Count()));
 
-                Assert.IsTrue(SchoolMachineContext.DistrictSchools.Count() >= DataSeeder.SchoolDistrictSchools.Count()
-                    , string.Format("Database has {0} SchoolDistrictSchools and Seeder has {1}", SchoolMachineContext.DistrictSchools.Count(), DataSeeder.SchoolDistrictSchools.Count()));
+                Assert.IsTrue(SchoolMachineContext.DistrictSchools.Count() >= DataSeeder.DistrictSchools.Count()
+                    , string.Format("Database has {0} SchoolDistrictSchools and Seeder has {1}", SchoolMachineContext.DistrictSchools.Count(), DataSeeder.DistrictSchools.Count()));
 
                 Assert.IsTrue(SchoolMachineContext.SchoolStudents.Count() >= DataSeeder.SchoolStudents.Count()
                     , string.Format("Database has {0} SchoolStudents and Seeder has {1}", SchoolMachineContext.SchoolStudents.Count(), DataSeeder.SchoolStudents.Count()));
