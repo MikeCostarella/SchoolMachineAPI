@@ -29,6 +29,8 @@ namespace SchoolMachine.API.UnitTests.Base
             _mapper = _mapperConfiguration.CreateMapper();
             _mapper = new Mapper(_mapperConfiguration);
             _repositoryWrapper = Mock.Of<RepositoryWrapper>();
+            _repositoryWrapper.District = Mock.Of<IDistrictRepository>();
+            _repositoryWrapper.DistrictSchool = Mock.Of<IDistrictSchoolRepository>();
             _repositoryWrapper.School = Mock.Of<ISchoolRepository>();
             _repositoryWrapper.SchoolStudent = Mock.Of<ISchoolStudentRepository>();
             _repositoryWrapper.Student = Mock.Of<IStudentRepository>();

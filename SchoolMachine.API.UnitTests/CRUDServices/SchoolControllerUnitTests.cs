@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SchoolMachine.API.Controllers;
+using SchoolMachine.API.Controllers.CRUD;
 using SchoolMachine.API.Dtos;
 using SchoolMachine.API.UnitTests.Base;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
@@ -12,6 +12,10 @@ using System.Linq;
 
 namespace SchoolMachine.API.UnitTests.CRUDServices
 {
+    /// <summary>
+    /// Performs unit tests.
+    /// ToDo: Add more tests for edge and exception cases
+    /// </summary>
     [TestClass]
     public class SchoolControllerUnitTests : BaseControllerUnitTests
     {

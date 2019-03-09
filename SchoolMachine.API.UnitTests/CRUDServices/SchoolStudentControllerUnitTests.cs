@@ -12,6 +12,10 @@ using System.Linq;
 
 namespace SchoolMachine.API.UnitTests.CRUDServices
 {
+    /// <summary>
+    /// Performs unit tests.
+    /// ToDo: Add more tests for edge and exception cases
+    /// </summary>
     [TestClass]
     public class SchoolStudentControllerUnitTests : BaseControllerUnitTests
     {

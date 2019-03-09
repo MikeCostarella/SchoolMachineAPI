@@ -38,8 +38,8 @@ namespace SchoolMachine.Repository.Test.Base
                 Assert.IsTrue(SchoolMachineContext.Roles.Count() >= DataSeeder.Roles.Count()
                     , string.Format("Database has {0} Roles and Seeder has {1}", SchoolMachineContext.Roles.Count(), DataSeeder.Roles.Count()));
 
-                Assert.IsTrue(SchoolMachineContext.Districts.Count() >= DataSeeder.SchoolDistricts.Count()
-                    , string.Format("Database has {0} SchoolDistricts and Seeder has {1}", SchoolMachineContext.Districts.Count(), DataSeeder.SchoolDistricts.Count()));
+                Assert.IsTrue(SchoolMachineContext.Districts.Count() >= DataSeeder.Districts.Count()
+                    , string.Format("Database has {0} SchoolDistricts and Seeder has {1}", SchoolMachineContext.Districts.Count(), DataSeeder.Districts.Count()));
 
                 Assert.IsTrue(SchoolMachineContext.Schools.Count() >= DataSeeder.Schools.Count()
                     , string.Format("Database has {0} Schools and Seeder has {1}", SchoolMachineContext.Schools.Count(), DataSeeder.Schools.Count()));

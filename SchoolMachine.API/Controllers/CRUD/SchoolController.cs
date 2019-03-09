@@ -9,7 +9,7 @@ using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities.Extensions.Base;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 
-namespace SchoolMachine.API.Controllers
+namespace SchoolMachine.API.Controllers.CRUD
 {
     /// <summary>
     /// Handles CRUD functionality for the school entity.

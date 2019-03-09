@@ -17,7 +17,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
                 if (_schoolDistrictDictionary == null)
                 {
                     _schoolDistrictDictionary = new Dictionary<string, District>();
-                    foreach (var obj in SchoolDistricts)
+                    foreach (var obj in Districts)
                     {
                         _schoolDistrictDictionary[obj.Name] = obj;
                     }
@@ -26,7 +26,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             }
             set { _schoolDistrictDictionary = value; }
         }
-        public static List<District> SchoolDistricts = new List<District>
+        public static List<District> Districts = new List<District>
         {
             new District { Id = Guid.NewGuid(), Name = "Austintown Local School District" },
             new District { Id = Guid.NewGuid(), Name = "Bloomfield-Mespo Local School District" },
@@ -118,6 +118,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new School { Id = Guid.NewGuid(), Name = "North Road Intermediate" }, // Howland Local School District
             new School { Id = Guid.NewGuid(), Name = "Prospect Elementary" }, // Girard City School District
             new School { Id = Guid.NewGuid(), Name = "Springs Primary School" }, // Howland Local School District
+            new School { Id = Guid.NewGuid(), Name = "Trumbull Career & Technical Center" }
         };
 
         #endregion Schools
@@ -134,6 +135,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Elementary School"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Middle School"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Trumbull Career & Technical Center"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Central Elementary"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion High School"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion Middle School"].Id, StartDate = DateTime.UtcNow },
@@ -141,6 +143,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Intermediate"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Junior High School"].Id, StartDate = DateTime.UtcNow },
             new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Prospect Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Trumbull Career & Technical Center"].Id, StartDate = DateTime.UtcNow }
         };
 
         #endregion DistrictSchools

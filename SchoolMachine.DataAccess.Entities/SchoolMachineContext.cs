@@ -60,7 +60,7 @@ namespace SchoolMachine.DataAccess.Entities
         {
             foreach (var role in DataSeeder.Roles) { modelBuilder.Entity<Role>().HasData(role); }
             foreach (var user in DataSeeder.Users) { modelBuilder.Entity<User>().HasData(user); }
-            foreach (var schoolDistrict in DataSeeder.SchoolDistricts) { modelBuilder.Entity<District>().HasData(schoolDistrict); }
+            foreach (var schoolDistrict in DataSeeder.Districts) { modelBuilder.Entity<District>().HasData(schoolDistrict); }
             foreach (var school in DataSeeder.Schools) { modelBuilder.Entity<School>().HasData(school); }
             foreach (var school in DataSeeder.Students) { modelBuilder.Entity<Student>().HasData(school); }
             foreach (var schoolDistrictSchool in DataSeeder.SchoolDistrictSchools) { modelBuilder.Entity<DistrictSchool>().HasData(schoolDistrictSchool); }
