@@ -301,6 +301,23 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         #region Users
 
+        private static Dictionary<string, User> _userDictionary;
+        public static Dictionary<string, User> UserDictionary
+        {
+            get
+            {
+                if (_userDictionary == null)
+                {
+                    _userDictionary = new Dictionary<string, User>();
+                    foreach (var obj in Users)
+                    {
+                        _userDictionary[obj.EmailAddress] = obj;
+                    }
+                }
+                return _userDictionary;
+            }
+            set { _userDictionary = value; }
+        }
         public static List<User> Users = new List<User>
         {
             new User
@@ -313,7 +330,19 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
                 LastName = "Costarella",
                 MiddleName = "A.",
                 UserName = "MikeCostarella"
+            },
+            new User
+            {
+                Id = Guid.NewGuid(),
+                DateCreated = DateTime.UtcNow,
+                EmailAddress = "JoePrincipal@ghs.com",
+                FirstName = "Joe",
+                IsActive = true,
+                LastName = "Principal",
+                MiddleName = "L.",
+                UserName = "JoePrincipal"
             }
+
         };
 
         #endregion Users
@@ -326,11 +355,57 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             {
                 Id = Guid.NewGuid(),
                 DateCreated = DateTime.UtcNow,
-                RoleId = Roles[0].Id,
-                UserId = Users[0].Id
+                RoleId = RoleDictionary["System Administrator"].Id,
+                UserId = UserDictionary["CostarellaMike@gmail.com"].Id
             }
         };
 
         #endregion UserRoles
+
+        #region Groups
+
+        private static Dictionary<string, Group> _groupDictionary;
+        public static Dictionary<string, Group> GroupDictionary
+        {
+            get
+            {
+                if (_groupDictionary == null)
+                {
+                    _groupDictionary = new Dictionary<string, Group>();
+                    foreach (var obj in Groups)
+                    {
+                        _groupDictionary[obj.Name] = obj;
+                    }
+                }
+                return _groupDictionary;
+            }
+            set { _groupDictionary = value; }
+        }
+        public static List<Group> Groups = new List<Group>
+        {
+            new Group { Id = Guid.NewGuid(), Name = "Girard High School Staff", Description = "Staff members of Girard High School" }
+        };
+
+        #endregion Groups
+
+        #region GroupRoles
+
+        public static List<GroupRole> GroupRoles = new List<GroupRole>()
+        {
+            new GroupRole { Id = Guid.NewGuid(), GroupId = GroupDictionary["Girard High School Staff"].Id, RoleId = RoleDictionary["Can Read District Information"].Id },
+            new GroupRole { Id = Guid.NewGuid(), GroupId = GroupDictionary["Girard High School Staff"].Id, RoleId = RoleDictionary["Can Read School Information"].Id },
+            new GroupRole { Id = Guid.NewGuid(), GroupId = GroupDictionary["Girard High School Staff"].Id, RoleId = RoleDictionary["Can Read Student Information"].Id }
+        };
+
+        #endregion GroupRoles
+
+        #region GroupUsers
+
+        public static List<GroupUser> GroupUsers = new List<GroupUser>
+        {
+            new GroupUser { Id = Guid.NewGuid(), GroupId = GroupDictionary["Girard High School Staff"].Id, UserId = UserDictionary["JoePrincipal@ghs.com"].Id }
+        };
+
+        #endregion GroupUsers
     }
 }
