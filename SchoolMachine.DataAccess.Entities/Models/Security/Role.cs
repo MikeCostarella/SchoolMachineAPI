@@ -31,7 +31,7 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
         public bool IsActive { get; set; } = true;
 
         [JsonIgnore]
-        public List<TeamRole> Teams { get; set; }
+        public List<GroupRole> Teams { get; set; }
 
         [JsonIgnore]
         public List<UserRole> Users { get; set; }

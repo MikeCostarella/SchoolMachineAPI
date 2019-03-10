@@ -44,9 +44,9 @@ namespace SchoolMachine.DataAccess.Entities
         #region Security Schema
 
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Team> Teams { get; set; }
-        public DbSet<TeamRole> TeamRoles { get; set; }
-        public DbSet<TeamUser> TeamUsers { get; set; }
+        public DbSet<Group> Teams { get; set; }
+        public DbSet<GroupRole> TeamRoles { get; set; }
+        public DbSet<GroupUser> TeamUsers { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
     

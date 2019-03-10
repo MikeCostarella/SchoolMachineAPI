@@ -56,7 +56,7 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
         public List<UserRole> Roles { get; set; }
 
         [JsonIgnore]
-        public List<TeamUser> Teams { get; set; }
+        public List<GroupUser> Teams { get; set; }
 
     }
 }

@@ -6,8 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolMachine.DataAccess.Entities.Models.Security
 {
-    [Table("team", Schema = "security")]
-    public class Team
+    [Table("group", Schema = "security")]
+    public class Group
     {
         [Key]
         [Column("id")]
@@ -35,9 +35,9 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
         public bool IsActive { get; set; } = true;
 
         [JsonIgnore]
-        public List<TeamRole> Roles { get; set; }
+        public List<GroupRole> Roles { get; set; }
 
         [JsonIgnore]
-        public List<TeamUser> Users { get; set; }
+        public List<GroupUser> Users { get; set; }
     }
 }

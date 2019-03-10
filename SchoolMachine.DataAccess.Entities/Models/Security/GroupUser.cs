@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolMachine.DataAccess.Entities.Models.Security
 {
-    [Table("team_user", Schema = "security")]
-    public class TeamUser
+    [Table("group_user", Schema = "security")]
+    public class GroupUser
     {
         [Key]
         [Column("id")]
@@ -17,11 +17,11 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 
-        [Column("team_id")]
-        [Required(ErrorMessage = "Team Id is required")]
-        public Guid TeamId { get; set; }
+        [Column("group_id")]
+        [Required(ErrorMessage = "Group Id is required")]
+        public Guid GroupId { get; set; }
         [JsonIgnore]
-        public Team Team { get; set; }
+        public Group Group { get; set; }
 
         [Column("user_id")]
         [Required(ErrorMessage = "User Id is required")]
