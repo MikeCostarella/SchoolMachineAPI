@@ -106,13 +106,15 @@ namespace SchoolMachine.API.Extensions
                     break;
                 case "Sqlite":
                     services.AddDbContext<SchoolMachineContext>
-                        (options => options.UseSqlite("Data Source=SchoolMachine.db"));
+                        (options => options.UseSqlite(config.GetConnectionString("SchoolMachineSqlite")));
                     break;
                 case "SqlServer":
                     services.AddDbContext<SchoolMachineContext>
                         (options => options.UseSqlServer(config.GetConnectionString("SchoolMachineSqlServer")));
                     break;
                 default:
+                    services.AddDbContext<SchoolMachineContext>
+                        (options => options.UseInMemoryDatabase(databaseName: config.GetConnectionString("SchoolMachineInMemoryDb")));
                     break;
             }
         }
