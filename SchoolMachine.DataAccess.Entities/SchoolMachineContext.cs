@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SchoolMachine.DataAccess.Entities.Extensions;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.Models.Security;
 using SchoolMachine.DataAccess.Entities.SeedData;
@@ -22,8 +23,6 @@ namespace SchoolMachine.DataAccess.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // ToDo: place this db connection into appsettings.json as a secret
-                optionsBuilder.UseNpgsql("Server=127.0.0.1;Port=5432;Database=SchoolMachine;User Id=postgres;Password=password;");
             }
         }
 

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System;
 using System.Reflection;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace SchoolMachine.API.Extensions
 {
@@ -90,14 +91,30 @@ namespace SchoolMachine.API.Extensions
         /// <param name="config"></param>
         public static void ConfigureRepositoryContext(this IServiceCollection services, IConfiguration config)
         {
-            // When using SQL server
-            //services.AddDbContext<RepositoryContext>
-            //    (options => options.UseSqlServer(Utilities.SchoolMachoneDbConnection()));
-
-            // When using Postres
-            services.AddEntityFrameworkNpgsql()
-                .AddDbContext<SchoolMachineContext>()
-                .BuildServiceProvider();
+            var appSettingsSection = config.GetSection("AppSettings");
+            var databaseProviderName = appSettingsSection["DatabaseProvider"];
+            switch (databaseProviderName)
+            {
+                case "InMemory":
+                    services.AddDbContext<SchoolMachineContext>
+                        (options => options.UseInMemoryDatabase(databaseName: config.GetConnectionString("SchoolMachineInMemoryDb")));
+                    break;
+                case "Npgsql":
+                    services.AddEntityFrameworkNpgsql()
+                        .AddDbContext<SchoolMachineContext>(options => options.UseNpgsql(config.GetConnectionString("SchoolMachineNpgSql")))
+                        .BuildServiceProvider();
+                    break;
+                case "Sqlite":
+                    services.AddDbContext<SchoolMachineContext>
+                        (options => options.UseSqlite("Data Source=SchoolMachine.db"));
+                    break;
+                case "SqlServer":
+                    services.AddDbContext<SchoolMachineContext>
+                        (options => options.UseSqlServer(config.GetConnectionString("SchoolMachineSqlServer")));
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>

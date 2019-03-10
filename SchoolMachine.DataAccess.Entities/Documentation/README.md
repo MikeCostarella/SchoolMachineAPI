@@ -24,3 +24,30 @@ This project is responsible for the creation and maintenance of the code first d
   * Currently called in Startup.cs of the ShoolMachineAPI project for greenfield development.
     * NOTE: STRONG MEDICINE.
     * Make sure to remove this or turn it by application setting prior to deployment to production.
+
+## Database Provider Options
+
+SqlServer (2008 and up)
+* SqlServer
+* Nuget Package: Microsoft.EntityFrameworkCore.SqlServer
+
+SQLite (3.7 and up)
+* Sqlite
+* Nuget Package: Microsoft.EntityFrameworkCore.Sqlite
+
+InMemory
+* InMemory
+* Nuget Package: Microsoft.EntityFrameworkCore.InMemory
+* for testing only
+
+Cosmos
+* Cosmos
+* Nuget Package: Microsoft.EntityFramework.Cosmos
+  * supports database engines:
+    * Cosmos DB
+    * SQL API
+
+Postgres
+* Npgsql
+* Nuget Package: Npgsl.EntityFrameworkCore.PostgreSQL
+
