@@ -62,7 +62,7 @@ namespace SchoolMachine.API
         {
             if (env.IsDevelopment())
             {
-                app.DeleteAndRecreateDatabase();
+                app.DeleteAndRecreateDatabase(Configuration);
                 app.UseDeveloperExceptionPage();
             }
             else
