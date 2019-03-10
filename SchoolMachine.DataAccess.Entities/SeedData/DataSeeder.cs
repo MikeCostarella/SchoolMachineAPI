@@ -68,6 +68,15 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         #endregion Districts
 
+        #region Locations
+
+        public static List<Location> Locations = new List<Location>
+        {
+            new Location { Id = Guid.NewGuid(), Description = "GHS Main Entrance", Street1 = "1244", Street2 = "Shannon Rd.", City = "Girard", State = "OH", PostalCode = "44420", Country = "USA", Latitude = 41.171231, Longitude = -80.691469 }
+        };
+
+        #endregion Locations
+
         #region Schools
 
         private static Dictionary<string, School> _schoolDictionary;
@@ -103,7 +112,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new School { Id = Guid.NewGuid(), Name = "Central Elementary" }, // Champion Local School District
             new School { Id = Guid.NewGuid(), Name = "Champion High School" },
             new School { Id = Guid.NewGuid(), Name = "Champion Middle School" },
-            new School { Id = Guid.NewGuid(), Name = "Girard High School" },
+            new School { Id = Guid.NewGuid(), Name = "Girard High School", LocationId = Locations[0].Id },
             new School { Id = Guid.NewGuid(), Name = "Girard Intermediate" },
             new School { Id = Guid.NewGuid(), Name = "Girard Junior High School" },
             new School { Id = Guid.NewGuid(), Name = "Glen Primary School" }, // Howland Local School District
@@ -282,19 +291,19 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
         }
         public static List<Role> Roles = new List<Role>
         {
-            new Role { Id = Guid.NewGuid(), Name = "System Administrator", Description = "Total access to all other roles" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Create District Information", Description = "Can Create District Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Read District Information", Description = "Can Read District Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Update District Information", Description = "Can View District Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Delete District Information", Description = "Can Delete District Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Create School Information", Description = "Can Create School Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Read School Information", Description = "Can Read School Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Update School Information", Description = "Can View School Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Delete School Information", Description = "Can Delete School Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Create Student Information", Description = "Can Create Student Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Read Student Information", Description = "Can Read Student Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Update Student Information", Description = "Can View Student Information" },
-            new Role { Id = Guid.NewGuid(), Name = "Can Delete Student Information", Description = "Can Delete Student Information" }
+            new Role { Id = Guid.NewGuid(), Name = "System Administrator", Description = "Total access to all other roles", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Create District Information", Description = "Can Create District Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Read District Information", Description = "Can Read District Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Update District Information", Description = "Can View District Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Delete District Information", Description = "Can Delete District Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Create School Information", Description = "Can Create School Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Read School Information", Description = "Can Read School Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Update School Information", Description = "Can View School Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Delete School Information", Description = "Can Delete School Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Create Student Information", Description = "Can Create Student Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Read Student Information", Description = "Can Read Student Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Update Student Information", Description = "Can View Student Information", DateCreated = DateTime.UtcNow },
+            new Role { Id = Guid.NewGuid(), Name = "Can Delete Student Information", Description = "Can Delete Student Information", DateCreated = DateTime.UtcNow }
         };
 
         #endregion Roles
@@ -354,7 +363,6 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
             new UserRole
             {
                 Id = Guid.NewGuid(),
-                DateCreated = DateTime.UtcNow,
                 RoleId = RoleDictionary["System Administrator"].Id,
                 UserId = UserDictionary["CostarellaMike@gmail.com"].Id
             }
@@ -383,7 +391,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
         }
         public static List<Group> Groups = new List<Group>
         {
-            new Group { Id = Guid.NewGuid(), Name = "Girard High School Staff", Description = "Staff members of Girard High School" }
+            new Group { Id = Guid.NewGuid(), Name = "Girard High School Staff", Description = "Staff members of Girard High School", DateCreated = DateTime.UtcNow }
         };
 
         #endregion Groups
@@ -403,7 +411,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         public static List<GroupUser> GroupUsers = new List<GroupUser>
         {
-            new GroupUser { Id = Guid.NewGuid(), GroupId = GroupDictionary["Girard High School Staff"].Id, UserId = UserDictionary["JoePrincipal@ghs.com"].Id }
+            new GroupUser { Id = Guid.NewGuid(), GroupId = GroupDictionary["Girard High School Staff"].Id, UserId = UserDictionary["JoePrincipal@ghs.com"].Id, DateCreated = DateTime.UtcNow }
         };
 
         #endregion GroupUsers

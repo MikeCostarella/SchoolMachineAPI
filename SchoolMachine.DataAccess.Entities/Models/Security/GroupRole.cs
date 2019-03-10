@@ -12,11 +12,6 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
         [Column("id")]
         public Guid Id { get; set; }
 
-        [Column("date_created")]
-        [Required(ErrorMessage = "Registration date is required")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
-
         [Column("role_id")]
         [Required(ErrorMessage = "Role Id is required")]
         public Guid RoleId { get; set; }

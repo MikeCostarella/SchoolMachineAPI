@@ -17,10 +17,6 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 
-        [Column("date_modified")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime DateModified { get; set; } = DateTime.UtcNow;
-
         [Column("name")]
         [Required(ErrorMessage = "Name is required")]
         [StringLength(100, ErrorMessage = "Name can't be longer than 100 characters")]

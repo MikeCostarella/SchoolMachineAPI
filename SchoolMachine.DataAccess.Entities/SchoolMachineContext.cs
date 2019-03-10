@@ -35,6 +35,7 @@ namespace SchoolMachine.DataAccess.Entities
 
         public DbSet<District> Districts { get; set; }
         public DbSet<DistrictSchool> DistrictSchools { get; set; }
+        public DbSet<Location> Locations { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolStudent> SchoolStudents { get; set; }
         public DbSet<Student> Students { get; set; }
@@ -58,12 +59,16 @@ namespace SchoolMachine.DataAccess.Entities
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var location in DataSeeder.Locations) { modelBuilder.Entity<Location>().HasData(location); }
+            foreach (var group in DataSeeder.Groups) { modelBuilder.Entity<Group>().HasData(group); }
             foreach (var role in DataSeeder.Roles) { modelBuilder.Entity<Role>().HasData(role); }
             foreach (var user in DataSeeder.Users) { modelBuilder.Entity<User>().HasData(user); }
-            foreach (var schoolDistrict in DataSeeder.Districts) { modelBuilder.Entity<District>().HasData(schoolDistrict); }
+            foreach (var district in DataSeeder.Districts) { modelBuilder.Entity<District>().HasData(district); }
             foreach (var school in DataSeeder.Schools) { modelBuilder.Entity<School>().HasData(school); }
             foreach (var school in DataSeeder.Students) { modelBuilder.Entity<Student>().HasData(school); }
-            foreach (var schoolDistrictSchool in DataSeeder.DistrictSchools) { modelBuilder.Entity<DistrictSchool>().HasData(schoolDistrictSchool); }
+            foreach (var userRole in DataSeeder.UserRoles) { modelBuilder.Entity<UserRole>().HasData(userRole); }
+            foreach (var groupRole in DataSeeder.GroupRoles) { modelBuilder.Entity<GroupRole>().HasData(groupRole); }
+            foreach (var districtSchool in DataSeeder.DistrictSchools) { modelBuilder.Entity<DistrictSchool>().HasData(districtSchool); }
             foreach (var schoolStudent in DataSeeder.SchoolStudents) { modelBuilder.Entity<SchoolStudent>().HasData(schoolStudent); }
         }
 

@@ -21,6 +21,10 @@ namespace SchoolMachine.DataAccess.Entities.Models.SchoolData
         public string Name { get; set; }
 
         [JsonIgnore]
+        [Column("location_id")]
+        public Guid LocationId { get; set; }
+
+        [JsonIgnore]
         public List<SchoolStudent> Students { get; set; }
 
         [JsonIgnore]
