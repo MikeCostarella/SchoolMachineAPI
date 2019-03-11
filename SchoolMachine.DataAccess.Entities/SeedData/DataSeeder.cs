@@ -1,4 +1,5 @@
-﻿using SchoolMachine.DataAccess.Entities.Models.SchoolData;
+﻿using SchoolMachine.DataAccess.Entities.Models.GeoLocation;
+using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.Models.Security;
 using System;
 using System.Collections.Generic;
@@ -7,24 +8,163 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 {
     public static class DataSeeder
     {
-        #region Districts
-
-        private static Dictionary<string, District> _schoolDistrictDictionary;
-        public static Dictionary<string, District> SchoolDistrictDictionary
+        #region Countries
+        
+        private static Dictionary<string, Country> _countryDictionary;
+        public static Dictionary<string, Country> CountryDictionary
         {
             get
             {
-                if (_schoolDistrictDictionary == null)
+                if (_countryDictionary == null)
                 {
-                    _schoolDistrictDictionary = new Dictionary<string, District>();
-                    foreach (var obj in Districts)
+                    _countryDictionary = new Dictionary<string, Country>();
+                    foreach (var obj in Countries)
                     {
-                        _schoolDistrictDictionary[obj.Name] = obj;
+                        _countryDictionary[obj.Abbreviation] = obj;
                     }
                 }
-                return _schoolDistrictDictionary;
+                return _countryDictionary;
             }
-            set { _schoolDistrictDictionary = value; }
+            set { _countryDictionary = value; }
+        }
+        public static List<Country> Countries = new List<Country>
+        {
+            new Country { Id = Guid.NewGuid(), Abbreviation = "AC", Name = "Ascension Island" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "AF", Name = "Afghanistan" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "AX", Name = "Aland" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "AL", Name = "Albania" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "DZ", Name = "Algeria" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "AD", Name = "Andorra" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "AI", Name = "Anguilla" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "AT", Name = "Austria" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "AU", Name = "Australia" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "CA", Name = "Canada" },
+            new Country { Id = Guid.NewGuid(), Abbreviation = "US", Name = "United States" }
+        };
+
+        #endregion Countries
+
+        #region States
+
+        private static Dictionary<string, State> _stateDictionary;
+        public static Dictionary<string, State> StateDictionary
+        {
+            get
+            {
+                if (_stateDictionary == null)
+                {
+                    _stateDictionary = new Dictionary<string, State>();
+                    foreach (var obj in States)
+                    {
+                        _stateDictionary[obj.Name] = obj;
+                    }
+                }
+                return _stateDictionary;
+            }
+            set { _stateDictionary = value; }
+        }
+        public static List<State> States = new List<State>
+        {
+            new State { Id = Guid.NewGuid(), Name = "Alabama", Abbreviation = "AL", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Alaska", Abbreviation = "AK", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Arizona", Abbreviation = "AZ", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Arkansas", Abbreviation = "AR", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "California", Abbreviation = "CA", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Colorado", Abbreviation = "CO", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Connecticut", Abbreviation = "CT", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Delaware", Abbreviation = "DE", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Florida", Abbreviation = "FL", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Georgia", Abbreviation = "GA", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Hawaii", Abbreviation = "HI", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Idaho", Abbreviation = "ID", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Illinois", Abbreviation = "IL", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Indiana", Abbreviation = "IN", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Iowa", Abbreviation = "IA", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Kansas", Abbreviation = "KS", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Kentucky", Abbreviation = "KY", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Louisiana", Abbreviation = "LA", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Maine", Abbreviation = "ME", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Maryland", Abbreviation = "MD", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Massachusetts", Abbreviation = "MA", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Michigan", Abbreviation = "MI", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Minnesota", Abbreviation = "MN", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Mississippi", Abbreviation = "MS", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Missouri", Abbreviation = "MO", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Montana", Abbreviation = "MT", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Nebraska", Abbreviation = "NE", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Nevada", Abbreviation = "NV", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "New Hampshire", Abbreviation = "NH", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "New Jersey", Abbreviation = "NJ", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "New Mexico", Abbreviation = "NM", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "New York", Abbreviation = "NY", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "North Carolina", Abbreviation = "NC", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "North Dakota", Abbreviation = "ND", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Ohio", Abbreviation = "OH", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Oklahoma", Abbreviation = "OK", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Oregon", Abbreviation = "OR", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Pennsylvania", Abbreviation = "PA", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Rhode Island", Abbreviation = "RI", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "South Carolina", Abbreviation = "SC", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "South Dakota", Abbreviation = "SD", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Tennessee", Abbreviation = "TN", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Texas", Abbreviation = "TX", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Utah", Abbreviation = "UT", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Vermont", Abbreviation = "VT", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Virginia", Abbreviation = "VA", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Washington", Abbreviation = "WA", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "West Virginia", Abbreviation = "WV", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Wisconsin", Abbreviation = "WI", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Wyoming", Abbreviation = "WY", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "American Samoa", Abbreviation = "AS", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "District of Columbia", Abbreviation = "DC", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Federated States of Micronesia", Abbreviation = "FM", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Guam", Abbreviation = "GU", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Marshall Islands", Abbreviation = "MH", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Northern Mariana Islands", Abbreviation = "MP", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Palau", Abbreviation = "PW", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Puerto Rico", Abbreviation = "PR", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Virgin Islands", Abbreviation = "VI", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Armed Forces Africa", Abbreviation = "AE", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Armed Forces Americas", Abbreviation = "AA", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Armed Forces Canada", Abbreviation = "AE", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Armed Forces Europe", Abbreviation = "AE", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Armed Forces Middle East", Abbreviation = "AE", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Armed Forces Pacific", Abbreviation = "AP", CountryId = CountryDictionary["US"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Alberta", Abbreviation = "AB", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "British Columbia", Abbreviation = "BC", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Manitoba", Abbreviation = "MB", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "New Brunswick", Abbreviation = "NB", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Newfoundland and Labrador", Abbreviation = "NL", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Nova Scotia", Abbreviation = "NS", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Northwest Territories", Abbreviation = "NT", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Nunavut", Abbreviation = "NU", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Ontario", Abbreviation = "ON", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Prince Edward Island", Abbreviation = "PE", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Quebec", Abbreviation = "QC", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Saskatchewan", Abbreviation = "SK", CountryId = CountryDictionary["CA"].Id },
+            new State { Id = Guid.NewGuid(), Name = "Yukon", Abbreviation = "YT", CountryId = CountryDictionary["CA"].Id },
+        };
+
+        #endregion States
+
+        #region Districts
+
+        private static Dictionary<string, District> _districtDictionary;
+        public static Dictionary<string, District> DistrictDictionary
+        {
+            get
+            {
+                if (_districtDictionary == null)
+                {
+                    _districtDictionary = new Dictionary<string, District>();
+                    foreach (var obj in Districts)
+                    {
+                        _districtDictionary[obj.Name] = obj;
+                    }
+                }
+                return _districtDictionary;
+            }
+            set { _districtDictionary = value; }
         }
         public static List<District> Districts = new List<District>
         {
@@ -136,32 +276,32 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         public static List<DistrictSchool> DistrictSchools = new List<DistrictSchool>
         {
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Austintown Local School District"].Id, SchoolId = SchoolDictionary["Austintown Fitch High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Bloomfield-Mespo Local School District"].Id, SchoolId = SchoolDictionary["Bloomfield Middle/High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Bloomfield-Mespo Local School District"].Id, SchoolId = SchoolDictionary["Mesopatamia Elementary"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Bristol Local School District"].Id, SchoolId = SchoolDictionary["Bristol Elementary"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Bristol Local School District"].Id, SchoolId = SchoolDictionary["Bristol Middle & High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Elementary School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Middle School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Trumbull Career & Technical Center"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Central Elementary"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion Middle School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Intermediate"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Junior High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Prospect Elementary"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Trumbull Career & Technical Center"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Glen Primary School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["H.C. Mines Elementary"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["North Road Intermediate"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Howland High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Howland Middle School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Springs Primary School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Hubbard Exempted Village School District"].Id, SchoolId = SchoolDictionary["Hubbard Elementary School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Hubbard Exempted Village School District"].Id, SchoolId = SchoolDictionary["Hubbard High School"].Id, StartDate = DateTime.UtcNow },
-            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = SchoolDistrictDictionary["Hubbard Exempted Village School District"].Id, SchoolId = SchoolDictionary["Hubbard Middle School"].Id, StartDate = DateTime.UtcNow }
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Austintown Local School District"].Id, SchoolId = SchoolDictionary["Austintown Fitch High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Bloomfield-Mespo Local School District"].Id, SchoolId = SchoolDictionary["Bloomfield Middle/High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Bloomfield-Mespo Local School District"].Id, SchoolId = SchoolDictionary["Mesopatamia Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Bristol Local School District"].Id, SchoolId = SchoolDictionary["Bristol Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Bristol Local School District"].Id, SchoolId = SchoolDictionary["Bristol Middle & High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Elementary School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield Middle School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Brookfield High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Brookfield Local School District"].Id, SchoolId = SchoolDictionary["Trumbull Career & Technical Center"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Central Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Champion Local School District"].Id, SchoolId = SchoolDictionary["Champion Middle School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Intermediate"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Girard Junior High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Prospect Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Girard City School District"].Id, SchoolId = SchoolDictionary["Trumbull Career & Technical Center"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Glen Primary School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["H.C. Mines Elementary"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["North Road Intermediate"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Howland High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Howland Middle School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Howland Local School District"].Id, SchoolId = SchoolDictionary["Springs Primary School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Hubbard Exempted Village School District"].Id, SchoolId = SchoolDictionary["Hubbard Elementary School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Hubbard Exempted Village School District"].Id, SchoolId = SchoolDictionary["Hubbard High School"].Id, StartDate = DateTime.UtcNow },
+            new DistrictSchool { Id = Guid.NewGuid(), DistrictId = DistrictDictionary["Hubbard Exempted Village School District"].Id, SchoolId = SchoolDictionary["Hubbard Middle School"].Id, StartDate = DateTime.UtcNow }
         };
 
         #endregion DistrictSchools

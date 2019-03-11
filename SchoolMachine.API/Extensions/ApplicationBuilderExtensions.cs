@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolMachine.DataAccess.Entities;
+using System;
 
 namespace SchoolMachine.API.Extensions
 {
@@ -16,7 +17,14 @@ namespace SchoolMachine.API.Extensions
                 using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
                 {
                     var context = serviceScope.ServiceProvider.GetRequiredService<SchoolMachineContext>();
-                    context.Database.EnsureDeleted();
+                    try
+                    {
+                        context.Database.EnsureDeleted();
+                    }
+                    catch(Exception ex)
+                    {
+                        throw;
+                    }
                     context.Database.EnsureCreated();
                 }
             }

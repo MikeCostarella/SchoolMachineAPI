@@ -37,7 +37,6 @@ namespace SchoolMachine.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SchoolMachineContext>(options => options.UseInMemoryDatabase(databaseName: "SchoolMachine"));
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();

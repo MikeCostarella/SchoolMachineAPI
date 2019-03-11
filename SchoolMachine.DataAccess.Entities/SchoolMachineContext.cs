@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolMachine.DataAccess.Entities.Extensions;
+using SchoolMachine.DataAccess.Entities.Models.GeoLocation;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.Models.Security;
 using SchoolMachine.DataAccess.Entities.SeedData;
@@ -30,11 +31,18 @@ namespace SchoolMachine.DataAccess.Entities
 
         #region DbSets
 
+        #region Geolocation Schema
+
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<State> States { get; set; }
+
+        #endregion Geolocation Schema
+
         #region SchoolData Schema
 
         public DbSet<District> Districts { get; set; }
         public DbSet<DistrictSchool> DistrictSchools { get; set; }
-        public DbSet<Location> Locations { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolStudent> SchoolStudents { get; set; }
         public DbSet<Student> Students { get; set; }
@@ -58,6 +66,8 @@ namespace SchoolMachine.DataAccess.Entities
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var country in DataSeeder.Countries) { modelBuilder.Entity<Country>().HasData(country); }
+            foreach (var state in DataSeeder.States) { modelBuilder.Entity<State>().HasData(state); }
             foreach (var location in DataSeeder.Locations) { modelBuilder.Entity<Location>().HasData(location); }
             foreach (var group in DataSeeder.Groups) { modelBuilder.Entity<Group>().HasData(group); }
             foreach (var role in DataSeeder.Roles) { modelBuilder.Entity<Role>().HasData(role); }

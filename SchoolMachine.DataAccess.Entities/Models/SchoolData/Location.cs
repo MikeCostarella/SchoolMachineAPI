@@ -3,12 +3,12 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SchoolMachine.DataAccess.Entities.Models.SchoolData
+namespace SchoolMachine.DataAccess.Entities.Models.GeoLocation
 {
     /// <summary>
     /// Represents a physical address or geolocation
     /// </summary>
-    [Table("location", Schema = "schooldata")]
+    [Table("location", Schema = "geolocation")]
     public class Location : IEntity
     {
         [Key]
