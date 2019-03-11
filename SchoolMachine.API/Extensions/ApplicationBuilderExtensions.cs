@@ -17,14 +17,7 @@ namespace SchoolMachine.API.Extensions
                 using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
                 {
                     var context = serviceScope.ServiceProvider.GetRequiredService<SchoolMachineContext>();
-                    try
-                    {
-                        context.Database.EnsureDeleted();
-                    }
-                    catch(Exception ex)
-                    {
-                        throw;
-                    }
+                    context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
                 }
             }

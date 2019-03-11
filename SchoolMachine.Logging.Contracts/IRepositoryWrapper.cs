@@ -4,6 +4,8 @@ namespace SchoolMachine.Contracts
 {
     public interface IRepositoryWrapper
     {
+        ICountryRepository Country { get; set; }
+
         IDistrictRepository District { get; set; }
 
         IDistrictSchoolRepository DistrictSchool { get; set; }
@@ -13,5 +15,8 @@ namespace SchoolMachine.Contracts
         IStudentRepository Student { get; set; }
 
         ISchoolStudentRepository SchoolStudent { get; set; }
+
+        IStateRepository State { get; set; }
+
     }
 }
