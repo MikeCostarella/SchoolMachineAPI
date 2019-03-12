@@ -5,11 +5,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolMachine.API.Extensions;
-using SchoolMachine.DataAccess.Entities;
 
 namespace SchoolMachine.API
 {

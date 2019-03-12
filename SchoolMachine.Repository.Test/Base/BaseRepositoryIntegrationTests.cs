@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SchoolMachine.DataAccess.Entities;
 using SchoolMachine.DataAccess.Entities.SeedData;
-using SchoolMachine.DataAccess.Entities.SeedData.Model.SchoolData;
 using System;
 using System.Linq;
 
@@ -24,7 +23,6 @@ namespace SchoolMachine.Repository.Test.Base
             try
             {
                 // Setup
-                var districtSeeder = new DistrictSeeder();
                 var serviceCollection = new ServiceCollection();
                 serviceCollection.AddEntityFrameworkNpgsql()
                     .AddDbContext<SchoolMachineContext>()
@@ -40,8 +38,8 @@ namespace SchoolMachine.Repository.Test.Base
                 Assert.IsTrue(SchoolMachineContext.Roles.Count() >= DataSeeder.RoleSeeder.Objects.Count()
                     , string.Format("Database has {0} Roles and Seeder has {1}", SchoolMachineContext.Roles.Count(), DataSeeder.RoleSeeder.Objects.Count()));
 
-                Assert.IsTrue(SchoolMachineContext.Districts.Count() >= districtSeeder.Objects.Count()
-                    , string.Format("Database has {0} SchoolDistricts and Seeder has {1}", SchoolMachineContext.Districts.Count(), districtSeeder.Objects.Count()));
+                Assert.IsTrue(SchoolMachineContext.Districts.Count() >= DataSeeder.DistrictSeeder.Objects.Count()
+                    , string.Format("Database has {0} SchoolDistricts and Seeder has {1}", SchoolMachineContext.Districts.Count(), DataSeeder.DistrictSeeder.Objects.Count()));
 
                 Assert.IsTrue(SchoolMachineContext.Schools.Count() >= DataSeeder.SchoolSeeder.Objects.Count()
                     , string.Format("Database has {0} Schools and Seeder has {1}", SchoolMachineContext.Schools.Count(), DataSeeder.SchoolSeeder.Objects.Count()));

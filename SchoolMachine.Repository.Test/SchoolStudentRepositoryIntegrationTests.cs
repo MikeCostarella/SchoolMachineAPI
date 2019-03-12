@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SchoolMachine.Repository.Test
 {
-    //[TestClass]
+    [TestClass]
     public class SchoolStudentRepositoryIntegrationTests : BaseRepositoryIntegrationTests
     {
         #region Setup/Teardown
@@ -32,11 +32,16 @@ namespace SchoolMachine.Repository.Test
         {
             // Setup
             var schoolStudentRepository = new SchoolStudentRepository(SchoolMachineContext);
+            var schoolRepository = new SchoolRepository(SchoolMachineContext);
+            var seededSchool = DataSeeder.SchoolSeeder.Objects.FirstOrDefault();
+            Assert.IsTrue(seededSchool != null, "No schools were setup in the data seeder.");
+            var seededSchoolStudents = DataSeeder.SchoolStudents.Where(s => s.SchoolId == seededSchool.Id);
+            var school = schoolRepository.GetAllSchools().Result.FirstOrDefault();
+            Assert.IsTrue(school != null, "No schools were saved to the database by the data seeder.");
             // Test Logic
-            var students = schoolStudentRepository.StudentsBySchool(DataSeeder.SchoolSeeder.Objects[0].Id).Result;
+            var students = schoolStudentRepository.StudentsBySchool(school.Id).Result;
             // Assertions
-            var expectedStudents = DataSeeder.SchoolStudents.Where(schoolStudent => schoolStudent.SchoolId == DataSeeder.SchoolSeeder.Objects[0].Id);
-            Assert.IsTrue(students.Count() > expectedStudents.Count(), string.Format("DataSeeder has {0} SchoolStudents and only found {1}", expectedStudents.Count(), students.Count()));
+            Assert.IsTrue(students.Count() >= seededSchoolStudents.Count(), string.Format("DataSeeder has {0} SchoolStudents and only found {1}", seededSchoolStudents.Count(), students.Count()));
         }
 
         #endregion Tests
