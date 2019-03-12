@@ -6,6 +6,7 @@ using SchoolMachine.API.Dtos;
 using SchoolMachine.API.UnitTests.Base;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.SeedData;
+using SchoolMachine.DataAccess.Entities.SeedData.Model.SchoolData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,14 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
     [TestClass]
     public class DistrictControllerUnitTests : BaseControllerUnitTests
     {
+
+        private DistrictSeeder _districtSeeder = new DistrictSeeder();
+
         [TestMethod]
         public void GetAllDistricts()
         {
             // Arrange
-            Mock.Get(_repositoryWrapper.District).Setup(x => x.GetAllDistricts()).ReturnsAsync(DataSeeder.Districts);
+            Mock.Get(_repositoryWrapper.District).Setup(x => x.GetAllDistricts()).ReturnsAsync(_districtSeeder.Objects);
             var controller = new DistrictController(_loggerManager, _mapper, _repositoryWrapper);
             // Act
             var actionResult = controller.GetAllDistricts().Result;
@@ -31,14 +35,14 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
             var okObjectResult = actionResult as OkObjectResult;
             Assert.IsNotNull(okObjectResult);
             var districts = okObjectResult.Value as IEnumerable<District>;
-            Assert.IsTrue(districts.Count() >= DataSeeder.Districts.Count(), string.Format("Found {0} District(s) but {1} were seeded", districts.Count(), DataSeeder.Districts.Count()));
+            Assert.IsTrue(districts.Count() >= _districtSeeder.Objects.Count(), string.Format("Found {0} District(s) but {1} were seeded", districts.Count(), _districtSeeder.Objects.Count()));
         }
 
         [TestMethod]
         public void GetDistrictById()
         {
             // Arrange
-            var district = DataSeeder.Districts.FirstOrDefault();
+            var district = _districtSeeder.Objects.FirstOrDefault();
             Assert.IsNotNull(district, string.Format("No districts were setup in the DataSeeder"));
             Mock.Get(_repositoryWrapper.District).Setup(x => x.GetDistrictById(district.Id)).ReturnsAsync(district);
             var controller = new DistrictController(_loggerManager, _mapper, _repositoryWrapper);
@@ -95,7 +99,7 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
         public void DeleteDistrict()
         {
             // Arrange
-            var district = DataSeeder.Districts[0];
+            var district = _districtSeeder.Objects[0];
             Mock.Get(_repositoryWrapper.District).Setup(x => x.DeleteDistrict(district));
             Mock.Get(_repositoryWrapper.District).Setup(x => x.GetDistrictById(district.Id)).ReturnsAsync(district);
             Mock.Get(_repositoryWrapper.DistrictSchool).Setup(x => x.DistrictSchoolsByDistrict(district.Id)).ReturnsAsync(new List<DistrictSchool>());

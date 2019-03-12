@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SchoolMachine.DataAccess.Entities.Models.GeoLocation
+namespace SchoolMachine.DataAccess.Entities.Models.Geolocation
 {
     [Table("country", Schema = "geolocation")]
     public class Country : IEntity, INamedEntity

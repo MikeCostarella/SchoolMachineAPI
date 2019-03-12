@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SchoolMachine.DataAccess.Entities.Models.GeoLocation
+namespace SchoolMachine.DataAccess.Entities.Models.Geolocation
 {
     /// <summary>
     /// Represents a physical address or geolocation

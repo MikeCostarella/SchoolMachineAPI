@@ -33,9 +33,9 @@ namespace SchoolMachine.Repository.Test
             // Setup
             var schoolStudentRepository = new SchoolStudentRepository(SchoolMachineContext);
             // Test Logic
-            var students = schoolStudentRepository.StudentsBySchool(DataSeeder.Schools[0].Id).Result;
+            var students = schoolStudentRepository.StudentsBySchool(DataSeeder.SchoolSeeder.Objects[0].Id).Result;
             // Assertions
-            var expectedStudents = DataSeeder.SchoolStudents.Where(schoolStudent => schoolStudent.SchoolId == DataSeeder.Schools[0].Id);
+            var expectedStudents = DataSeeder.SchoolStudents.Where(schoolStudent => schoolStudent.SchoolId == DataSeeder.SchoolSeeder.Objects[0].Id);
             Assert.IsTrue(students.Count() > expectedStudents.Count(), string.Format("DataSeeder has {0} SchoolStudents and only found {1}", expectedStudents.Count(), students.Count()));
         }
 

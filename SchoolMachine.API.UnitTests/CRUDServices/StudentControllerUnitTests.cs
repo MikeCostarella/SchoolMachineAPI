@@ -23,7 +23,7 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
         public void GetAllStudents()
         {
             // Arrange
-            Mock.Get(_repositoryWrapper.Student).Setup(x => x.GetAllStudents()).ReturnsAsync(DataSeeder.Students);
+            Mock.Get(_repositoryWrapper.Student).Setup(x => x.GetAllStudents()).ReturnsAsync(DataSeeder.StudentSeeder.Objects);
             var controller = new StudentController(_loggerManager, _mapper, _repositoryWrapper);
             // Act
             var actionResult = controller.GetAllStudents().Result;
@@ -31,15 +31,15 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
             var okObjectResult = actionResult as OkObjectResult;
             Assert.IsNotNull(okObjectResult);
             var results = okObjectResult.Value as IEnumerable<Student>;
-            Assert.IsTrue(results.Count() == DataSeeder.Students.Count());
+            Assert.IsTrue(results.Count() == DataSeeder.StudentSeeder.Objects.Count());
         }
 
         [TestMethod]
         public void GetStudentById()
         {
             // Arrange
-            var student = DataSeeder.Students.FirstOrDefault();
-            Assert.IsNotNull(student, string.Format("No students were setup in the DataSeeder"));
+            var student = DataSeeder.StudentSeeder.Objects.FirstOrDefault();
+            Assert.IsNotNull(student, string.Format("No students were setup in the data seeder"));
             Mock.Get(_repositoryWrapper.Student).Setup(x => x.GetStudentById(student.Id)).ReturnsAsync(student);
             var controller = new StudentController(_loggerManager, _mapper, _repositoryWrapper);
             // Act
@@ -100,7 +100,8 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
         public void DeleteStudent()
         {
             // Arrange
-            var student = DataSeeder.Students[0];
+            var student = DataSeeder.StudentSeeder.Objects.FirstOrDefault();
+            Assert.IsTrue(student != null, "No students setup in the data seeder");
             Mock.Get(_repositoryWrapper.Student).Setup(x => x.DeleteStudent(student));
             Mock.Get(_repositoryWrapper.Student).Setup(x => x.GetStudentById(student.Id)).ReturnsAsync(student);
             Mock.Get(_repositoryWrapper.SchoolStudent).Setup(x => x.SchoolStudentsByStudent(student.Id)).ReturnsAsync(new List<SchoolStudent>());

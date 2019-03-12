@@ -6,6 +6,7 @@ using SchoolMachine.API.Dtos;
 using SchoolMachine.API.UnitTests.Base;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.SeedData;
+using SchoolMachine.DataAccess.Entities.SeedData.Model.SchoolData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,9 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
     [TestClass]
     public class DistrictSchoolControllerUnitTests : BaseControllerUnitTests
     {
+
+        private DistrictSeeder _districtSeeder = new DistrictSeeder();
+
         [TestMethod]
         public void GetAllDistrictSchools()
         {
@@ -59,8 +63,8 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
             {
                 EndDate = DateTime.UtcNow,
                 StartDate = DateTime.UtcNow,
-                SchoolId = DataSeeder.Schools[0].Id,
-                DistrictId = DataSeeder.Districts[0].Id
+                SchoolId = DataSeeder.SchoolSeeder.Objects[0].Id,
+                DistrictId = _districtSeeder.Objects[0].Id
             };
             var districtSchool = _mapper.Map<DistrictSchool>(districtSchoolDto);
             Mock.Get(_repositoryWrapper.DistrictSchool).Setup(x => x.CreateDistrictSchool(districtSchool));
@@ -81,8 +85,8 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
             {
                 EndDate = DateTime.UtcNow,
                 StartDate = DateTime.UtcNow,
-                SchoolId = DataSeeder.Schools[0].Id,
-                DistrictId = DataSeeder.Districts[0].Id
+                SchoolId = DataSeeder.SchoolSeeder.Objects[0].Id,
+                DistrictId = _districtSeeder.Objects[0].Id
             };
             var schoolStudent = _mapper.Map<DistrictSchool>(schoolStudentDto);
             Mock.Get(_repositoryWrapper.DistrictSchool).Setup(x => x.UpdateDistrictSchool(schoolStudent, schoolStudent));

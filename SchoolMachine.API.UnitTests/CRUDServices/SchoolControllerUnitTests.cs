@@ -23,7 +23,7 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
         public void GetAllSchools()
         {
             // Arrange
-            Mock.Get(_repositoryWrapper.School).Setup(x => x.GetAllSchools()).ReturnsAsync(DataSeeder.Schools);
+            Mock.Get(_repositoryWrapper.School).Setup(x => x.GetAllSchools()).ReturnsAsync(DataSeeder.SchoolSeeder.Objects);
             var controller = new SchoolController(_loggerManager, _mapper, _repositoryWrapper);
             // Act
             var actionResult = controller.GetAllSchools().Result;
@@ -31,14 +31,14 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
             var okObjectResult = actionResult as OkObjectResult;
             Assert.IsNotNull(okObjectResult);
             var reviews = okObjectResult.Value as IEnumerable<School>;
-            Assert.IsTrue(reviews.Count() == DataSeeder.Schools.Count());
+            Assert.IsTrue(reviews.Count() == DataSeeder.SchoolSeeder.Objects.Count());
         }
 
         [TestMethod]
         public void GetSchoolById()
         {
             // Arrange
-            var school = DataSeeder.Schools.FirstOrDefault();
+            var school = DataSeeder.SchoolSeeder.Objects.FirstOrDefault();
             Assert.IsNotNull(school, string.Format("No schools were setup in the DataSeeder"));
             Mock.Get(_repositoryWrapper.School).Setup(x => x.GetSchoolById(school.Id)).ReturnsAsync(school);
             var controller = new SchoolController(_loggerManager, _mapper, _repositoryWrapper);
@@ -95,7 +95,7 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
         public void DeleteSchool()
         {
             // Arrange
-            var school = DataSeeder.Schools[0];
+            var school = DataSeeder.SchoolSeeder.Objects[0];
             Mock.Get(_repositoryWrapper.School).Setup(x => x.DeleteSchool(school));
             Mock.Get(_repositoryWrapper.School).Setup(x => x.GetSchoolById(school.Id)).ReturnsAsync(school);
             Mock.Get(_repositoryWrapper.SchoolStudent).Setup(x => x.SchoolStudentsBySchool(school.Id)).ReturnsAsync(new List<SchoolStudent>());

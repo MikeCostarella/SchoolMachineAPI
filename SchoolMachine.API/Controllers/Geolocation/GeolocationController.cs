@@ -30,7 +30,7 @@ namespace SchoolMachine.API.Controllers.Geolocation
         /// Gets all countries from the data store
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("GetAllCountries", Name = "GetAllCountries")]
         public async Task<IActionResult> GetAllCountries()
         {
             try

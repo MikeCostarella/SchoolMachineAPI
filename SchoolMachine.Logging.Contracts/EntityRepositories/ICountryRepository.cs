@@ -1,4 +1,4 @@
-﻿using SchoolMachine.DataAccess.Entities.Models.GeoLocation;
+﻿using SchoolMachine.DataAccess.Entities.Models.Geolocation;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

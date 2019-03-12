@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolMachine.DataAccess.Entities.Extensions;
-using SchoolMachine.DataAccess.Entities.Models.GeoLocation;
+using SchoolMachine.DataAccess.Entities.Models.Geolocation;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.Models.Security;
 using SchoolMachine.DataAccess.Entities.SeedData;
@@ -66,15 +65,15 @@ namespace SchoolMachine.DataAccess.Entities
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach (var country in DataSeeder.Countries) { modelBuilder.Entity<Country>().HasData(country); }
-            foreach (var state in DataSeeder.States) { modelBuilder.Entity<State>().HasData(state); }
+            foreach (var country in DataSeeder.CountrySeeder.Objects) { modelBuilder.Entity<Country>().HasData(country); }
+            foreach (var state in DataSeeder.StateSeeder.Objects) { modelBuilder.Entity<State>().HasData(state); }
             foreach (var location in DataSeeder.Locations) { modelBuilder.Entity<Location>().HasData(location); }
-            foreach (var group in DataSeeder.Groups) { modelBuilder.Entity<Group>().HasData(group); }
-            foreach (var role in DataSeeder.Roles) { modelBuilder.Entity<Role>().HasData(role); }
-            foreach (var user in DataSeeder.Users) { modelBuilder.Entity<User>().HasData(user); }
-            foreach (var district in DataSeeder.Districts) { modelBuilder.Entity<District>().HasData(district); }
-            foreach (var school in DataSeeder.Schools) { modelBuilder.Entity<School>().HasData(school); }
-            foreach (var school in DataSeeder.Students) { modelBuilder.Entity<Student>().HasData(school); }
+            foreach (var group in DataSeeder.GroupSeeder.Objects) { modelBuilder.Entity<Group>().HasData(group); }
+            foreach (var role in DataSeeder.RoleSeeder.Objects) { modelBuilder.Entity<Role>().HasData(role); }
+            foreach (var user in DataSeeder.UserSeeder.Objects) { modelBuilder.Entity<User>().HasData(user); }
+            foreach (var district in DataSeeder.DistrictSeeder.Objects) { modelBuilder.Entity<District>().HasData(district); }
+            foreach (var school in DataSeeder.SchoolSeeder.Objects) { modelBuilder.Entity<School>().HasData(school); }
+            foreach (var school in DataSeeder.StudentSeeder.Objects) { modelBuilder.Entity<Student>().HasData(school); }
             foreach (var userRole in DataSeeder.UserRoles) { modelBuilder.Entity<UserRole>().HasData(userRole); }
             foreach (var groupRole in DataSeeder.GroupRoles) { modelBuilder.Entity<GroupRole>().HasData(groupRole); }
             foreach (var districtSchool in DataSeeder.DistrictSchools) { modelBuilder.Entity<DistrictSchool>().HasData(districtSchool); }

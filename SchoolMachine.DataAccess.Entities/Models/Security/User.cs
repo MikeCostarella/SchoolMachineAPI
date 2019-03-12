@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SchoolMachine.DataAccess.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SchoolMachine.DataAccess.Entities.Models.Security
 {
     [Table("user", Schema = "security")]
-    public class User
+    public class User : IEntity, INamedEntity
     {
         [Key]
         [Column("id")]
@@ -57,6 +58,10 @@ namespace SchoolMachine.DataAccess.Entities.Models.Security
 
         [JsonIgnore]
         public List<GroupUser> Teams { get; set; }
+
+        [JsonIgnore]
+        [NotMapped]
+        public string Name { get { return EmailAddress; } }
 
     }
 }

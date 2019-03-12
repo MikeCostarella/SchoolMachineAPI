@@ -37,8 +37,8 @@ namespace SchoolMachine.Repository.Test
             // Test Logic
             var schools = schoolRepository.GetAllSchools().Result;
             // Assertions
-            Assert.IsTrue(schools.Count() >= DataSeeder.Schools.Count()
-                , string.Format("Database has {0} Schools and Seeder has {1}", schools.Count(), DataSeeder.Schools.Count()));
+            Assert.IsTrue(schools.Count() >= DataSeeder.SchoolSeeder.Objects.Count()
+                , string.Format("Database has {0} Schools and Seeder has {1}", schools.Count(), DataSeeder.SchoolSeeder.Objects.Count()));
         }
 
         [TestMethod]
@@ -47,9 +47,9 @@ namespace SchoolMachine.Repository.Test
             // Setup
             var schoolRepository = new SchoolRepository(SchoolMachineContext);
             // Test Logic
-            var school = schoolRepository.GetSchoolById(DataSeeder.Schools[0].Id);
+            var school = schoolRepository.GetSchoolById(DataSeeder.SchoolSeeder.Objects[0].Id);
             // Assertions
-            Assert.IsNotNull(school, string.Format("Did not find school with Id: {0}", DataSeeder.Schools[0].Id));
+            Assert.IsNotNull(school, string.Format("Did not find school with Id: {0}", DataSeeder.SchoolSeeder.Objects[0].Id));
         }
 
         [TestMethod]

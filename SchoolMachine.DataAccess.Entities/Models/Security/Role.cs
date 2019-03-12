@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SchoolMachine.DataAccess.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SchoolMachine.DataAccess.Entities.Models.Security
 {
     [Table("role", Schema = "security")]
-    public class Role
+    public class Role : IEntity, INamedEntity
     {
         [Key]
         [Column("id")]

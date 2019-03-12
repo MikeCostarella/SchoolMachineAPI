@@ -59,8 +59,8 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
             {
                 GradeLevel = "9th",
                 RegistrationDate = DateTime.UtcNow,
-                SchoolId = DataSeeder.Schools[0].Id,
-                StudentId = DataSeeder.Students[0].Id
+                SchoolId = DataSeeder.SchoolSeeder.Objects[0].Id,
+                StudentId = DataSeeder.StudentSeeder.Objects[0].Id
             };
             var schoolStudent = _mapper.Map<SchoolStudent>(schoolStudentDto);
             Mock.Get(_repositoryWrapper.SchoolStudent).Setup(x => x.CreateSchoolStudent(schoolStudent));
@@ -81,8 +81,8 @@ namespace SchoolMachine.API.UnitTests.CRUDServices
             {
                 GradeLevel = "9th",
                 RegistrationDate = DateTime.UtcNow,
-                SchoolId = DataSeeder.Schools[0].Id,
-                StudentId = DataSeeder.Students[0].Id
+                SchoolId = DataSeeder.SchoolSeeder.Objects[0].Id,
+                StudentId = DataSeeder.StudentSeeder.Objects[0].Id
             };
             var schoolStudent = _mapper.Map<SchoolStudent>(schoolStudentDto);
             Mock.Get(_repositoryWrapper.SchoolStudent).Setup(x => x.UpdateSchoolStudent(schoolStudent, schoolStudent));
