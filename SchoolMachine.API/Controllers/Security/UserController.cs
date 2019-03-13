@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -98,8 +99,10 @@ namespace SchoolMachine.API.Controllers.Security
             }
         }
 
+        // ToDo: remove allow anonymous
+        [AllowAnonymous]
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
             var users = _userService.GetAll();
             var userDtos = _mapper.Map<IList<UserDto>>(users);
