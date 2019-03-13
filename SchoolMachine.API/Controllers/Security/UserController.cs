@@ -117,8 +117,8 @@ namespace SchoolMachine.API.Controllers.Security
             return Ok(userDto);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(Guid id, [FromBody]UserDto userDto)
+        [HttpPut("UpdateStudent/id")]
+        public IActionResult Update([FromQuery] Guid id, [FromBody] UserDto userDto)
         {
             // map dto to entity and set id
             var user = _mapper.Map<User>(userDto);
