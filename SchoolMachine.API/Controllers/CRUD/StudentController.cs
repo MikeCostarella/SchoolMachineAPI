@@ -142,7 +142,7 @@ namespace SchoolMachine.API.Controllers
         /// <param name="id"></param>
         /// <param name="studentDto"></param>
         /// <returns></returns>
-        [HttpPut("UpdateStudent/id")]
+        [HttpPut("UpdateStudent")]
         public async Task<IActionResult> UpdateStudent([FromQuery] Guid id, [FromBody] StudentDto studentDto)
         {
             try

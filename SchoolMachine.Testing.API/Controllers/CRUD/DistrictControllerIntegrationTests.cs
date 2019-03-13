@@ -81,7 +81,26 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
         [TestMethod]
         public void UpdateDistrict()
         {
-            // api/district/UpdateDistrict/id?id=f2f794c7-3ac2-4608-a2f3-c5fc53aeec18
+            // api/district/UpdateDistrict?id=f2f794c7-3ac2-4608-a2f3-c5fc53aeec18
+            // Assert
+            var response1 = Client.GetAsync("api/district/").Result;
+            var districts = JsonConvert.DeserializeObject<List<District>>(response1.Content.ReadAsStringAsync().Result);
+            var district = districts.FirstOrDefault();
+            Assert.IsNotNull(district, "No Districts returned from setup service call.");
+            var districtDto = new DistrictDto
+            {
+                Name = "Test District 1"
+            };
+            // Act
+            try
+            {
+                var httpResponseMessage = Client.PutObjectAsync("api/district/UpdateDistrict?id=" + district.Id.ToString(), districtDto);
+                httpResponseMessage.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
         }
 
         [TestMethod]
