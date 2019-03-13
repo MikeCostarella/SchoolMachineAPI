@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using SchoolMachine.API.Dtos;
 using SchoolMachine.API.Extensions;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
@@ -8,8 +7,6 @@ using SchoolMachine.Testing.API.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 
 namespace SchoolMachine.Testing.API.Controllers.CRUD
 {

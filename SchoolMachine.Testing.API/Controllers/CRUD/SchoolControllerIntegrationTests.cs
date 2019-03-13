@@ -1,10 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.SeedData;
 using SchoolMachine.Testing.API.Base;
-using System;
-using System.Collections.Generic;
 
 namespace SchoolMachine.Testing.API.Controllers.CRUD
 {
