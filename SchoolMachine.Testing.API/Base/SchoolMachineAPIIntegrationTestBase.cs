@@ -4,11 +4,11 @@ using System.Net.Http;
 
 namespace SchoolMachine.Testing.API.Base
 {
-    public class SchoolMachineAPIIntegrationTestBase
+    public class SchoolMachineApiIntegrationTestBase
     {
         #region Constructors
 
-        public SchoolMachineAPIIntegrationTestBase()
+        public SchoolMachineApiIntegrationTestBase()
         {
             WebApplicationFactory = new WebApplicationFactory<Startup>();
             Client = WebApplicationFactory.CreateClient();

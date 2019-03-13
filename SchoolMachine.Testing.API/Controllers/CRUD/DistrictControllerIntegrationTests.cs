@@ -12,7 +12,7 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
     /// Performs integration tests on DistrictController action methods
     /// </summary>
     [TestClass]
-    public class DistrictControllerIntegrationTests : SchoolMachineAPIIntegrationTestBase
+    public class DistrictControllerIntegrationTests : SchoolMachineApiIntegrationTestBase
     {
         // ToDo: Fill in the test logic
         #region Action Tests
