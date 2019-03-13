@@ -6,13 +6,28 @@ namespace SchoolMachine.Testing.API.Base
 {
     public class SchoolMachineAPIIntegrationTestBase
     {
+        #region Constructors
+
         public SchoolMachineAPIIntegrationTestBase()
         {
             WebApplicationFactory = new WebApplicationFactory<Startup>();
             Client = WebApplicationFactory.CreateClient();
         }
 
+        #endregion Constructors
+
+        #region Public Properties
+
+        /// <summary>
+        /// A factory to create a test server for the SchoolMachineAPI project
+        /// </summary>
         public WebApplicationFactory<Startup> WebApplicationFactory { get; set; }
+
+        /// <summary>
+        /// An http client to make service calls to SchoolMachineAPI
+        /// </summary>
         public HttpClient Client { get; set; }
+
+        #endregion Public Properties
     }
 }

@@ -8,28 +8,27 @@ using System.Collections.Generic;
 
 namespace SchoolMachine.Testing.API.Controllers.CRUD
 {
-
     /// <summary>
-    /// Performs integration tests on SchoolController action methods
+    /// Performs integration tests on DistrictController action methods
     /// </summary>
     [TestClass]
-    public class SchoolControllerIntegrationTests : SchoolMachineAPIIntegrationTestBase
+    public class DistrictControllerIntegrationTests : SchoolMachineAPIIntegrationTestBase
     {
         // ToDo: Fill in the test logic
         #region Action Tests
 
         [TestMethod]
-        public void GetAllSchools()
+        public void GetAllDistricts()
         {
             try
             {
                 // Act
-                var response = Client.GetAsync("api/school/").Result;
+                var response = Client.GetAsync("api/district/").Result;
                 // Assert
                 response.EnsureSuccessStatusCode();
                 var jsonString = response.Content.ReadAsStringAsync().Result;
-                var list = JsonConvert.DeserializeObject<List<School>>(jsonString);
-                var expectedList = DataSeeder.SchoolSeeder.Objects;
+                var list = JsonConvert.DeserializeObject<List<District>>(jsonString);
+                var expectedList = DataSeeder.DistrictSeeder.Objects;
                 Assert.IsTrue(list.Count >= expectedList.Count, string.Format("{0} objects were returned from the service call but {1} objects were seeded", list.Count, expectedList.Count));
             }
             catch (Exception ex)
