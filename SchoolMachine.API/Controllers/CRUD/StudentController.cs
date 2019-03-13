@@ -105,7 +105,7 @@ namespace SchoolMachine.API.Controllers
         /// <param name="studentDto"></param>
         /// <returns></returns>
         [HttpPost("CreateStudent", Name = "CreateStudent")]
-        public async Task<IActionResult> CreateStudent([FromQuery] StudentDto studentDto)
+        public async Task<IActionResult> CreateStudent([FromBody] StudentDto studentDto)
         {
             try
             {
@@ -137,13 +137,13 @@ namespace SchoolMachine.API.Controllers
         }
 
         /// <summary>
-        /// Updates a student in the data respository identified by its unique id
+        /// Updates a student in the respository identified by its unique id
         /// </summary>
         /// <param name="id"></param>
         /// <param name="studentDto"></param>
         /// <returns></returns>
-        [HttpPut("UpdateStudent{id}", Name = "UpdateStudent")]
-        public async Task<IActionResult> UpdateStudent(Guid id, [FromQuery] StudentDto studentDto)
+        [HttpPut("UpdateStudent/id")]
+        public async Task<IActionResult> UpdateStudent([FromQuery] Guid id, [FromBody] StudentDto studentDto)
         {
             try
             {

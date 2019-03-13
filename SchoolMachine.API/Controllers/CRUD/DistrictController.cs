@@ -105,7 +105,7 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// <param name="districtDto"></param>
         /// <returns></returns>
         [HttpPost("CreateDistrict", Name = "CreateDistrict")]
-        public async Task<IActionResult> CreateDistrict([FromQuery] DistrictDto districtDto)
+        public async Task<IActionResult> CreateDistrict([FromBody] DistrictDto districtDto)
         {
             try
             {
@@ -137,13 +137,13 @@ namespace SchoolMachine.API.Controllers.CRUD
         }
 
         /// <summary>
-        /// Updates a district in the data respository
+        /// Updates a district in the respository, identified by it unique id
         /// </summary>
         /// <param name="id"></param>
         /// <param name="districtDto"></param>
         /// <returns></returns>
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDistrict(Guid id, [FromQuery] DistrictDto districtDto)
+        [HttpPut("UpdateDistrict/id")]
+        public async Task<IActionResult> UpdateDistrict([FromQuery] Guid id, [FromBody] DistrictDto districtDto)
         {
             try
             {

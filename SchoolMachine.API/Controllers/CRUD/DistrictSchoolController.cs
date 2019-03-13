@@ -125,7 +125,7 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <param name="districtSchoolDto"></param>
         [HttpPost("CreateDistrictSchool", Name = "CreateDistrictSchool")]
-        public async Task<IActionResult> CreateDistrictSchool([FromQuery] DistrictSchoolDto districtSchoolDto)
+        public async Task<IActionResult> CreateDistrictSchool([FromBody] DistrictSchoolDto districtSchoolDto)
         {
             try
             {
@@ -161,8 +161,8 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <param name="id"></param>
         /// <param name="districtSchoolDto"></param>
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDistrictSchool(Guid id, [FromQuery] DistrictSchoolDto districtSchoolDto)
+        [HttpPut("UpdateDistrictSchool/id")]
+        public async Task<IActionResult> UpdateDistrictSchool([FromQuery] Guid id, [FromBody] DistrictSchoolDto districtSchoolDto)
         {
             try
             {

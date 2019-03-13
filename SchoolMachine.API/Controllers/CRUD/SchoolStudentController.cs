@@ -125,7 +125,7 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <param name="schoolStudentDto"></param>
         [HttpPost("CreateSchoolStudent", Name = "CreateSchoolStudent")]
-        public async Task<IActionResult> CreateSchoolStudent([FromQuery] SchoolStudentDto schoolStudentDto)
+        public async Task<IActionResult> CreateSchoolStudent([FromBody] SchoolStudentDto schoolStudentDto)
         {
             try
             {
@@ -161,8 +161,8 @@ namespace SchoolMachine.API.Controllers.CRUD
         /// </summary>
         /// <param name="id"></param>
         /// <param name="schoolStudentDto"></param>
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateSchoolStudent(Guid id, [FromQuery] SchoolStudentDto schoolStudentDto)
+        [HttpPut("UpdateSchoolStudent/id")]
+        public async Task<IActionResult> UpdateSchoolStudent([FromQuery] Guid id, [FromBody] SchoolStudentDto schoolStudentDto)
         {
             try
             {
