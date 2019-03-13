@@ -1,5 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
+using SchoolMachine.DataAccess.Entities.Models.SchoolData;
+using SchoolMachine.DataAccess.Entities.SeedData;
 using SchoolMachine.Testing.API.Base;
+using System;
+using System.Collections.Generic;
 
 namespace SchoolMachine.Testing.API.Controllers.CRUD
 {
@@ -16,8 +21,21 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
         [TestMethod]
         public void GetAllSchools()
         {
-            var response = Client.GetAsync("api/schools/").Result;
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                // Act
+                var response = Client.GetAsync("api/school/").Result;
+                // Assert
+                response.EnsureSuccessStatusCode();
+                var jsonString = response.Content.ReadAsStringAsync().Result;
+                var list = JsonConvert.DeserializeObject<List<School>>(jsonString);
+                var expectedList = DataSeeder.SchoolSeeder.Objects;
+                Assert.IsTrue(list.Count >= expectedList.Count, string.Format("{0} schools were returned from the service call but {1} schools were seeded", list.Count, expectedList.Count));
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
         }
 
         [TestMethod]
