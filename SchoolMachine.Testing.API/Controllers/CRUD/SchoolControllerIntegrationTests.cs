@@ -21,26 +21,13 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
         [TestMethod]
         public void GetAllSchools()
         {
-            try
-            {
-                // Act
-                var response = Client.GetAsync("api/school/").Result;
-                // Assert
-                response.EnsureSuccessStatusCode();
-                var jsonString = response.Content.ReadAsStringAsync().Result;
-                var list = JsonConvert.DeserializeObject<List<School>>(jsonString);
-                var expectedList = DataSeeder.SchoolSeeder.Objects;
-                Assert.IsTrue(list.Count >= expectedList.Count, string.Format("{0} objects were returned from the service call but {1} objects were seeded", list.Count, expectedList.Count));
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail(ex.Message);
-            }
+            Test_GetAllObjects<School>("api/school/", DataSeeder.SchoolSeeder.Objects);
         }
 
         [TestMethod]
         public void GetSchoolById()
         {
+            Test_GetNamedEntityById<School>("api/school/");
         }
 
         [TestMethod]

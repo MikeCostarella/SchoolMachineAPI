@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SchoolMachine.DataAccess.Entities.Models.Geolocation
 {
     [Table("country", Schema = "geolocation")]
-    public class Country : IEntity, INamedEntity
+    public class Country : INamedEntity
     {
         [Key]
         [Column("id")]

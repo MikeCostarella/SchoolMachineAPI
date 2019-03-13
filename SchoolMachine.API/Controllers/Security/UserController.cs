@@ -104,6 +104,7 @@ namespace SchoolMachine.API.Controllers.Security
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            await Task.Delay(0);
             var users = _userService.GetAll();
             var userDtos = _mapper.Map<IList<UserDto>>(users);
             return Ok(userDtos);

@@ -54,7 +54,7 @@ namespace SchoolMachine.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("GetStudentById", Name ="GetStudentById")]
+        [HttpGet("{id}", Name ="GetStudentById")]
         public async Task<IActionResult> GetStudentById(Guid id)
         {
             try

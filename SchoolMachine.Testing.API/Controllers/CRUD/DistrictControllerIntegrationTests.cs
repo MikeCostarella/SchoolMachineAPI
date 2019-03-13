@@ -19,57 +19,33 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
     [TestClass]
     public class DistrictControllerIntegrationTests : SchoolMachineApiIntegrationTestBase
     {
-        // ToDo: Fill in the test logic
         #region Action Tests
 
         [TestMethod]
         public void GetAllDistricts()
         {
-            try
-            {
-                // Act
-                var response = Client.GetAsync("api/district/").Result;
-                // Assert
-                response.EnsureSuccessStatusCode();
-                var jsonString = response.Content.ReadAsStringAsync().Result;
-                var list = JsonConvert.DeserializeObject<List<District>>(jsonString);
-                var expectedList = DataSeeder.DistrictSeeder.Objects;
-                Assert.IsTrue(list.Count >= expectedList.Count, string.Format("{0} objects were returned from the service call but {1} objects were seeded", list.Count, expectedList.Count));
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail(ex.Message);
-            }
+            Test_GetAllObjects<District>("api/district/", DataSeeder.DistrictSeeder.Objects);
         }
 
         [TestMethod]
         public void GetDistrictById()
         {
-            // Assert
-            var response1 = Client.GetAsync("api/district/").Result;
-            var districts = JsonConvert.DeserializeObject<List<District>>(response1.Content.ReadAsStringAsync().Result);
-            var district = districts.FirstOrDefault();
-            Assert.IsNotNull(district, "No Districts returned from setup service call.");
-            // Act
-            var response = Client.GetAsync("api/district/" + district.Id.ToString()).Result;
-            // Assert
-            response.EnsureSuccessStatusCode();
-            var jsonString = response.Content.ReadAsStringAsync().Result;
-            var testObject = JsonConvert.DeserializeObject<District>(jsonString);
-            Assert.IsNotNull(testObject, "Returned test object was null");
-            Assert.IsTrue(testObject.Name == district.Name, string.Format("Test object name {0} is not eqaul to expected object name {1}", testObject.Name, district.Name));
+            Test_GetNamedEntityById<District>("api/district/");
         }
 
         [TestMethod]
         public void CreateDistrict()
         {
+            // Arrange
             var districtDto = new DistrictDto
             {
                 Name = "Test District 1"
             };
             try
             {
+                // Act
                 var httpResponseMessage = Client.PostObjectAsync("api/district/CreateDistrict", districtDto);
+                // Assert
                 httpResponseMessage.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
@@ -81,20 +57,18 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
         [TestMethod]
         public void UpdateDistrict()
         {
-            // api/district/UpdateDistrict?id=f2f794c7-3ac2-4608-a2f3-c5fc53aeec18
-            // Assert
-            var response1 = Client.GetAsync("api/district/").Result;
-            var districts = JsonConvert.DeserializeObject<List<District>>(response1.Content.ReadAsStringAsync().Result);
-            var district = districts.FirstOrDefault();
-            Assert.IsNotNull(district, "No Districts returned from setup service call.");
-            var districtDto = new DistrictDto
+            // Arrange
+            var dto = new DistrictDto
             {
                 Name = "Test District 1"
             };
+            var arrangementObject = ((List<District>)Client.GetObjectAsync<List<District>>("api/district/")).FirstOrDefault();
+            Assert.IsNotNull(arrangementObject, "No arrangementObject(s) returned from setup service call.");
             // Act
             try
             {
-                var httpResponseMessage = Client.PutObjectAsync("api/district/UpdateDistrict?id=" + district.Id.ToString(), districtDto);
+                var httpResponseMessage = Client.PutObjectAsync("api/district/UpdateDistrict?id=" + arrangementObject.Id.ToString(), dto);
+                // Assert
                 httpResponseMessage.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
@@ -104,9 +78,23 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
         }
 
         [TestMethod]
+        public void DeleteFailsWhenChildObjectsArePresent()
+        {
+            // ToDo: Set up a repository search for a district with children
+            //// Arrange
+            //var testObject = ((List<District>)Client.GetObjectAsync<List<District>>("api/district/")).FirstOrDefault();
+            //Assert.IsNotNull(testObject, "No Districts returned from setup service call.");
+            //var childObjects = ((List<DistrictSchool>)Client.GetObjectAsync<List<DistrictSchool>>("api/districtschool?schoolId=" + testObject.Id.ToString()));
+            //// Act
+            //var response = Client.DeleteAsync("api/district/" + testObject.Id.ToString()).Result;
+            //// Assert
+            //response.EnsureSuccessStatusCode();
+        }
+
+        [TestMethod]
         public void DeleteDistrict()
         {
-
+            // ToDo: Set up a repository search for a district without children
         }
 
         #endregion Action Tests

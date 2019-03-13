@@ -8,6 +8,14 @@ namespace SchoolMachine.API.Extensions
     public static class HttpClientExtensions
     {
 
+        public static Object GetObjectAsync<T>(this HttpClient httpClient, string route)
+        {
+            var response = httpClient.GetAsync(route).Result;
+            response.EnsureSuccessStatusCode();
+            var obj = JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+            return obj;
+        }
+
         public static HttpResponseMessage PostObjectAsync(this HttpClient httpClient, string route, Object obj)
         {
             var json = JsonConvert.SerializeObject(obj);
