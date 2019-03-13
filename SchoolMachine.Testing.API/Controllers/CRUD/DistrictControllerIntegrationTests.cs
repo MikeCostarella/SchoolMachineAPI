@@ -38,24 +38,24 @@ namespace SchoolMachine.Testing.API.Controllers.CRUD
         }
 
         [TestMethod]
-        public void GetSchoolById()
+        public void GetDistrictById()
         {
         }
 
         [TestMethod]
-        public void CreateSchool()
-        {
-
-        }
-
-        [TestMethod]
-        public void UpdateSchool()
+        public void CreateDistrict()
         {
 
         }
 
         [TestMethod]
-        public void DeleteSchool()
+        public void UpdateDistrict()
+        {
+
+        }
+
+        [TestMethod]
+        public void DeleteDistrict()
         {
 
         }
