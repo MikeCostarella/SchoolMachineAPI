@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using SchoolMachine.DataAccess.Entities.Interfaces;
 using System;
+using SchoolMachine.API.Dtos;
 
 namespace SchoolMachine.Testing.API.Base
 {
@@ -75,6 +76,12 @@ namespace SchoolMachine.Testing.API.Base
             {
                 Assert.Fail(ex.Message);
             }
+        }
+
+        public void Test_RegisterUser(UserRegistrationDto userRegistrationDto)
+        {
+            var response = Client.PostObjectAsync("api/User/register", userRegistrationDto);
+            response.EnsureSuccessStatusCode();
         }
 
         #endregion Generic Tests

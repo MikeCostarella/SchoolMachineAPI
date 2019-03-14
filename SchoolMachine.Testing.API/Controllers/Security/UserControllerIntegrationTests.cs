@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using SchoolMachine.API.Dtos;
+using SchoolMachine.API.Extensions;
+using SchoolMachine.DataAccess.Entities.Models.Security;
 using SchoolMachine.DataAccess.Entities.SeedData;
 using SchoolMachine.Testing.API.Base;
 using System;
@@ -19,16 +21,50 @@ namespace SchoolMachine.Testing.API.Controllers.Security
         [TestMethod]
         public void Authenticate()
         {
-
+            var userRegistrationDto = new UserRegistrationDto
+            {
+                FirstName = "New",
+                LastName = "User",
+                Password = "password",
+                Username = "NewUser"
+            };
+            try
+            {
+                Test_RegisterUser(userRegistrationDto);
+                var response = Client.PostObjectAsync("api/user/authenticate/", userRegistrationDto);
+                var user = JsonConvert.DeserializeObject<UserDto>(response.Content.ReadAsStringAsync().Result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
         }
 
         [TestMethod]
         public void Register()
         {
-
+            // Arrange
+            var userRegistrationDto = new UserRegistrationDto
+            {
+                FirstName = "New",
+                LastName = "User",
+                Password = "password",
+                Username = "NewUser"
+            };
+            try
+            {
+                // Act
+                Test_RegisterUser(userRegistrationDto);
+                // Assert
+                // ToDo: confirm the user is in the repository
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void GetAll()
         {
             try

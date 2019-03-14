@@ -50,24 +50,19 @@ namespace SchoolMachine.API.Controllers.Security
         public IActionResult Authenticate([FromBody]UserDto userDto)
         {
             var user = _userService.Authenticate(userDto.Username, userDto.Password);
-
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
-
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            var tokenDescriptor = new SecurityTokenDescriptor();
+            tokenDescriptor.Subject = new ClaimsIdentity(new Claim[]
             {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
+                new Claim(ClaimTypes.Name, user.Id.ToString())
+            });
+            tokenDescriptor.Expires = DateTime.UtcNow.AddDays(7);
+            tokenDescriptor.SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature);
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
-
             // return basic user info (without password) and token to store client side
             return Ok(new
             {
@@ -81,15 +76,15 @@ namespace SchoolMachine.API.Controllers.Security
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public IActionResult Register([FromBody]UserDto userDto)
+        public IActionResult Register([FromBody]UserRegistrationDto userRegisrationDto)
         {
             // map dto to entity
-            var user = _mapper.Map<User>(userDto);
+            var user = _mapper.Map<User>(userRegisrationDto);
 
             try
             {
                 // save 
-                _userService.Create(user, userDto.Password);
+                _userService.Create(user, userRegisrationDto.Password);
                 return Ok();
             }
             catch (AppException ex)
@@ -99,8 +94,6 @@ namespace SchoolMachine.API.Controllers.Security
             }
         }
 
-        // ToDo: remove allow anonymous
-        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

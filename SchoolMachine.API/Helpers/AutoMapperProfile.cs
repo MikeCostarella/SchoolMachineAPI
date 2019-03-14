@@ -22,6 +22,7 @@ namespace SchoolMachine.API.Helpers
             CreateMap<SchoolStudentDto, SchoolStudent>().BeforeMap((s, d) => d.Id = Guid.NewGuid());
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>().BeforeMap((s, d) => d.Id = Guid.NewGuid());
+            CreateMap<UserRegistrationDto, User>().BeforeMap((s, d) => d.Id = Guid.NewGuid());
         }
     }
 }
