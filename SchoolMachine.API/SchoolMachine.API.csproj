@@ -13,6 +13,24 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <Content Remove="appsettings.Debug.json" />
+    <Content Remove="appsettings.Production.json" />
+    <Content Remove="appsettings.Test.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="appsettings.Debug.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="appsettings.Production.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="appsettings.Test.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -26,6 +44,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolMachine.DataAccess.Entities\SchoolMachine.DataAccess.Entities.csproj" />
+    <ProjectReference Include="..\SchoolMachine.DbConnectionManagement\SchoolMachine.DbConnectionManagement.csproj" />
     <ProjectReference Include="..\SchoolMachine.Logging.Contracts\SchoolMachine.Contracts.csproj" />
     <ProjectReference Include="..\SchoolMachine.Logging.LoggerService\SchoolMachine.Logging.LoggerService.csproj" />
     <ProjectReference Include="..\SchoolMachine.Repository\SchoolMachine.Repository.csproj" />

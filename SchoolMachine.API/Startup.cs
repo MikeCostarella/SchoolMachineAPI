@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolMachine.API.Extensions;
+using SchoolMachine.DbConnectionManagement;
 
 namespace SchoolMachine.API
 {
@@ -57,17 +58,29 @@ namespace SchoolMachine.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
+            var appSettings = Configuration.GetSection(typeof(AppSettings).Name).Get<AppSettings>();
+            if (appSettings.IsRecreateDatabase)
             {
                 app.DeleteAndRecreateDatabase(Configuration);
-                app.UseDeveloperExceptionPage();
             }
-            else
+            if (appSettings.UseHosts)
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseCors("CorsPolicy");
+            else
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseCors(builder =>
+            {
+                builder
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod();
+            });
+
             // will forward proxy headers to the current request. Will help during the Linux deployment
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
