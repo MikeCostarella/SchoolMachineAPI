@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using SchoolMachine.DataAccess.Entities.Models.Geolocation;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.Models.Security;
@@ -8,11 +9,21 @@ namespace SchoolMachine.DataAccess.Entities
 {
     public class SchoolMachineContext : DbContext
     {
+        #region Properties
+
+        public IConfiguration Config { get; }
+
+        #endregion Properties
+
         #region Constructors
 
-        public SchoolMachineContext(DbContextOptions options)
+        public SchoolMachineContext()
+        {
+        }
+        public SchoolMachineContext(DbContextOptions options, IConfiguration config)
             : base(options)
         {
+            Config = config;
         }
 
         #endregion Constructors
@@ -25,9 +36,20 @@ namespace SchoolMachine.DataAccess.Entities
             {
             }
         }
+        public void RebuildDbIfRequired(bool force = false)
+        {
+            var appSettingsSection = Config.GetSection("AppSettings");
+            var isRecreateDatabase = (appSettingsSection["IsRecreateDatabase"] != null) ? appSettingsSection["IsRecreateDatabase"] : "true";
+            if (force || isRecreateDatabase.ToLower().Equals("true"))
+            {
+                Database.EnsureDeleted();
+                Database.EnsureCreated();
+                DataSeeder.Seed(this);
+            }
+        }
 
         #endregion Configuration
-
+        
         #region DbSets
 
         #region Geolocation Schema

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SchoolMachine.DataAccess.Entities;
 using SchoolMachine.DataAccess.Entities.SeedData;
+using SchoolMachine.DbConnectionManagement;
 using System;
 using System.Linq;
 
@@ -31,7 +32,8 @@ namespace SchoolMachine.Repository.Test.Base
                 // ToDo: factor this to somewhere less visible
                 builder.UseNpgsql("Server=127.0.0.1;Port=5432;Database=SchoolMachine;User Id=postgres;Password=password;");
                 var dbContextOptions = builder.Options;
-                SchoolMachineContext = new SchoolMachineContext(dbContextOptions);
+                var config = KeyVaultConnectionManager.CreateApplicationConfiguration();
+                SchoolMachineContext = new SchoolMachineContext(dbContextOptions, config);
                 SchoolMachineContext.Database.Migrate();
 
                 // Test Assertions

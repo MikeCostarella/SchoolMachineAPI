@@ -26,6 +26,15 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         #endregion Seeders
 
+        #region Operations
+
+        public static void Seed(SchoolMachineContext context)
+        {
+            // ToDo: Perform seeding of records that require first level master tables here
+        }
+
+        #endregion Operations
+
         #region Locations
 
         public static List<Location> Locations = new List<Location>
