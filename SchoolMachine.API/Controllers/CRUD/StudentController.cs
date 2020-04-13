@@ -14,8 +14,9 @@ namespace SchoolMachine.API.Controllers
     /// <summary>
     /// Provides CRUD functionality for the Student object
     /// </summary>
-    [Route("api/student")]
     [ApiController]
+    [Route("api/student")]
+    [Produces("application/json")]
     public class StudentController : ControllerBaseSchoolMachine
     {
         #region Constructors

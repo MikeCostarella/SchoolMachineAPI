@@ -11,8 +11,9 @@ namespace SchoolMachine.API.Controllers
     /// <summary>
     /// Will provide domain level services for schools
     /// </summary>
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    [Produces("application/json")]
     public class SchoolManagementController : ControllerBaseSchoolMachine
     {
         #region Constructors
