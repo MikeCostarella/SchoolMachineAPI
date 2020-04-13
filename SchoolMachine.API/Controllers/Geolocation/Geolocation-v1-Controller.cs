@@ -12,7 +12,8 @@ namespace SchoolMachine.API.Controllers.Geolocation
     /// Provides functionality for geolocation schema entities.
     /// </summary>
     [ApiController]
-    [Route("api/geolocation")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiversion}/[controller]")]
     [Produces("application/json")]
     public class GeolocationController : ControllerBaseSchoolMachine
     {

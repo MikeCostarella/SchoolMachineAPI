@@ -15,7 +15,8 @@ namespace SchoolMachine.API.Controllers.CRUD
     /// Provides CRUD functionality for DistrictSchool(s)
     /// </summary>
     [ApiController]
-    [Route("api/districtschool")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiversion}/[controller]")]
     [Produces("application/json")]
     public class DistrictSchoolController : ControllerBaseSchoolMachine
     {

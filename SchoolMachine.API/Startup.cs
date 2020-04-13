@@ -51,6 +51,7 @@ namespace SchoolMachine.API
                 mvcOptions.OutputFormatters.Add(new XmlSerializerOutputFormatter());
             }
             ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddApiVersioning();
             services.ConfigureAutoMapper();
             services.ConfigureUserService(Configuration);
             services.ConfigureSwaggerGenerator();

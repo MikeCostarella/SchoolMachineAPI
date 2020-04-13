@@ -18,7 +18,8 @@ namespace SchoolMachine.API.Controllers.Security
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiversion}/[controller]")]
     [Produces("application/json")]
     public class UserController : ControllerBase
     {

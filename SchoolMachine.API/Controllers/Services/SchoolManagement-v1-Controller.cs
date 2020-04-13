@@ -12,7 +12,8 @@ namespace SchoolMachine.API.Controllers
     /// Will provide domain level services for schools
     /// </summary>
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiversion}/[controller]")]
     [Produces("application/json")]
     public class SchoolManagementController : ControllerBaseSchoolMachine
     {
