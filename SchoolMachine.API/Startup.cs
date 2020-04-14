@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using SchoolMachine.API.Extensions;
 using SchoolMachine.DbConnectionManagement;
 
@@ -22,7 +23,7 @@ namespace SchoolMachine.API
 
         #region Constructors
 
-        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostingEnvironment)
         {
             var directoryPath = hostingEnvironment.ContentRootPath;
             NLog.LogManager.LoadConfiguration(String.Concat(directoryPath, "/nlog.config"));
@@ -37,7 +38,7 @@ namespace SchoolMachine.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationInsightsTelemetry();
-            services.ConfigureCors();
+            //services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
             services.ConfigureRepositoryContext(Configuration);
@@ -50,7 +51,7 @@ namespace SchoolMachine.API
                 mvcOptions.InputFormatters.Add(new XmlSerializerInputFormatter(mvcOptions));
                 mvcOptions.OutputFormatters.Add(new XmlSerializerOutputFormatter());
             }
-            ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            ).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddApiVersioning();
             services.ConfigureAutoMapper();
             services.ConfigureUserService(Configuration);
@@ -58,7 +59,7 @@ namespace SchoolMachine.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             var appSettings = Configuration.GetSection(typeof(AppSettings).Name).Get<AppSettings>();
             if (appSettings.IsRecreateDatabase)
@@ -111,7 +112,25 @@ namespace SchoolMachine.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SchoolMachine API V1");
                 c.RoutePrefix = string.Empty;
             });
-            app.UseMvc();
+            var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), @"Resources");
+            if (Directory.Exists(directoryPath))
+            {
+                app.UseStaticFiles();
+                app.UseStaticFiles(new StaticFileOptions()
+                {
+                    FileProvider = new PhysicalFileProvider(directoryPath),
+                    RequestPath = new Microsoft.AspNetCore.Http.PathString("/Resources")
+                });
+            }
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseEndpoints(options =>
+            {
+            options.MapControllerRoute(
+                name: "default",
+                pattern: "{controller}/{action}/{id?}").RequireAuthorization();
+            });
         }
 
         #endregion Public Methods
