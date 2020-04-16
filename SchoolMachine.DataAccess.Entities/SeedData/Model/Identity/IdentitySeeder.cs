@@ -35,6 +35,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData.Model.Identity
         #endregion Constructors
 
         #region Actions
+
         public async Task Seed()
         {
             var adminRole = new IdentityRole<Guid> { Name = "Admin" };
