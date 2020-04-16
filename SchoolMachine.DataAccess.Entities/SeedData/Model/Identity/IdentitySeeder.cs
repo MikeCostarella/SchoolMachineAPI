@@ -44,7 +44,7 @@ namespace SchoolMachine.DataAccess.Entities.SeedData.Model.Identity
             var publicUserRole = new IdentityRole<Guid> { Name = "PublicUser" };
             await roleManager.CreateAsync(publicUserRole);
 
-            // admin claims
+            // claims
             var canAddDistrictsClaim = new Claim(CustomClaimTypes.Admin.GetDescription(), CustomClaimValues.CanAddDistricts.GetDescription());
             var canDeleteDistrictsClaim = new Claim(CustomClaimTypes.Admin.GetDescription(), CustomClaimValues.CanDeleteDistricts.GetDescription());
             var canModifyDistrictsClaim = new Claim(CustomClaimTypes.Admin.GetDescription(), CustomClaimValues.CanModifyDistricts.GetDescription());
@@ -72,6 +72,12 @@ namespace SchoolMachine.DataAccess.Entities.SeedData.Model.Identity
             await roleManager.AddClaimAsync(adminRole, canModifyStudentsClaim);
             await roleManager.AddClaimAsync(adminRole, canViewStudentsClaim);
 
+            // assign claims to public user role
+            await roleManager.AddClaimAsync(publicUserRole, canViewDistrictsClaim);
+            await roleManager.AddClaimAsync(publicUserRole, canViewSchoolsClaim);
+            await roleManager.AddClaimAsync(publicUserRole, canViewStudentsClaim);
+
+            // add user(s)
             var adminUser = new ApplicationUser
             {
                 Email = "mcosti@sprynet.com",  // ToDo: change this for your purposes
@@ -80,10 +86,19 @@ namespace SchoolMachine.DataAccess.Entities.SeedData.Model.Identity
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = "AdminUser"
             };
-
             await userManager.CreateAsync(adminUser, "password");
-
             await userManager.AddToRoleAsync(adminUser, adminRole.Name);
+
+            var publicUser1 = new ApplicationUser
+            {
+                Email = "mcosti@sprynet.com",  // ToDo: change this for your purposes
+                EmailConfirmed = true,
+                Id = Guid.NewGuid(),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = "PublicUser1"
+            };
+            await userManager.CreateAsync(publicUser1, "password");
+            await userManager.AddToRoleAsync(publicUser1, publicUserRole.Name);
         }
 
         #endregion Actions

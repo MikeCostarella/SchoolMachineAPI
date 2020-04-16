@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.API.Controllers.Base;
 using SchoolMachine.API.Dtos;
@@ -14,6 +15,7 @@ namespace SchoolMachine.API.Controllers.CRUD
     /// <summary>
     /// Provides CRUD functionality for DistrictSchool(s)
     /// </summary>
+    [Authorize("Authorized", AuthenticationSchemes = "custom")]
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiversion}/[controller]")]

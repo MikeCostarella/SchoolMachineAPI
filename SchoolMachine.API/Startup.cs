@@ -8,7 +8,10 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using SchoolMachine.API.Extensions;
+using SchoolMachine.API.Settings;
 using SchoolMachine.DbConnectionManagement;
 
 namespace SchoolMachine.API
@@ -42,6 +45,8 @@ namespace SchoolMachine.API
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
             services.ConfigureRepositoryContext(Configuration);
+            services.ConfigureIdentity();
+            services.ConfigureAuthTokenService(this.Configuration);
             services.ConfigureRepositoryWrapper();
             services.AddMvc(mvcOptions =>
             {
@@ -52,6 +57,15 @@ namespace SchoolMachine.API
                 mvcOptions.OutputFormatters.Add(new XmlSerializerOutputFormatter());
             }
             ).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.SerializerSettings.Formatting = Formatting.Indented;
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
+                });
+            var policySettings = this.Configuration.GetSection(typeof(PolicySettings).Name).Get<PolicySettings>();
+            services.ConfigureAuthorization(policySettings);
             services.AddApiVersioning();
             services.ConfigureAutoMapper();
             services.ConfigureUserService(Configuration);
@@ -75,7 +89,6 @@ namespace SchoolMachine.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseCors(builder =>
             {
                 builder
@@ -83,7 +96,6 @@ namespace SchoolMachine.API
                     .AllowAnyOrigin()
                     .AllowAnyMethod();
             });
-
             // will forward proxy headers to the current request. Will help during the Linux deployment
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {

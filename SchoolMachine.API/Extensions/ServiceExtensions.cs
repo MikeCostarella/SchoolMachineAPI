@@ -7,16 +7,21 @@ using SchoolMachine.Logging.LoggerService;
 using SchoolMachine.Repository;
 using SchoolMachine.API.Helpers;
 using System.Text;
-using System.Threading.Tasks;
 using System;
+using System.Linq;
 using System.Reflection;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using SchoolMachine.DbConnectionManagement;
+using SchoolMachine.API.Settings;
+using SchoolMachine.Common.Extensions;
+using SchoolMachine.API.Configurations;
+using SchoolMachine.API.Services;
+using SchoolMachine.DataAccess.Entities.Authorization.Models.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace SchoolMachine.API.Extensions
 {
@@ -25,6 +30,45 @@ namespace SchoolMachine.API.Extensions
     /// </summary>
     public static class ServiceExtensions
     {
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<SchoolMachineContext>()
+                .AddDefaultTokenProviders();
+        }
+
+        public static void ConfigureAuthorization(this IServiceCollection services, PolicySettings policySettings)
+        {
+            services.AddAuthorization(options =>
+            {
+                foreach (var policySetting in policySettings.Policies)
+                {
+                    options.AddPolicy(policySetting.Name, policy =>
+                    {
+                        if (policySetting.Claims.Count() == 1)
+                        {
+                            var claim = policySetting.Claims.Single();
+                            policy.RequireClaim(claim.ClaimType.GetDescription(), claim.ClaimValues);
+                        }
+                        else
+                        {
+                            policy.RequireAssertion(context =>
+                            {
+                                return context.User.Claims.Any(x => policySetting.Claims.Select(y => y.ClaimType.GetDescription()).Contains(x.Type));
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        public static void ConfigureAuthTokenService(this IServiceCollection services, IConfiguration config)
+        {
+            var appSettings = config.GetSection(typeof(AppSettings).Name).Get<AppSettings>();
+            services.AddSingleton<IAuthTokenConfiguration>(new AuthTokenConfiguration(appSettings.AuthTokenExpirationMinutes, appSettings.AuthTokenIssuerSigningKey, appSettings.AuthTokenValidAudience, appSettings.AuthTokenValidIssuer));
+            services.AddSingleton<IAuthTokenGeneratorService, AuthTokenGeneratorService>();
+        }
+
         public static void ConfigureAutoMapper(this IServiceCollection services)
         {
             //ToDo: Investigate why this reference is undefined.
@@ -183,11 +227,9 @@ namespace SchoolMachine.API.Extensions
 
         public static void ConfigureUserService(this IServiceCollection services, IConfiguration configuration)
         {
-
             // configure strongly typed settings objects
             var appSettingsSection = configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
-
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
