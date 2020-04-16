@@ -70,6 +70,5 @@ namespace SchoolMachine.API.Controllers.Geolocation
         }
 
         #endregion Actions
-
     }
 }
