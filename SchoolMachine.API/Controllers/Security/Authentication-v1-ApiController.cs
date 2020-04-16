@@ -1,37 +1,34 @@
-﻿namespace SchoolMachine.API.Controllers.Security
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.JsonWebTokens;
+using SchoolMachine.DataAccess.Entities.Authorization.Models.Identity;
+using SchoolMachine.Contracts;
+using SchoolMachine.API.Services;
+using SchoolMachine.API.Dtos;
+
+namespace SchoolMachine.API.Controllers.Security
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
-
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.IdentityModel.JsonWebTokens;
-
-    using Dtos;
-    using Services;
-    using SchoolMachine.DataAccess.Entities.Authorization.Models.Identity;
-    using SchoolMachine.Contracts;
-
+    /// <summary>
+    /// Authetication functionality
+    /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
-    [Produces("application/json")]
     [Route("api/v{version:apiversion}/authentication/[action]")]
+    [Produces("application/json")]
     public class AuthenticationApiController : ControllerBase
     {
         #region Member Variables
 
         private readonly IAuthTokenGeneratorService authTokenGeneratorService;
-
         private readonly ILoggerManager loggerManager;
-
         private readonly RoleManager<IdentityRole<Guid>> roleManager;
-
         private readonly SignInManager<ApplicationUser> signInManager;
-
         private readonly UserManager<ApplicationUser> userManager;
 
         #endregion Member Variables
@@ -54,6 +51,13 @@
 
         #endregion Constructors
 
+        #region Actions
+
+        /// <summary>
+        /// Authenticate a user and password for subsequent entry points
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(UserAuthenticationResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -111,5 +115,7 @@
                 return StatusCode(500, "Authentication failed");
             }
         }
+
+        #endregion Actions
     }
 }
