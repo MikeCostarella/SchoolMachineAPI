@@ -7,7 +7,6 @@ using SchoolMachine.Logging.LoggerService;
 using SchoolMachine.Repository;
 using SchoolMachine.API.Helpers;
 using System.Text;
-using SchoolMachine.API.Services;
 using System.Threading.Tasks;
 using System;
 using System.Reflection;
@@ -17,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
+using SchoolMachine.DbConnectionManagement;
 
 namespace SchoolMachine.API.Extensions
 {
@@ -191,42 +191,21 @@ namespace SchoolMachine.API.Extensions
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.Events = new JwtBearerEvents
+            services
+                .AddAuthentication("custom")
+                .AddJwtBearer("custom", options =>
                 {
-                    OnTokenValidated = context =>
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
-                        var userId = Guid.Parse(context.Principal.Identity.Name);
-                        var user = userService.GetById(userId);
-                        if (user == null)
-                        {
-                            // return unauthorized if user no longer exists
-                            context.Fail("Unauthorized");
-                        }
-                        return Task.CompletedTask;
-                    }
-                };
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
-
-            // configure DI for application services
-            services.AddScoped<IUserService, UserService>();
-
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidAudience = appSettings.AuthTokenValidAudience,
+                        ValidIssuer = appSettings.AuthTokenValidIssuer
+                    };
+                });
         }
     }
 }

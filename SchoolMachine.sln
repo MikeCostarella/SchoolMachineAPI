@@ -48,9 +48,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseQueries", "Database
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{AC07212F-F691-4164-AD34-A008CC75929C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.DbGeneratorApp", "SchoolMachine.DbGeneratorApp\SchoolMachine.DbGeneratorApp.csproj", "{186FF419-947E-40AB-9AC8-6D0A4A5D630C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.DbGeneratorApp", "SchoolMachine.DbGeneratorApp\SchoolMachine.DbGeneratorApp.csproj", "{186FF419-947E-40AB-9AC8-6D0A4A5D630C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.DbConnectionManagement", "SchoolMachine.DbConnectionManagement\SchoolMachine.DbConnectionManagement.csproj", "{2D303CE9-CB62-4210-9267-D3BFE379C224}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.DbConnectionManagement", "SchoolMachine.DbConnectionManagement\SchoolMachine.DbConnectionManagement.csproj", "{2D303CE9-CB62-4210-9267-D3BFE379C224}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.Common.Extensions", "SchoolMachine.Common.Extensions\SchoolMachine.Common.Extensions.csproj", "{BA9B3486-856E-400F-8375-2399FA00908A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,6 +108,10 @@ Global
 		{2D303CE9-CB62-4210-9267-D3BFE379C224}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D303CE9-CB62-4210-9267-D3BFE379C224}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D303CE9-CB62-4210-9267-D3BFE379C224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA9B3486-856E-400F-8375-2399FA00908A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9B3486-856E-400F-8375-2399FA00908A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9B3486-856E-400F-8375-2399FA00908A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9B3486-856E-400F-8375-2399FA00908A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,6 +127,7 @@ Global
 		{CAEA1FEF-D8B0-42C8-9BA3-6985203679F9} = {DA827992-C7FB-4DF5-A3C3-464F11FB308D}
 		{494CFAFE-5439-44DA-B10D-240FD78BF33B} = {DA827992-C7FB-4DF5-A3C3-464F11FB308D}
 		{2D303CE9-CB62-4210-9267-D3BFE379C224} = {AC07212F-F691-4164-AD34-A008CC75929C}
+		{BA9B3486-856E-400F-8375-2399FA00908A} = {AC07212F-F691-4164-AD34-A008CC75929C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6520A525-2E5F-4481-A912-0847D1B50199}

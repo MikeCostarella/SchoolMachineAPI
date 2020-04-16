@@ -37,8 +37,6 @@ namespace SchoolMachine.Repository.Test.Base
                 SchoolMachineContext.Database.Migrate();
 
                 // Test Assertions
-                Assert.IsTrue(SchoolMachineContext.Roles.Count() >= DataSeeder.RoleSeeder.Objects.Count()
-                    , string.Format("Database has {0} Roles and Seeder has {1}", SchoolMachineContext.Roles.Count(), DataSeeder.RoleSeeder.Objects.Count()));
 
                 Assert.IsTrue(SchoolMachineContext.Districts.Count() >= DataSeeder.DistrictSeeder.Objects.Count()
                     , string.Format("Database has {0} SchoolDistricts and Seeder has {1}", SchoolMachineContext.Districts.Count(), DataSeeder.DistrictSeeder.Objects.Count()));
@@ -48,9 +46,6 @@ namespace SchoolMachine.Repository.Test.Base
 
                 Assert.IsTrue(SchoolMachineContext.Students.Count() >= DataSeeder.StudentSeeder.Objects.Count()
                     , string.Format("Database has {0} Students and Seeder has {1}", SchoolMachineContext.Students.Count(), DataSeeder.StudentSeeder.Objects.Count()));
-
-                Assert.IsTrue(SchoolMachineContext.Users.Count() >= DataSeeder.UserSeeder.Objects.Count()
-                    , string.Format("Database has {0} Users and Seeder has {1}", SchoolMachineContext.Users.Count(), DataSeeder.UserSeeder.Objects.Count()));
 
                 Assert.IsTrue(SchoolMachineContext.DistrictSchools.Count() >= DataSeeder.DistrictSchools.Count()
                     , string.Format("Database has {0} SchoolDistrictSchools and Seeder has {1}", SchoolMachineContext.DistrictSchools.Count(), DataSeeder.DistrictSchools.Count()));

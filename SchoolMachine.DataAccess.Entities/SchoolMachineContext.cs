@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using SchoolMachine.DataAccess.Entities.Extensions.Utilities;
 using SchoolMachine.DataAccess.Entities.Models.Geolocation;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
-using SchoolMachine.DataAccess.Entities.Models.Security;
 using SchoolMachine.DataAccess.Entities.SeedData;
+using SchoolMachine.DataAccess.Entities.Utilities;
 
 namespace SchoolMachine.DataAccess.Entities
 {
-    public class SchoolMachineContext : DbContext
+    public class SchoolMachineContext : DynamicDbContext
     {
         #region Properties
 
@@ -17,9 +18,6 @@ namespace SchoolMachine.DataAccess.Entities
 
         #region Constructors
 
-        public SchoolMachineContext()
-        {
-        }
         public SchoolMachineContext(DbContextOptions options, IConfiguration config)
             : base(options)
         {
@@ -30,9 +28,10 @@ namespace SchoolMachine.DataAccess.Entities
 
         #region Configuration
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
+            dbContextOptionsBuilder.SetDatabaseConnection(Config);
+            if (!dbContextOptionsBuilder.IsConfigured)
             {
             }
         }
@@ -70,34 +69,19 @@ namespace SchoolMachine.DataAccess.Entities
 
         #endregion SchoolDate Schema
 
-        #region Security Schema
-
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<Group> Teams { get; set; }
-        public DbSet<GroupRole> TeamRoles { get; set; }
-        public DbSet<GroupUser> TeamUsers { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
-    
-        #endregion Security Schema
-
         #endregion DbSets
 
         #region Data Seeding
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             foreach (var country in DataSeeder.CountrySeeder.Objects) { modelBuilder.Entity<Country>().HasData(country); }
             foreach (var state in DataSeeder.StateSeeder.Objects) { modelBuilder.Entity<State>().HasData(state); }
             foreach (var location in DataSeeder.Locations) { modelBuilder.Entity<Location>().HasData(location); }
-            foreach (var group in DataSeeder.GroupSeeder.Objects) { modelBuilder.Entity<Group>().HasData(group); }
-            foreach (var role in DataSeeder.RoleSeeder.Objects) { modelBuilder.Entity<Role>().HasData(role); }
-            foreach (var user in DataSeeder.UserSeeder.Objects) { modelBuilder.Entity<User>().HasData(user); }
             foreach (var district in DataSeeder.DistrictSeeder.Objects) { modelBuilder.Entity<District>().HasData(district); }
             foreach (var school in DataSeeder.SchoolSeeder.Objects) { modelBuilder.Entity<School>().HasData(school); }
             foreach (var school in DataSeeder.StudentSeeder.Objects) { modelBuilder.Entity<Student>().HasData(school); }
-            foreach (var userRole in DataSeeder.UserRoles) { modelBuilder.Entity<UserRole>().HasData(userRole); }
-            foreach (var groupRole in DataSeeder.GroupRoles) { modelBuilder.Entity<GroupRole>().HasData(groupRole); }
             foreach (var districtSchool in DataSeeder.DistrictSchools) { modelBuilder.Entity<DistrictSchool>().HasData(districtSchool); }
             foreach (var schoolStudent in DataSeeder.SchoolStudents) { modelBuilder.Entity<SchoolStudent>().HasData(schoolStudent); }
         }

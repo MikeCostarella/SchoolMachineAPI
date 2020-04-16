@@ -1,9 +1,7 @@
 ﻿using SchoolMachine.DataAccess.Entities.Models.Geolocation;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
-using SchoolMachine.DataAccess.Entities.Models.Security;
 using SchoolMachine.DataAccess.Entities.SeedData.Model.Geolocation;
 using SchoolMachine.DataAccess.Entities.SeedData.Model.SchoolData;
-using SchoolMachine.DataAccess.Entities.SeedData.Model.Security;
 using System;
 using System.Collections.Generic;
 
@@ -11,18 +9,14 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 {
     public static class DataSeeder
     {
-
         #region Seeders
 
         // NOTE: The order these seeders is created can be important because of foreign key relationships
         public static CountrySeeder CountrySeeder { get; set; } = new CountrySeeder();
-        public static GroupSeeder GroupSeeder { get; set; } = new GroupSeeder();
         public static StateSeeder StateSeeder { get; set; } = new StateSeeder();
         public static DistrictSeeder DistrictSeeder { get; set; } = new DistrictSeeder();
-        public static RoleSeeder RoleSeeder { get; set; } = new RoleSeeder();
         public static SchoolSeeder SchoolSeeder { get; set; } = new SchoolSeeder();
         public static StudentSeeder StudentSeeder { get; set; } = new StudentSeeder();
-        public static UserSeeder UserSeeder { get; set; } = new UserSeeder();
 
         #endregion Seeders
 
@@ -148,39 +142,5 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
         };
 
         #endregion SchoolStudents
-
-        #region UserRoles
-
-        public static List<UserRole> UserRoles = new List<UserRole>
-        {
-            new UserRole
-            {
-                Id = Guid.NewGuid(),
-                RoleId = RoleSeeder.Dictionary["System Administrator"].Id,
-                UserId = UserSeeder.Dictionary["CostarellaMike@gmail.com"].Id
-            }
-        };
-
-        #endregion UserRoles
-
-        #region GroupRoles
-
-        public static List<GroupRole> GroupRoles = new List<GroupRole>()
-        {
-            new GroupRole { Id = Guid.NewGuid(), GroupId = GroupSeeder.Dictionary["Girard High School Staff"].Id, RoleId = RoleSeeder.Dictionary["Can Read District Information"].Id },
-            new GroupRole { Id = Guid.NewGuid(), GroupId = GroupSeeder.Dictionary["Girard High School Staff"].Id, RoleId = RoleSeeder.Dictionary["Can Read School Information"].Id },
-            new GroupRole { Id = Guid.NewGuid(), GroupId = GroupSeeder.Dictionary["Girard High School Staff"].Id, RoleId = RoleSeeder.Dictionary["Can Read Student Information"].Id }
-        };
-
-        #endregion GroupRoles
-
-        #region GroupUsers
-
-        public static List<GroupUser> GroupUsers = new List<GroupUser>
-        {
-            new GroupUser { Id = Guid.NewGuid(), GroupId = GroupSeeder.Dictionary["Girard High School Staff"].Id, UserId = UserSeeder.Dictionary["JoePrincipal@ghs.com"].Id, DateCreated = DateTime.UtcNow }
-        };
-
-        #endregion GroupUsers
     }
 }

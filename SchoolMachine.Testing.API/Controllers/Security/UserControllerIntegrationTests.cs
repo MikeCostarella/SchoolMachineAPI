@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using SchoolMachine.API.Dtos;
 using SchoolMachine.API.Extensions;
-using SchoolMachine.DataAccess.Entities.Models.Security;
 using SchoolMachine.DataAccess.Entities.SeedData;
 using SchoolMachine.Testing.API.Base;
 using System;
@@ -75,8 +74,6 @@ namespace SchoolMachine.Testing.API.Controllers.Security
                 response.EnsureSuccessStatusCode();
                 var jsonString = response.Content.ReadAsStringAsync().Result;
                 var list = JsonConvert.DeserializeObject<List<UserDto>>(jsonString);
-                var expectedList = DataSeeder.UserSeeder.Objects;
-                Assert.IsTrue(list.Count >= expectedList.Count, string.Format("{0} objects were returned from the service call but {1} objects were seeded", list.Count, expectedList.Count));
             }
             catch (Exception ex)
             {

@@ -61,4 +61,10 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Security\" />
+    <Folder Include="Configurations\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
