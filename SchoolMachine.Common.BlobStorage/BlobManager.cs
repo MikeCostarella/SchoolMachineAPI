@@ -98,6 +98,5 @@ namespace SchoolMachine.Common.BlobStorage
         }
 
         #endregion Utilities
-
     }
 }

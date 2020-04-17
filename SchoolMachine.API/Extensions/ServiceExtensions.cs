@@ -143,24 +143,24 @@ namespace SchoolMachine.API.Extensions
             {
                 case "InMemory":
                     services.AddDbContext<SchoolMachineContext>
-                        (options => options.UseInMemoryDatabase(databaseName: config.GetConnectionString("SchoolMachineInMemoryDb")));
+                        (options => options.UseInMemoryDatabase(databaseName: config.GetConnectionString("InMemoryDb")));
                     break;
                 case "Npgsql":
                     services.AddEntityFrameworkNpgsql()
-                        .AddDbContext<SchoolMachineContext>(options => options.UseNpgsql(config.GetConnectionString("SchoolMachineNpgSql")))
+                        .AddDbContext<SchoolMachineContext>(options => options.UseNpgsql(config.GetConnectionString("NpgSql")))
                         .BuildServiceProvider();
                     break;
                 case "Sqlite":
                     services.AddDbContext<SchoolMachineContext>
-                        (options => options.UseSqlite(config.GetConnectionString("SchoolMachineSqlite")));
+                        (options => options.UseSqlite(config.GetConnectionString("Sqlite")));
                     break;
                 case "SqlServer":
                     services.AddDbContext<SchoolMachineContext>
-                        (options => options.UseSqlServer(config.GetConnectionString("SchoolMachineSqlServer")));
+                        (options => options.UseSqlServer(config.GetConnectionString("SqlServer")));
                     break;
                 default:
                     services.AddDbContext<SchoolMachineContext>
-                        (options => options.UseInMemoryDatabase(databaseName: config.GetConnectionString("SchoolMachineInMemoryDb")));
+                        (options => options.UseInMemoryDatabase(databaseName: config.GetConnectionString("InMemoryDb")));
                     break;
             }
         }
