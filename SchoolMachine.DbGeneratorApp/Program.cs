@@ -16,7 +16,7 @@ namespace SchoolMachine.DbGeneratorApp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((context, config) =>
-                    KeyVaultConnectionManager.ConfigureSchoolMachineConfiguration(context, config)
+                    KeyVaultConnectionManager.ConfigureSchoolMachineConfiguration(config)
                 )
                 .UseStartup<Startup>();
     }

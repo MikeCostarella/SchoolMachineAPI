@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolMachine.Common.Extensions\SchoolMachine.Common.Extensions.csproj" />
+    <ProjectReference Include="..\SchoolMachine.Common.Global\SchoolMachine.Common.Global.csproj" />
   </ItemGroup>
 
 </Project>

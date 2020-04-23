@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SchoolMachine.Common.MvcExtensions;
 
-namespace SchoolMachine.DbGeneratorApp
+namespace SchoolMachine.Repository.Test.Base
 {
     public class Startup
     {
@@ -27,13 +28,13 @@ namespace SchoolMachine.DbGeneratorApp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureRepositoryContext(Configuration);
+            services.ConfigureRepositoryContext(Configuration, "InMemory");
             services.AddIdentityServiceFramework();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifeTime)
         {
-            app.DeleteAndRecreateDatabase(Configuration);
+            app.DeleteAndRecreateDatabase(true);
             lifeTime.StopApplication();
         }
 

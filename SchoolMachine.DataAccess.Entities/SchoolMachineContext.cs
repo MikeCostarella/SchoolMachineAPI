@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using SchoolMachine.Common.Global;
 using SchoolMachine.DataAccess.Entities.Extensions.Utilities;
 using SchoolMachine.DataAccess.Entities.Models.Geolocation;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
@@ -30,9 +31,12 @@ namespace SchoolMachine.DataAccess.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
-            dbContextOptionsBuilder.SetDatabaseConnection(Config);
-            if (!dbContextOptionsBuilder.IsConfigured)
+            if (!TestIndicator.IsTestMode)
             {
+                dbContextOptionsBuilder.SetDatabaseConnection(Config);
+                if (!dbContextOptionsBuilder.IsConfigured)
+                {
+                }
             }
         }
         public void RebuildDbIfRequired(bool force = false)
@@ -43,7 +47,6 @@ namespace SchoolMachine.DataAccess.Entities
             {
                 Database.EnsureDeleted();
                 Database.EnsureCreated();
-                DataSeeder.Seed(this);
             }
         }
 
@@ -75,7 +78,7 @@ namespace SchoolMachine.DataAccess.Entities
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+             base.OnModelCreating(modelBuilder);
             foreach (var country in DataSeeder.CountrySeeder.Objects) { modelBuilder.Entity<Country>().HasData(country); }
             foreach (var state in DataSeeder.StateSeeder.Objects) { modelBuilder.Entity<State>().HasData(state); }
             foreach (var location in DataSeeder.Locations) { modelBuilder.Entity<Location>().HasData(location); }

@@ -24,7 +24,15 @@ namespace SchoolMachine.DataAccess.Entities.SeedData
 
         public static void Seed(SchoolMachineContext context)
         {
-            // ToDo: Perform seeding of records that require first level master tables here
+            foreach (var country in DataSeeder.CountrySeeder.Objects) { context.Countries.Add(country); }
+            foreach (var state in DataSeeder.StateSeeder.Objects) { context.States.Add(state); }
+            foreach (var location in DataSeeder.Locations) { context.Locations.Add(location); }
+            foreach (var district in DataSeeder.DistrictSeeder.Objects) { context.Districts.Add(district); }
+            foreach (var school in DataSeeder.SchoolSeeder.Objects) { context.Schools.Add(school); }
+            foreach (var student in DataSeeder.StudentSeeder.Objects) { context.Students.Add(student); }
+            foreach (var districtSchool in DataSeeder.DistrictSchools) { context.DistrictSchools.Add(districtSchool); }
+            foreach (var schoolStudent in DataSeeder.SchoolStudents) { context.SchoolStudents.Add(schoolStudent); }
+            context.SaveChanges();
         }
 
         #endregion Operations

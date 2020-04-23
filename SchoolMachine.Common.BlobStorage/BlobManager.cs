@@ -64,9 +64,7 @@ namespace SchoolMachine.Common.BlobStorage
             try
             {
                 var cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(blobName);
-                await cloudBlockBlob.ExistsAsync();
-                await UploadTextAsync(cloudBlockBlob, blobContents);
-                return true;
+                return await UploadTextAsync(cloudBlockBlob, blobContents);
             }
             catch
             {
@@ -87,7 +85,7 @@ namespace SchoolMachine.Common.BlobStorage
 
         }
 
-        private async Task UploadTextAsync(ICloudBlob blob, string text)
+        private async Task<bool> UploadTextAsync(ICloudBlob blob, string text)
         {
             blob.Properties.ContentEncoding = "UTF-8";
             blob.Properties.ContentType = "text/plain";
@@ -95,6 +93,7 @@ namespace SchoolMachine.Common.BlobStorage
             {
                 await blob.UploadFromStreamAsync(stream);
             }
+            return await blob.ExistsAsync();
         }
 
         #endregion Utilities

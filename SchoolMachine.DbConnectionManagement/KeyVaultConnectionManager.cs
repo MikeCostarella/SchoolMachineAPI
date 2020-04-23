@@ -10,9 +10,9 @@ namespace SchoolMachine.DbConnectionManagement
 {
     public class KeyVaultConnectionManager
     {
-        public static void ConfigureSchoolMachineConfiguration(WebHostBuilderContext webHostBuilderContext, IConfigurationBuilder builder)
+        public static void ConfigureSchoolMachineConfiguration(IConfigurationBuilder configurationBuilder)
         {
-            SchoolMachineConfigBuilder(builder);
+            SchoolMachineConfigBuilder(configurationBuilder);
         }
 
         public static IConfiguration CreateApplicationConfiguration()

@@ -14,8 +14,7 @@ namespace SchoolMachine.DataAccess.Entities
                 return DEFAULT_DB_PROVIDER_CONNECTION;
             }
             var connectionString = DEFAULT_DB_PROVIDER_CONNECTION;
-            var connectionName = DatabasePlatformName(config);
-            switch(connectionName)
+            switch (appSettingsSection["DatabaseProvider"])
             {
                 case "InMemory":
                     connectionString = config.GetConnectionString("InMemoryDb");

@@ -1,8 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SchoolMachine.DataAccess.Entities;
+using SchoolMachine.DataAccess.Entities.Authorization.Models.Identity;
 using SchoolMachine.DataAccess.Entities.SeedData;
+using SchoolMachine.DataAccess.Entities.SeedData.Model.Identity;
 using SchoolMachine.DbConnectionManagement;
 using System;
 using System.Linq;
@@ -19,22 +25,31 @@ namespace SchoolMachine.Repository.Test.Base
 
         #region Setup/Teardown
 
+        
         public static void BaseTestClassSetup(TestContext context)
         {
+            IConfiguration Configuration = new ConfigurationBuilder().Build();
             try
             {
-                // Setup
-                var serviceCollection = new ServiceCollection();
-                serviceCollection.AddEntityFrameworkNpgsql()
-                    .AddDbContext<SchoolMachineContext>()
-                    .BuildServiceProvider();
+                string[] args = new string[0];
+                var webHostBuilder = WebHost
+                    .CreateDefaultBuilder(args)
+                    .ConfigureAppConfiguration(
+                        (context, config) =>
+                            KeyVaultConnectionManager.ConfigureSchoolMachineConfiguration(config)
+                        )
+                    .UseStartup<Startup>();
+                var webHost = webHostBuilder.Build();
+                var roleManager = webHost.Services.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+                var userManager = webHost.Services.GetRequiredService<UserManager<ApplicationUser>>();
                 var builder = new DbContextOptionsBuilder<SchoolMachineContext>();
-                // ToDo: factor this to somewhere less visible
-                builder.UseNpgsql("Server=127.0.0.1;Port=5432;Database=SchoolMachine;User Id=postgres;Password=password;");
+                builder.UseInMemoryDatabase(databaseName: "SchoolMachine");
                 var dbContextOptions = builder.Options;
-                var config = KeyVaultConnectionManager.CreateApplicationConfiguration();
-                SchoolMachineContext = new SchoolMachineContext(dbContextOptions, config);
-                SchoolMachineContext.Database.Migrate();
+                SchoolMachineContext = new SchoolMachineContext(dbContextOptions, Configuration);
+                DataSeeder.Seed(SchoolMachineContext);
+                var identitySeeder = new IdentitySeeder(SchoolMachineContext, roleManager, userManager);
+                var identityTask = identitySeeder.Seed();
+                identityTask.Wait();
 
                 // Test Assertions
 
