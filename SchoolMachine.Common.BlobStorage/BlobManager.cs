@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,18 @@ namespace SchoolMachine.Common.BlobStorage
 
         #region Actions
 
-        public async Task DeleteAsync(string blobName)
+        public async Task<bool> DeleteAllAsync()
+        {
+            var names = await GetBlobNames();
+            foreach (var name in names)
+            {
+                var success = await DeleteAsync(name);
+                if (!success) return false;
+            }
+            return true;
+        }
+
+        public async Task<bool> DeleteAsync(string blobName)
         {
             var cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(blobName);
             var doesBlobExist = await cloudBlockBlob.ExistsAsync();
@@ -40,12 +52,24 @@ namespace SchoolMachine.Common.BlobStorage
             {
                 await cloudBlockBlob.DeleteAsync();
             }
+            return !(await cloudBlockBlob.ExistsAsync());
         }
 
         public async Task<bool> ExistsAsync(string blobName)
         {
             var cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(blobName);
             return await cloudBlockBlob.ExistsAsync();
+        }
+
+        public async Task<List<string>> GetBlobNames()
+        {
+            var cloudBlockBlobs = await ListBlobsAsync(null);
+            List<string> names = new List<string>();
+            foreach (var cloudBlockBlob in cloudBlockBlobs)
+            {
+                names.Add(cloudBlockBlob.Name);
+            }
+            return names;
         }
 
         public async Task<string> GetContentsAsync(string blobName)
@@ -83,6 +107,23 @@ namespace SchoolMachine.Common.BlobStorage
             cloudBlobContainer = cloudBlobClient.GetContainerReference(_containerName);
             containerDoesExist = await cloudBlobContainer.CreateIfNotExistsAsync();
 
+        }
+
+        private async Task<List<CloudBlockBlob>> ListBlobsAsync(BlobContinuationToken currentToken)
+        {
+            BlobContinuationToken continuationToken = null;
+            var results = new List<CloudBlockBlob>();
+            do
+            {
+                var response = await cloudBlobContainer.ListBlobsSegmentedAsync(continuationToken);
+                continuationToken = response.ContinuationToken;
+                foreach (var iListBlobItem in response.Results)
+                {
+                    results.Add((CloudBlockBlob)iListBlobItem);
+                }
+            }
+            while (continuationToken != null);
+            return results;
         }
 
         private async Task<bool> UploadTextAsync(ICloudBlob blob, string text)
