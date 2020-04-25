@@ -25,7 +25,6 @@ namespace SchoolMachine.Repository.Test.Base
 
         #region Setup/Teardown
 
-        
         public static void BaseTestClassSetup(TestContext context)
         {
             IConfiguration Configuration = new ConfigurationBuilder().Build();
