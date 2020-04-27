@@ -1,6 +1,6 @@
-﻿namespace SchoolMachine.API.Dtos
+﻿namespace SchoolMachine.API.Models
 {
-    public class UserRegistrationDto
+    public class UserRegistrationRequest
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

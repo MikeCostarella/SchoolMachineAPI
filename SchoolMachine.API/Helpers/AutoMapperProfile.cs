@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SchoolMachine.API.Dtos;
+using SchoolMachine.API.Models;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using System;
 

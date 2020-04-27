@@ -1,4 +1,4 @@
-﻿namespace SchoolMachine.API.Dtos
+﻿namespace SchoolMachine.API.Models
 {
     public class UserAuthenticationRequest
     {

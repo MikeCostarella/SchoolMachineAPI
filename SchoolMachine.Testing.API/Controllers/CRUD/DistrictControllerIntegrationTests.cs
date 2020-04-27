@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SchoolMachine.API.Dtos;
 using SchoolMachine.API.Extensions;
+using SchoolMachine.API.Models;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.SeedData;
 using SchoolMachine.Testing.API.Base;

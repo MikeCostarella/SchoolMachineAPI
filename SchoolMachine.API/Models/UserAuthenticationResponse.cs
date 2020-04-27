@@ -1,20 +1,25 @@
-﻿using System;
+﻿using SchoolMachine.API.Models.Base;
+using System;
 using System.Collections.Generic;
 
-namespace SchoolMachine.API.Dtos
+namespace SchoolMachine.API.Models
 {
-    public class UserAuthenticationResponse
+    public class UserAuthenticationResponse : BaseServiceResponse
     {
+        #region Constructors
+
         public UserAuthenticationResponse(){ }
 
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public bool IsSuccessful { get; set; } = false;
-        public string Message { get; set; } = string.Empty;
+        #endregion Constructors
+
+        #region Public Properties
 
         public List<string> Permissions { get; set; }
         public List<string> Roles { get; set; }
         public string Token { get; set; }
         public Guid UserId { get; set; }
         public string Username { get; set; }
+
+        #endregion Public Properties
     }
 }

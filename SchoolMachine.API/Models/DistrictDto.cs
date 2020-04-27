@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SchoolMachine.API.Dtos
+namespace SchoolMachine.API.Models
 {
     public class DistrictDto
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SchoolMachine.ServiceModel.Enumerations
+﻿namespace SchoolMachine.ServiceModel.Enumerations
 {
     public enum GradeLevel
     {

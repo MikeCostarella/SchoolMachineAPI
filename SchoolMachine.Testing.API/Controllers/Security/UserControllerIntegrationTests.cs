@@ -1,8 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using SchoolMachine.API.Dtos;
 using SchoolMachine.API.Extensions;
-using SchoolMachine.DataAccess.Entities.SeedData;
+using SchoolMachine.API.Models;
 using SchoolMachine.Testing.API.Base;
 using System;
 using System.Collections.Generic;
@@ -20,7 +19,7 @@ namespace SchoolMachine.Testing.API.Controllers.Security
         [TestMethod]
         public void Authenticate()
         {
-            var userRegistrationDto = new UserRegistrationDto
+            var userRegistrationDto = new UserRegistrationRequest
             {
                 FirstName = "New",
                 LastName = "User",
@@ -43,7 +42,7 @@ namespace SchoolMachine.Testing.API.Controllers.Security
         public void Register()
         {
             // Arrange
-            var userRegistrationDto = new UserRegistrationDto
+            var userRegistrationDto = new UserRegistrationRequest
             {
                 FirstName = "New",
                 LastName = "User",

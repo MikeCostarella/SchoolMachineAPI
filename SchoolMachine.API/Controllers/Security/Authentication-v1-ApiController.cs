@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.JsonWebTokens;
 using SchoolMachine.DataAccess.Entities.Authorization.Models.Identity;
 using SchoolMachine.Contracts;
 using SchoolMachine.API.Services;
-using SchoolMachine.API.Dtos;
+using SchoolMachine.API.Models;
 
 namespace SchoolMachine.API.Controllers.Security
 {

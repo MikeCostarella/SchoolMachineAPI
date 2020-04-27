@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SchoolMachine.API.Dtos
+namespace SchoolMachine.API.Models
 {
     public class SchoolStudentDto
     {

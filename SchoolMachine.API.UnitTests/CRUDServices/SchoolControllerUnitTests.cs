@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SchoolMachine.API.Controllers.CRUD;
-using SchoolMachine.API.Dtos;
+using SchoolMachine.API.Models;
 using SchoolMachine.API.UnitTests.Base;
 using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.DataAccess.Entities.SeedData;

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using SchoolMachine.DataAccess.Entities.Interfaces;
 using System;
-using SchoolMachine.API.Dtos;
+using SchoolMachine.API.Models;
 
 namespace SchoolMachine.Testing.API.Base
 {
@@ -78,7 +78,7 @@ namespace SchoolMachine.Testing.API.Base
             }
         }
 
-        public void Test_RegisterUser(UserRegistrationDto userRegistrationDto)
+        public void Test_RegisterUser(UserRegistrationRequest userRegistrationDto)
         {
             var response = Client.PostObjectAsync("api/User/register", userRegistrationDto);
             response.EnsureSuccessStatusCode();

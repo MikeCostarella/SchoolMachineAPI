@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.API.Controllers.Base;
+using SchoolMachine.API.Models;
 using SchoolMachine.Contracts;
-using SchoolMachine.ServiceModel.DomainRequests;
-using SchoolMachine.ServiceModel.DomainResponses;
+using System;
 using System.Threading.Tasks;
 
 namespace SchoolMachine.API.Controllers
@@ -33,12 +34,22 @@ namespace SchoolMachine.API.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("RegisterStudentForSchool", Name = "RegisterStudentForSchool")]
-        public async Task<IActionResult> RegisterStudentForSchool([FromBody] StudentRegistrationRequest request)
+        [HttpPost("StudentDistrictRegistration", Name = "StudentDistrictRegistration")]
+        [ProducesResponseType(typeof(StudentDistrictRegistrationResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> StudentDistrictRegistration([FromBody] StudentDistrictRegistrationRequest request)
         {
             await Task.Delay(0);
-            // TODO: fill in logic
-            return Ok(new StudentRegistrationResponse());
+            try
+            {
+                // TODO: fill in logic
+                return Ok(new StudentDistrictRegistrationResponse());
+            }
+            catch(Exception ex)
+            {
+                // TODO: Add logging
+                return StatusCode(500, "Internal Server Error");
+            }
         }
 
         #endregion Action Methods
