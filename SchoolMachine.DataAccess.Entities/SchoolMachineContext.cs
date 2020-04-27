@@ -51,7 +51,7 @@ namespace SchoolMachine.DataAccess.Entities
         }
 
         #endregion Configuration
-        
+
         #region DbSets
 
         #region Geolocation Schema
@@ -68,6 +68,7 @@ namespace SchoolMachine.DataAccess.Entities
         public DbSet<DistrictSchool> DistrictSchools { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolStudent> SchoolStudents { get; set; }
+        public DbSet<StudentDistrictRegistration> StudentDistrictRegistration { get; set; }
         public DbSet<Student> Students { get; set; }
 
         #endregion SchoolDate Schema

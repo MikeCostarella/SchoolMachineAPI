@@ -17,17 +17,17 @@ namespace SchoolMachine.DataAccess.Entities.Models.SchoolData
 
         [Column("first_name")]
         [Required(ErrorMessage = "First Name is required")]
-        [StringLength(60, ErrorMessage = "First Name can't be longer than 60 characters")]
+        [StringLength(30, ErrorMessage = "First Name can't be longer than 60 characters")]
         public string FirstName { get; set; }
 
         [Column("last_name")]
         [Required(ErrorMessage = "Last Name is required")]
-        [StringLength(60, ErrorMessage = "Last Name can't be longer than 60 characters")]
+        [StringLength(30, ErrorMessage = "Last Name can't be longer than 60 characters")]
         public string LastName { get; set; }
 
         [Column("middle_name")]
         [Required(ErrorMessage = "Middle Name is required")]
-        [StringLength(60, ErrorMessage = "Middle Name can't be longer than 60 characters")]
+        [StringLength(20, ErrorMessage = "Middle Name can't be longer than 60 characters")]
         public string MiddleName { get; set; }
 
         [Column("birth_date")]
