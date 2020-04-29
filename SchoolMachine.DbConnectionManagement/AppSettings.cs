@@ -20,6 +20,7 @@ namespace SchoolMachine.DbConnectionManagement
         public string RepairStatusUpdateBaseUrl { get; set; }
         public string Secret { get; set; }
         public string SendGridApiKey { get; set; }
+        public string ServiceBusConnectionString { get; set; }
         public bool UseAzureMessageQueue { get; set; }
         public bool UseAzureKeyVault { get; set; }
         public bool UseHosts { get; set; }
