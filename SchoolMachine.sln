@@ -72,7 +72,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{04603562-E4B3-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.Common.Queueing", "SchoolMachine.Common.Queueing\SchoolMachine.Common.Queueing.csproj", "{2ED2D466-FC96-4B6F-86DD-BC30F8880EF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.Testing.Common.Queueing", "SchoolMachine.Testing.Common.Queueing\SchoolMachine.Testing.Common.Queueing.csproj", "{F7E5CE32-3531-4612-9934-865F05280D8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.Testing.Common.Queueing", "SchoolMachine.Testing.Common.Queueing\SchoolMachine.Testing.Common.Queueing.csproj", "{F7E5CE32-3531-4612-9934-865F05280D8B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMachine.Workers", "SchoolMachine.Workers\SchoolMachine.Workers.csproj", "{5B76BBCE-33D2-46E2-9C1B-79DB28589D73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMachine.UI.MVC.SecurityAdmin", "SchoolMachine.UI.MVC.SecurityAdmin\SchoolMachine.UI.MVC.SecurityAdmin.csproj", "{56B2CE40-60EC-4AC2-A79F-DA85C75BC17C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -168,6 +172,14 @@ Global
 		{F7E5CE32-3531-4612-9934-865F05280D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7E5CE32-3531-4612-9934-865F05280D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7E5CE32-3531-4612-9934-865F05280D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B76BBCE-33D2-46E2-9C1B-79DB28589D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B76BBCE-33D2-46E2-9C1B-79DB28589D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B76BBCE-33D2-46E2-9C1B-79DB28589D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B76BBCE-33D2-46E2-9C1B-79DB28589D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56B2CE40-60EC-4AC2-A79F-DA85C75BC17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56B2CE40-60EC-4AC2-A79F-DA85C75BC17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56B2CE40-60EC-4AC2-A79F-DA85C75BC17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56B2CE40-60EC-4AC2-A79F-DA85C75BC17C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -193,6 +205,7 @@ Global
 		{6C24B9E3-D4A6-4E13-BBD8-EDB742D971D8} = {DA827992-C7FB-4DF5-A3C3-464F11FB308D}
 		{2ED2D466-FC96-4B6F-86DD-BC30F8880EF0} = {AC07212F-F691-4164-AD34-A008CC75929C}
 		{F7E5CE32-3531-4612-9934-865F05280D8B} = {ADE879F1-FB38-46A1-AC31-C0D6749CCFA0}
+		{56B2CE40-60EC-4AC2-A79F-DA85C75BC17C} = {04603562-E4B3-4D0A-95F6-197018C7D37F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6520A525-2E5F-4481-A912-0847D1B50199}
