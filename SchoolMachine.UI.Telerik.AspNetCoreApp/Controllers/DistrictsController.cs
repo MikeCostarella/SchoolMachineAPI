@@ -2,9 +2,11 @@
 using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
+using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers.Base;
 using SchoolMachine.UI.Telerik.AspNetCoreApp.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
 {
@@ -26,11 +28,38 @@ namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
             return View();
         }
 
+        public IActionResult Create()
+        {
+            ViewData["Message"] = "Create a new district.";
+            var model = new DistrictViewModel();
+            return View(model);
+        }
+
         #endregion Views
 
         #region Data Operations
 
-        public ActionResult Districts_Read([DataSourceRequest]DataSourceRequest request)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(DistrictViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var district = new District
+            {
+                Name = model.Name,
+            };
+            var existingDistrict = _repositoryWrapper.District.FindByCondition(x => x.Name.Equals(district.Name)).Result.FirstOrDefault();
+            if (existingDistrict == null)
+            {
+                _repositoryWrapper.District.CreateDistrict(district);
+            }
+            return View("Index");
+        }
+
+        public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
             var districts = _repositoryWrapper.District.GetAllDistricts().Result;
             var districtViewModels = new List<DistrictViewModel>();
