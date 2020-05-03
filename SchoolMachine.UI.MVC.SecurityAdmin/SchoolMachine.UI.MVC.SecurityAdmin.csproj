@@ -8,4 +8,8 @@
     <Folder Include="Extensions\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolMachine.Common.Extensions\SchoolMachine.Common.Extensions.csproj" />
+  </ItemGroup>
+
 </Project>

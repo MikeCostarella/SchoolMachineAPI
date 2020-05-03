@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SchoolMachine.UI.Telerik.AspNetCoreApp.Models.SchoolViewModel>
+
+@{
+    ViewData["Title"] = "ViewSchools";
+}
+
+<h1>ViewSchools</h1>
+
+<p>
+    <a asp-action="Create" class="k-button">Create New</a>
+</p>
+<div class="row">
+    <div class="col-12">
+        <kendo-grid name="grid" height="550">
+            <columns>
+                <column field="Id" title="Id">
+                    <filterable enabled="false"></filterable>
+                </column>
+                <column field="Name" title="Name" />
+            </columns>
+            <scrollable enabled="true" />
+            <sortable enabled="true" />
+            <pageable enabled="true" />
+            <filterable enabled="true" />
+            <datasource type="DataSourceTagHelperType.Ajax" page-size="20">
+                <transport>
+                    <read url="@Url.Action("Schools_Read", "Schools")" />
+                </transport>
+            </datasource>
+        </kendo-grid>
+    </div>
+</div>
