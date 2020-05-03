@@ -23,6 +23,7 @@ namespace SchoolMachine.UI.Telerik.AspNetCoreApp
         {
             services.ConfigureRepositoryContext(Configuration);
             services.AddIdentityServiceFramework();
+            services.ConfigureRepositoryWrapper();
             // Add framework services.
             services
                 .AddControllersWithViews()

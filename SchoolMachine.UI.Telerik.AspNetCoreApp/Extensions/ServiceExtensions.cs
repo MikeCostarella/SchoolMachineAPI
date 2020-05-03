@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SchoolMachine.Contracts;
 using SchoolMachine.DataAccess.Entities;
 using SchoolMachine.DataAccess.Entities.Authorization.Models.Identity;
+using SchoolMachine.Repository;
 using System;
 
 namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Extensions
@@ -54,6 +56,15 @@ namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Extensions
                         (options => options.UseInMemoryDatabase(databaseName: databaseConnectionString));
                     break;
             }
+        }
+
+        /// <summary>
+        /// Add the Repository Wrapper to the IOC container
+        /// </summary>
+        /// <param name="services"></param>
+        public static void ConfigureRepositoryWrapper(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
     }
 }
