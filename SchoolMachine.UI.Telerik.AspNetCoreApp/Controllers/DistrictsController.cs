@@ -16,7 +16,6 @@ namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
 
         public DistrictsController(IRepositoryWrapper repositoryWrapper) : base(repositoryWrapper)
         {
-
         }
 
         #endregion Constructors

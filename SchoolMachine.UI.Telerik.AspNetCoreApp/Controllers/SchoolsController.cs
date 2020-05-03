@@ -2,9 +2,11 @@
 using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
+using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers.Base;
 using SchoolMachine.UI.Telerik.AspNetCoreApp.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
 {
@@ -26,11 +28,38 @@ namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
             return View();
         }
 
+        public IActionResult Create()
+        {
+            ViewData["Message"] = "Create a new school.";
+            var model = new SchoolViewModel();
+            return View(model);
+        }
+
         #endregion Views
 
         #region Data Operations
 
-        public ActionResult Schools_Read([DataSourceRequest]DataSourceRequest request)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(SchoolViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var school = new School
+            {
+                Name = model.Name,
+            };
+            var existingSchool = _repositoryWrapper.School.FindByCondition(x => x.Name.Equals(school.Name)).Result.FirstOrDefault();
+            if (existingSchool == null)
+            {
+                _repositoryWrapper.School.CreateSchool(school);
+            }
+            return View("Index");
+        }
+
+        public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
             var schools = _repositoryWrapper.School.GetAllSchools().Result;
             var schoolViewModels = new List<SchoolViewModel>();

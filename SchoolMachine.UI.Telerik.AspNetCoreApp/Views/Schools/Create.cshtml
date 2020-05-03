@@ -1,0 +1,15 @@
+﻿@model SchoolMachine.UI.Telerik.AspNetCoreApp.Models.SchoolViewModel
+@{
+    ViewData["Title"] = "CreateSchool";
+}
+<h2>Create District</h2>
+
+@using (Html.BeginForm("Create", "Schools", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true);
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+    <input type="submit" value="Save" />
+}
