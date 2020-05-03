@@ -1,15 +1,28 @@
-﻿@model SchoolMachine.UI.Telerik.AspNetCoreApp.Models.DistrictViewModel
+﻿@model SchoolMachine.UI.Telerik.AspNetCoreApp.Models.StudentViewModel
 @{
     ViewData["Title"] = "CreateDistrict";
 }
-<h2>Create District</h2>
+<h2>Create Student</h2>
 
 @using (Html.BeginForm("Create", "Districts", FormMethod.Post))
 {
     @Html.AntiForgeryToken();
     @Html.ValidationSummary(true);
-    @Html.LabelFor(m => m.Name)
-    @Html.TextBoxFor(m => m.Name)
-    @Html.ValidationMessageFor(m => m.Name)
+    @Html.LabelFor(m => m.DateOfBirth)
+    @Html.TextBoxFor(m => m.DateOfBirth)
+    @Html.ValidationMessageFor(m => m.DateOfBirth)
+    <br />
+    @Html.LabelFor(m => m.FirstName)
+    @Html.TextBoxFor(m => m.FirstName)
+    @Html.ValidationMessageFor(m => m.FirstName)
+    <br />
+    @Html.LabelFor(m => m.MiddleName)
+    @Html.TextBoxFor(m => m.MiddleName)
+    @Html.ValidationMessageFor(m => m.MiddleName)
+    <br />
+    @Html.LabelFor(m => m.LastName)
+    @Html.TextBoxFor(m => m.LastName)
+    @Html.ValidationMessageFor(m => m.LastName)
+    <br />
     <input type="submit" value="Save" />
 }
