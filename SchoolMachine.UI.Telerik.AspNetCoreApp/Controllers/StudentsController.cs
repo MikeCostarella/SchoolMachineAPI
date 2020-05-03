@@ -2,9 +2,11 @@
 using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
 using SchoolMachine.Contracts;
+using SchoolMachine.DataAccess.Entities.Models.SchoolData;
 using SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers.Base;
 using SchoolMachine.UI.Telerik.AspNetCoreApp.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
 {
@@ -20,6 +22,13 @@ namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
 
         #region Views
 
+        public IActionResult Create()
+        {
+            ViewData["Message"] = "Create a new student.";
+            var model = new StudentViewModel();
+            return View(model);
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -29,7 +38,35 @@ namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
 
         #region Data Operations
 
-        public ActionResult Students_Read([DataSourceRequest]DataSourceRequest request)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(StudentViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var student = new Student
+            {
+                BirthDate = model.DateOfBirth,
+                FirstName = model.FirstName,
+                MiddleName = model.MiddleName,
+                LastName = model.LastName
+            };
+            var existingStudent = _repositoryWrapper.Student.FindByCondition(x => 
+                x.LastName.Equals(student.LastName)
+                && x.FirstName.Equals(student.FirstName)
+                && x.MiddleName.Equals(student.MiddleName)
+                && x.BirthDate.Equals(student.BirthDate)
+            ).Result.FirstOrDefault();
+            if (existingStudent == null)
+            {
+                _repositoryWrapper.Student.CreateStudent(student);
+            }
+            return View("Index");
+        }
+
+        public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
             var students = _repositoryWrapper.Student.GetAllStudents().Result;
             var studentViewModels = new List<StudentViewModel>();

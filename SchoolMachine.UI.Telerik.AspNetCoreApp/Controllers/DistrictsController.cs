@@ -22,16 +22,16 @@ namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
 
         #region Views
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Create()
         {
             ViewData["Message"] = "Create a new district.";
             var model = new DistrictViewModel();
             return View(model);
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
 
         #endregion Views
