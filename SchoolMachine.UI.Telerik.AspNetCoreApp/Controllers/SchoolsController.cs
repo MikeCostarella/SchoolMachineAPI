@@ -39,6 +39,7 @@ namespace SchoolMachine.UI.Telerik.AspNetCoreApp.Controllers
                 var schoolViewModel = new SchoolViewModel();
                 schoolViewModel.Id = student.Id;
                 schoolViewModel.Name = student.Name;
+                schoolViewModels.Add(schoolViewModel);
             }
             var dsResult = schoolViewModels.ToDataSourceResult(request);
             return Json(dsResult);
