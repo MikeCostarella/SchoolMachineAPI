@@ -20,6 +20,9 @@
                 <column field="FirstName" title="FirstName" />
                 <column field="MiddleName" title="MiddleName" />
                 <column field="DateOfBirth" title="Birth Date" />
+                @*<column field="Update" selectable="true" />
+                <column field="Delete" selectable="true" />
+                <column field="Schools" selectable="true" />*@
             </columns>
             <scrollable enabled="true" />
             <sortable enabled="true" />
@@ -32,4 +35,20 @@
             </datasource>
         </kendo-grid>
     </div>
+</div>
+<div>
+    @(Html.Kendo().Grid<SchoolMachine.UI.Telerik.AspNetCoreApp.Models.StudentViewModel>()
+    .Name("Grid")
+    .Columns(columns => {
+        columns.Bound(e => e.FirstName).Width(30).Title("First Name");
+        columns.Bound(e => e.LastName).Width(30).Title("Last Name");
+        columns.Bound(e => e.MiddleName).Width(20).Title("Middle Name");
+        columns.Command(command => command.Custom("ViewDetails").Click("showDetails")).Width(180);
+    })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .Read(read => read.Action("Read", "Students"))
+     )
+)
 </div>
