@@ -13,7 +13,7 @@ namespace SchoolMachine.DataAccess.Entities.Models.SchoolData.Extensions
         {
             modelBuilder.Entity<DistrictSchool>()
                 .HasOne(districtSchool => districtSchool.District)
-                .WithMany(district => district.Districts)
+                .WithMany(district => district.Schools)
                 .HasForeignKey(districtSchool => districtSchool.DistrictId)
                 .HasConstraintName("foreignkey_districtschool_district");
             modelBuilder.Entity<DistrictSchool>()

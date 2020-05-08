@@ -20,6 +20,6 @@ namespace SchoolMachine.DataAccess.Entities.Models.SchoolData
         public string Name { get; set; }
 
         [JsonIgnore]
-        public List<DistrictSchool> Districts { get; set; }
+        public List<DistrictSchool> Schools { get; set; }
     }
 }
